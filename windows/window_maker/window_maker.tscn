@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckpwavuiv1dm5"]
+
+[ext_resource type="PackedScene" uid="uid://bw2823cmjh4ba" path="res://components/voice_bar/voice_bar.tscn" id="1_unfbp"]
+[ext_resource type="PackedScene" uid="uid://cnulygw660opu" path="res://components/voice_server/voice_server_local/voice_server_local.tscn" id="2_ksnnm"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_2l2nn"]
+
+[node name="WindowMaker" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VoiceBar" parent="VBoxContainer" instance=ExtResource("1_unfbp")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="VoiceServerLocal" parent="." node_paths=PackedStringArray("voice_bar") instance=ExtResource("2_ksnnm")]
+voice_bar = NodePath("../VBoxContainer/VoiceBar")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_2l2nn")
+autoplay = true
+bus = &"Microphone"

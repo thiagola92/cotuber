@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://cmwgs2f3a5y0m"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_27xhf"]
+[ext_resource type="Texture2D" uid="uid://coxhxv2gybueo" path="res://assets/maker.svg" id="2_gu71a"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/options.tres" id="2_scn7e"]
+[ext_resource type="Texture2D" uid="uid://cfrki04qy45vo" path="res://assets/solo.svg" id="3_wo8eb"]
+[ext_resource type="Texture2D" uid="uid://bpj431n5047j7" path="res://assets/coop.svg" id="4_35ayi"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/options_pressed.tres" id="5_dh8b3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1trh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fkmy6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qjpsv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2lxn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37dr3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsv8r"]
+
+[node name="Main" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_27xhf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MainOptions" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="MakerContainer" type="VBoxContainer" parent="VBoxContainer/MainOptions"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="MakerButton" type="Button" parent="VBoxContainer/MainOptions/MakerContainer"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("2_scn7e")
+theme_override_styles/disabled = ExtResource("2_scn7e")
+theme_override_styles/hover_pressed = ExtResource("2_scn7e")
+theme_override_styles/hover = ExtResource("2_scn7e")
+theme_override_styles/pressed = ExtResource("5_dh8b3")
+theme_override_styles/normal = ExtResource("2_scn7e")
+icon = ExtResource("2_gu71a")
+
+[node name="MakerLabel" type="Label" parent="VBoxContainer/MainOptions/MakerContainer"]
+layout_mode = 2
+text = "Maker"
+horizontal_alignment = 1
+
+[node name="SoloContainer" type="VBoxContainer" parent="VBoxContainer/MainOptions"]
+layout_mode = 2
+
+[node name="SoloButton" type="Button" parent="VBoxContainer/MainOptions/SoloContainer"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("2_scn7e")
+theme_override_styles/disabled = ExtResource("2_scn7e")
+theme_override_styles/hover_pressed = ExtResource("2_scn7e")
+theme_override_styles/hover = ExtResource("2_scn7e")
+theme_override_styles/pressed = ExtResource("5_dh8b3")
+theme_override_styles/normal = ExtResource("2_scn7e")
+icon = ExtResource("3_wo8eb")
+
+[node name="SoloLabel" type="Label" parent="VBoxContainer/MainOptions/SoloContainer"]
+layout_mode = 2
+text = "Solo"
+horizontal_alignment = 1
+
+[node name="CoopContainer" type="VBoxContainer" parent="VBoxContainer/MainOptions"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="CoopButton" type="Button" parent="VBoxContainer/MainOptions/CoopContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/focus = ExtResource("2_scn7e")
+theme_override_styles/disabled = ExtResource("2_scn7e")
+theme_override_styles/hover_pressed = ExtResource("2_scn7e")
+theme_override_styles/hover = ExtResource("2_scn7e")
+theme_override_styles/pressed = ExtResource("5_dh8b3")
+theme_override_styles/normal = ExtResource("2_scn7e")
+icon = ExtResource("4_35ayi")
+
+[node name="CoopLabel" type="Label" parent="VBoxContainer/MainOptions/CoopContainer"]
+layout_mode = 2
+text = "Co-op"
+horizontal_alignment = 1
+
+[node name="LanguageButton" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x1trh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fkmy6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qjpsv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u2lxn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_37dr3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xsv8r")
+flat = true
+selected = 0
+fit_to_longest_item = false
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Português (Brasil)"
+popup/item_1/id = 1
+
+[connection signal="pressed" from="VBoxContainer/MainOptions/MakerContainer/MakerButton" to="." method="_on_maker_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainOptions/SoloContainer/SoloButton" to="." method="_on_solo_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainOptions/CoopContainer/CoopButton" to="." method="_on_coop_button_pressed"]

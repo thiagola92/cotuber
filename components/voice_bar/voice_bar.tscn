@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw2823cmjh4ba"]
+
+[ext_resource type="Script" path="res://components/voice_bar/voice_bar.gd" id="1_w6y3y"]
+[ext_resource type="Texture2D" uid="uid://cyek7nv010wui" path="res://components/voice_bar/assets/over.svg" id="1_waimj"]
+[ext_resource type="Texture2D" uid="uid://v8hqk67q6xgl" path="res://components/voice_bar/assets/progress.svg" id="2_0kc1x"]
+[ext_resource type="PackedScene" uid="uid://d1n7boaplw1bg" path="res://components/avatar_button/avatar_button.tscn" id="2_1f2s7"]
+[ext_resource type="Texture2D" uid="uid://hoda4yi1sxo8" path="res://components/voice_bar/assets/arrow.svg" id="5_epd2s"]
+
+[node name="VoiceBar" type="HBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -48.0
+offset_right = 300.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w6y3y")
+
+[node name="IdleAvatar" parent="." instance=ExtResource("2_1f2s7")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VolumeBar" type="TextureProgressBar" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+max_value = 0.2
+step = 0.0
+texture_over = ExtResource("1_waimj")
+texture_progress = ExtResource("2_0kc1x")
+
+[node name="ArrowSpace" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="VBoxContainer/ArrowSpace"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -15.0
+offset_right = 20.0
+texture = ExtResource("5_epd2s")
+
+[node name="SpeakAvatar" parent="." instance=ExtResource("2_1f2s7")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[connection signal="gui_input" from="VBoxContainer/VolumeBar" to="." method="_on_volume_bar_gui_input"]
