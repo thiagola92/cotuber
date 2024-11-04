@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckpwavuiv1dm5"]
+[gd_scene load_steps=7 format=3 uid="uid://ckpwavuiv1dm5"]
 
+[ext_resource type="PackedScene" uid="uid://c387vtsh6tcn6" path="res://components/back_button/back_button.tscn" id="1_30rjt"]
 [ext_resource type="PackedScene" uid="uid://bw2823cmjh4ba" path="res://components/voice_bar/voice_bar.tscn" id="1_unfbp"]
+[ext_resource type="PackedScene" uid="uid://lecnx1bkrqis" path="res://components/avatar_texture/avatar_texture.tscn" id="2_6er6e"]
+[ext_resource type="PackedScene" uid="uid://dmjwjg6s3pkke" path="res://components/microphone_button/microphone_button.tscn" id="2_dric0"]
 [ext_resource type="PackedScene" uid="uid://cnulygw660opu" path="res://components/voice_server/voice_server_local/voice_server_local.tscn" id="2_ksnnm"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_2l2nn"]
@@ -19,10 +22,23 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_30rjt")]
+layout_mode = 2
+
+[node name="MicrophoneButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_dric0")]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="AvatarTexture" parent="VBoxContainer" node_paths=PackedStringArray("voice_server") instance=ExtResource("2_6er6e")]
+layout_mode = 2
+voice_server = NodePath("../../VoiceServerLocal")
+
 [node name="VoiceBar" parent="VBoxContainer" instance=ExtResource("1_unfbp")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
 
 [node name="VoiceServerLocal" parent="." node_paths=PackedStringArray("voice_bar") instance=ExtResource("2_ksnnm")]
 voice_bar = NodePath("../VBoxContainer/VoiceBar")

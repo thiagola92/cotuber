@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bw2823cmjh4ba"]
 
 [ext_resource type="Script" path="res://components/voice_bar/voice_bar.gd" id="1_w6y3y"]
-[ext_resource type="Texture2D" uid="uid://cyek7nv010wui" path="res://components/voice_bar/assets/over.svg" id="1_waimj"]
-[ext_resource type="Texture2D" uid="uid://v8hqk67q6xgl" path="res://components/voice_bar/assets/progress.svg" id="2_0kc1x"]
+[ext_resource type="Texture2D" uid="uid://cyek7nv010wui" path="res://components/voice_bar/over.svg" id="1_waimj"]
+[ext_resource type="Texture2D" uid="uid://v8hqk67q6xgl" path="res://components/voice_bar/progress.svg" id="2_0kc1x"]
 [ext_resource type="PackedScene" uid="uid://d1n7boaplw1bg" path="res://components/avatar_button/avatar_button.tscn" id="2_1f2s7"]
-[ext_resource type="Texture2D" uid="uid://hoda4yi1sxo8" path="res://components/voice_bar/assets/arrow.svg" id="5_epd2s"]
+[ext_resource type="Texture2D" uid="uid://hoda4yi1sxo8" path="res://components/voice_bar/arrow.svg" id="5_epd2s"]
 
 [node name="VoiceBar" type="HBoxContainer"]
 anchors_preset = 8

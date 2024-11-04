@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpj431n5047j7"
-path="res://.godot/imported/coop.svg-fd8098041e04bdfa9ba0078f7bc4c508.ctex"
+uid="uid://b5tn7coo1fdle"
+path="res://.godot/imported/microphone.svg-3bf20fa76cf8c4f768cab62563170f88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/coop.svg"
-dest_files=["res://.godot/imported/coop.svg-fd8098041e04bdfa9ba0078f7bc4c508.ctex"]
+source_file="res://components/microphone_button/microphone.svg"
+dest_files=["res://.godot/imported/microphone.svg-3bf20fa76cf8c4f768cab62563170f88.ctex"]
 
 [params]
 
@@ -32,6 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=0.5
+svg/scale=1.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

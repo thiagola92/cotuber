@@ -3,7 +3,13 @@ extends VoiceServer
 
 @export var voice_bar: VoiceBar
 
+var _id := ""
+
 @onready var _bus_index: int = AudioServer.get_bus_index("Microphone")
+
+
+func _ready() -> void:
+	speaking[_id] = false
 
 
 func _process(_delta: float) -> void:
@@ -11,10 +17,9 @@ func _process(_delta: float) -> void:
 	
 	voice_bar.update_volume(peak)
 	
-	for id in speaking:
-		if peak >= voice_bar.min_volume and not speaking[id]:
-			speaking[id] = true
-			start_speaking.emit(id)
-		elif peak < voice_bar.min_volume and speaking[id]:
-			speaking[id] = false
-			stop_speaking.emit(id)
+	if peak >= voice_bar.min_volume and not speaking[_id]:
+		speaking[_id] = true
+		voice_started.emit(_id)
+	elif peak < voice_bar.min_volume and speaking[_id]:
+		speaking[_id] = false
+		_stop_later(_id)

@@ -2,7 +2,7 @@ class_name VoiceBar
 extends Control
 
 
-var min_volume: float = 0
+var min_volume: float
 
 var _is_dragging: bool = false
 
@@ -13,6 +13,10 @@ var _is_dragging: bool = false
 @onready var _volume_bar := %VolumeBar
 
 @onready var _volume_bar_width: float = %VolumeBar.get_minimum_size().x
+
+
+func _ready() -> void:
+	_move_arrow(_volume_bar_width / 4)
 
 
 func update_volume(volume: float) -> void:
