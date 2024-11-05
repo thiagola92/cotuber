@@ -53,4 +53,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[connection signal="file_dropped" from="IdleAvatar" to="." method="_on_idle_avatar_file_dropped"]
 [connection signal="gui_input" from="VBoxContainer/VolumeBar" to="." method="_on_volume_bar_gui_input"]
+[connection signal="file_dropped" from="SpeakAvatar" to="." method="_on_speak_avatar_file_dropped"]

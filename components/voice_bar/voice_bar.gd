@@ -2,6 +2,10 @@ class_name VoiceBar
 extends Control
 
 
+signal idle_texture_dropped(texture: ImageTexture)
+
+signal speak_texture_dropped(texture: ImageTexture)
+
 var min_volume: float
 
 var _is_dragging: bool = false
@@ -65,3 +69,11 @@ func _on_volume_bar_left_click_released(event: InputEventMouseButton) -> void:
 func _on_volume_bar_mouse_motion(event: InputEventMouseMotion) -> void:
 	if _is_dragging:
 		_move_arrow(event.position.x)
+
+
+func _on_idle_avatar_file_dropped(texture: ImageTexture) -> void:
+	idle_texture_dropped.emit(texture)
+
+
+func _on_speak_avatar_file_dropped(texture: ImageTexture) -> void:
+	speak_texture_dropped.emit(texture)

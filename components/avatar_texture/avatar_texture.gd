@@ -20,6 +20,14 @@ extends Control
 @onready var _avatar_speaking: TextureRect = %AvatarSpeaking
 
 
+func set_idle_avatar(texture: ImageTexture) -> void:
+	_avatar_idle.texture = texture
+
+
+func set_speaking_avatar(texture: ImageTexture) -> void:
+	_avatar_speaking.texture = texture
+
+
 func _on_voice_server_voice_started(voice_id: String) -> void:
 	if voice_id != id:
 		return
