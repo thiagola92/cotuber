@@ -17,7 +17,12 @@ script = ExtResource("4_76tgc")
 
 [node name="FileDialog" type="FileDialog" parent="."]
 access = 2
-filters = PackedStringArray("*.json")
+filters = PackedStringArray("*.zip")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+size = Vector2i(588, 158)
+dialog_text = "
+		"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

@@ -34,3 +34,4 @@ ok_button_text = "Ok"
 dialog_text = "Can't drag multiple files"
 
 [connection signal="file_dropped" from="." to="." method="_on_file_dropped"]
+[connection signal="image_dropped" from="." to="." method="_on_image_dropped"]

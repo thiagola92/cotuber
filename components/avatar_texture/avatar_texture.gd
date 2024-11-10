@@ -1,4 +1,5 @@
-extends Control
+class_name AvatarTexture
+extends Node
 
 
 @export var id := ""
@@ -18,6 +19,14 @@ extends Control
 @onready var _avatar_idle: TextureRect = %AvatarIdle
 
 @onready var _avatar_speaking: TextureRect = %AvatarSpeaking
+
+
+func get_idle_avatar() -> Texture2D:
+	return _avatar_idle.texture
+
+
+func get_speaking_avatar() -> Texture2D:
+	return _avatar_speaking.texture
 
 
 func set_idle_avatar(texture: ImageTexture) -> void:

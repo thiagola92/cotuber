@@ -1,7 +1,9 @@
 extends Button
 
 
-signal file_dropped(texture: ImageTexture)
+signal file_dropped(file: String)
+
+signal image_dropped(texture: ImageTexture)
 
 @onready var _popup := $Popup
 
@@ -12,23 +14,28 @@ func _ready() -> void:
 
 func _on_files_dropped(files: PackedStringArray) -> void:
 	if len(files) == 1:
-		var image := Image.new()
-		var error := image.load(files[0])
-		
-		if error == OK:
-			file_dropped.emit(ImageTexture.create_from_image(image))
-			return
-		
-		_popup.dialog_text = "Not a valid format"
+		file_dropped.emit(files[0])
 	elif len(files) > 1:
 		_popup.dialog_text = "Can't drag multiple files"
+		_popup.popup_centered()
 	else:
 		_popup.dialog_text = "How did you drag less than one file?!"
+		_popup.popup_centered()
+
+
+func _on_file_dropped(file: String) -> void:
+	var image := Image.new()
+	var error := image.load(file)
 	
-	_popup.popup_centered()
+	if error:
+		_popup.dialog_text = "Not a valid format"
+		_popup.popup_centered()
+		return
+	
+	image_dropped.emit(ImageTexture.create_from_image(image))
 
 
-func _on_file_dropped(texture: ImageTexture) -> void:
+func _on_image_dropped(texture: ImageTexture) -> void:
 	icon = texture
 
 

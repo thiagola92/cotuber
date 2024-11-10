@@ -71,9 +71,9 @@ func _on_volume_bar_mouse_motion(event: InputEventMouseMotion) -> void:
 		_move_arrow(event.position.x)
 
 
-func _on_idle_avatar_file_dropped(texture: ImageTexture) -> void:
+func _on_idle_avatar_image_dropped(texture: ImageTexture) -> void:
 	idle_texture_dropped.emit(texture)
 
 
-func _on_speak_avatar_file_dropped(texture: ImageTexture) -> void:
+func _on_speak_avatar_image_dropped(texture: ImageTexture) -> void:
 	speak_texture_dropped.emit(texture)

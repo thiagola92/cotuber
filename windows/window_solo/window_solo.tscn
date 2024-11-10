@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2dxfpxd5k6it"]
+
+[ext_resource type="Script" path="res://windows/window_solo/window_solo.gd" id="1_bbyts"]
+[ext_resource type="PackedScene" uid="uid://c387vtsh6tcn6" path="res://components/back_button/back_button.tscn" id="1_skjj3"]
+[ext_resource type="PackedScene" uid="uid://lecnx1bkrqis" path="res://components/avatar_texture/avatar_texture.tscn" id="2_g4ieq"]
+[ext_resource type="PackedScene" uid="uid://cdvhv3vd80und" path="res://components/load_button/load_button.tscn" id="3_cs611"]
+[ext_resource type="PackedScene" uid="uid://bw2823cmjh4ba" path="res://components/voice_bar/voice_bar.tscn" id="4_ct1so"]
+[ext_resource type="PackedScene" uid="uid://cnulygw660opu" path="res://components/voice_server/voice_server_local/voice_server_local.tscn" id="4_jllu3"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_hhi0b"]
+
+[node name="WindowSolo" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bbyts")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_skjj3")]
+layout_mode = 2
+
+[node name="LoadButton" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("avatar_texture") instance=ExtResource("3_cs611")]
+layout_mode = 2
+size_flags_horizontal = 10
+avatar_texture = NodePath("../../AvatarTexture")
+
+[node name="AvatarTexture" parent="VBoxContainer" node_paths=PackedStringArray("voice_server") instance=ExtResource("2_g4ieq")]
+voice_server = NodePath("../../VoiceServerLocal")
+
+[node name="VoiceBar" parent="VBoxContainer" instance=ExtResource("4_ct1so")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="VoiceServerLocal" parent="." node_paths=PackedStringArray("voice_bar") instance=ExtResource("4_jllu3")]
+voice_bar = NodePath("../VBoxContainer/VoiceBar")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_hhi0b")
+autoplay = true
+bus = &"Microphone"
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

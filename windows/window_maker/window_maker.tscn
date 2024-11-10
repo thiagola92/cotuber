@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckpwavuiv1dm5"]
+[gd_scene load_steps=11 format=3 uid="uid://ckpwavuiv1dm5"]
 
 [ext_resource type="PackedScene" uid="uid://c387vtsh6tcn6" path="res://components/back_button/back_button.tscn" id="1_30rjt"]
 [ext_resource type="Script" path="res://windows/window_maker/window_maker.gd" id="1_hacws"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dmjwjg6s3pkke" path="res://components/microphone_button/microphone_button.tscn" id="2_dric0"]
 [ext_resource type="PackedScene" uid="uid://biibdtnupfkkg" path="res://components/save_button/save_button.tscn" id="2_fih0u"]
 [ext_resource type="PackedScene" uid="uid://cnulygw660opu" path="res://components/voice_server/voice_server_local/voice_server_local.tscn" id="2_ksnnm"]
+[ext_resource type="PackedScene" uid="uid://cdvhv3vd80und" path="res://components/load_button/load_button.tscn" id="3_sict5"]
+[ext_resource type="PackedScene" uid="uid://bbva8lrqpb4up" path="res://components/background_button/background_button.tscn" id="5_wquog"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_2l2nn"]
 
@@ -35,9 +37,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SaveButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_fih0u")]
+[node name="LoadButton" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("avatar_texture") instance=ExtResource("3_sict5")]
+layout_mode = 2
+avatar_texture = NodePath("../../AvatarTexture")
+
+[node name="SaveButton" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("avatar_texture") instance=ExtResource("2_fih0u")]
 layout_mode = 2
 size_flags_horizontal = 8
+avatar_texture = NodePath("../../AvatarTexture")
+
+[node name="BackgroundButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("5_wquog")]
+layout_mode = 2
 
 [node name="MicrophoneButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_dric0")]
 layout_mode = 2
@@ -45,12 +55,12 @@ size_flags_horizontal = 8
 
 [node name="AvatarTexture" parent="VBoxContainer" node_paths=PackedStringArray("voice_server") instance=ExtResource("2_6er6e")]
 unique_name_in_owner = true
-layout_mode = 2
 voice_server = NodePath("../../VoiceServerLocal")
 
 [node name="VoiceBar" parent="VBoxContainer" instance=ExtResource("1_unfbp")]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 10
 
 [node name="VoiceServerLocal" parent="." node_paths=PackedStringArray("voice_bar") instance=ExtResource("2_ksnnm")]
 voice_bar = NodePath("../VBoxContainer/VoiceBar")
