@@ -16,9 +16,13 @@ extends Node
 		
 		voice_server = v
 
-@onready var _avatar_idle: TextureRect = %AvatarIdle
+@onready var _avatar_idle := %AvatarIdle
 
-@onready var _avatar_speaking: TextureRect = %AvatarSpeaking
+@onready var _idle_resizer := %IdleResizer
+
+@onready var _avatar_speaking := %AvatarSpeaking
+
+@onready var _speaking_resizer := %SpeakingResizer
 
 
 func get_idle_avatar() -> Texture2D:
@@ -27,6 +31,11 @@ func get_idle_avatar() -> Texture2D:
 
 func get_speaking_avatar() -> Texture2D:
 	return _avatar_speaking.texture
+
+
+func hide_resizers() -> void:
+	_idle_resizer.hide()
+	_speaking_resizer.hide()
 
 
 func set_idle_avatar(texture: ImageTexture) -> void:

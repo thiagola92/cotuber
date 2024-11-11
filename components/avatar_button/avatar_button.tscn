@@ -25,11 +25,13 @@ theme_override_styles/hover = ExtResource("1_m2lr5")
 theme_override_styles/pressed = ExtResource("2_ytx01")
 theme_override_styles/normal = ExtResource("1_m2lr5")
 icon = ExtResource("3_ntvum")
+icon_alignment = 1
 expand_icon = true
 script = ExtResource("4_l22vb")
 
 [node name="Popup" type="AcceptDialog" parent="."]
 title = "Failed"
+size = Vector2i(200, 100)
 ok_button_text = "Ok"
 dialog_text = "Can't drag multiple files"
 

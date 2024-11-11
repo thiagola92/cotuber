@@ -55,12 +55,14 @@ size_flags_horizontal = 8
 
 [node name="AvatarTexture" parent="VBoxContainer" node_paths=PackedStringArray("voice_server") instance=ExtResource("2_6er6e")]
 unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
 voice_server = NodePath("../../VoiceServerLocal")
 
 [node name="VoiceBar" parent="VBoxContainer" instance=ExtResource("1_unfbp")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 8
 
 [node name="VoiceServerLocal" parent="." node_paths=PackedStringArray("voice_bar") instance=ExtResource("2_ksnnm")]
 voice_bar = NodePath("../VBoxContainer/VoiceBar")
