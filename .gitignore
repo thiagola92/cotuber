@@ -1,8 +1,3 @@
-# Cotuber
-export/**
-!export/.gitkeep
-!export/linux/.gitkeep
-
 # Godot 4+ specific ignores
 .godot/
 /android/

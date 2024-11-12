@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://chlcvieux1r7m"]
+
+[ext_resource type="Script" path="res://components/voice_servers/network/voice_server_network.gd" id="1_tbtv3"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_iyhq1"]
+
+[node name="VoiceServerNetwork" type="Node"]
+script = ExtResource("1_tbtv3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_iyhq1")
+autoplay = true
+bus = &"Microphone"

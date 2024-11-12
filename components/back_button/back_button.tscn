@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8ljwidbqix6f"]
+
+[ext_resource type="Script" path="res://components/back_button/back_button.gd" id="1_2lhly"]
+[ext_resource type="Texture2D" uid="uid://dekrity055ssc" path="res://components/back_button/arrow.svg" id="1_4gxyi"]
+
+[node name="BackButton" type="Button"]
+icon = ExtResource("1_4gxyi")
+flat = true
+script = ExtResource("1_2lhly")
