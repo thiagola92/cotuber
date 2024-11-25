@@ -9,6 +9,7 @@ var id := ""
 
 func _ready() -> void:
 	users[id] = UserData.new()
+	speaking[id] = false
 
 
 func _process(delta: float) -> void:

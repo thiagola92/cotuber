@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8ljwidbqix6f"]
+[gd_scene load_steps=5 format=3 uid="uid://c8ljwidbqix6f"]
 
 [ext_resource type="Script" path="res://components/back_button/back_button.gd" id="1_2lhly"]
 [ext_resource type="Texture2D" uid="uid://dekrity055ssc" path="res://components/back_button/arrow.svg" id="1_4gxyi"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_4qrj4"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_2qvn3"]
 
 [node name="BackButton" type="Button"]
+theme_override_styles/focus = ExtResource("1_4qrj4")
+theme_override_styles/disabled = ExtResource("1_4qrj4")
+theme_override_styles/hover_pressed = ExtResource("1_4qrj4")
+theme_override_styles/hover = ExtResource("1_4qrj4")
+theme_override_styles/pressed = ExtResource("2_2qvn3")
+theme_override_styles/normal = ExtResource("1_4qrj4")
 icon = ExtResource("1_4gxyi")
-flat = true
 script = ExtResource("1_2lhly")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
