@@ -6,6 +6,10 @@ const ICON = preload("res://components/microphone_button/circle.svg")
 @onready var _popup_menu := $PopupMenu
 
 
+func _ready() -> void:
+	_popup_menu.hide()
+
+
 func _on_pressed() -> void:
 	_popup_menu.clear()
 	

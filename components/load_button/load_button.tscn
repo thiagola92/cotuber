@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://fo22y6l2sabw"]
+
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_dkaol"]
+[ext_resource type="Script" path="res://components/load_button/load_button.gd" id="1_ksdp7"]
+[ext_resource type="Texture2D" uid="uid://cu3ngk2s1sks" path="res://components/load_button/load.svg" id="1_rpaqg"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_unotj"]
+
+[node name="LoadButton" type="Button"]
+theme_override_styles/focus = ExtResource("1_dkaol")
+theme_override_styles/disabled = ExtResource("1_dkaol")
+theme_override_styles/hover_pressed = ExtResource("1_dkaol")
+theme_override_styles/hover = ExtResource("1_dkaol")
+theme_override_styles/pressed = ExtResource("2_unotj")
+theme_override_styles/normal = ExtResource("1_dkaol")
+icon = ExtResource("1_rpaqg")
+script = ExtResource("1_ksdp7")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "LOAD_SCENE"
+initial_position = 2
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.zip")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

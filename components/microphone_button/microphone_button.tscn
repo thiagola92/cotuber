@@ -16,6 +16,9 @@ icon = ExtResource("3_bjm6e")
 script = ExtResource("1_wkubc")
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
+title = "INPUT_DEVICE"
+initial_position = 2
+borderless = false
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="index_pressed" from="PopupMenu" to="." method="_on_popup_menu_index_pressed"]

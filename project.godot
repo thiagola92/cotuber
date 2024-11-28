@@ -36,6 +36,7 @@ window/per_pixel_transparency/allowed=true
 
 folder_colors={
 "res://components/": "green",
+"res://data/": "red",
 "res://export/": "orange",
 "res://others/": "yellow",
 "res://singletons/": "pink",

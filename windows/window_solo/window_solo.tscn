@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://w8eoeo3f2xmi"]
+[gd_scene load_steps=9 format=3 uid="uid://w8eoeo3f2xmi"]
 
+[ext_resource type="Script" path="res://windows/window_solo/window_solo.gd" id="1_282ns"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_fof6j"]
 [ext_resource type="PackedScene" uid="uid://dygfhgna7fi5y" path="res://components/microphone_button/microphone_button.tscn" id="2_2yb3a"]
+[ext_resource type="PackedScene" uid="uid://710g6pia33tv" path="res://components/background_button/background_button.tscn" id="2_55pck"]
 [ext_resource type="PackedScene" uid="uid://chy5v4fhy45eu" path="res://components/avatar_button/avatar_button.tscn" id="2_r3gfq"]
+[ext_resource type="PackedScene" uid="uid://ds54xww1imh3w" path="res://components/save_button/save_button.tscn" id="3_uvs53"]
+[ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="3_xa06c"]
 [ext_resource type="PackedScene" uid="uid://rhxby3p23oe8" path="res://components/voice_servers/offline/voice_server_offline.tscn" id="4_l64jp"]
 
 [node name="WindowSolo" type="Control"]
@@ -12,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_282ns")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -32,14 +37,31 @@ layout_mode = 2
 [node name="TopContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer"]
 layout_mode = 2
 
-[node name="BackButton" parent="UI/Margin/VBoxContainer/TopContainer" instance=ExtResource("1_fof6j")]
-layout_mode = 2
-
-[node name="Space" type="Control" parent="UI/Margin/VBoxContainer/TopContainer"]
+[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MicrophoneButton" parent="UI/Margin/VBoxContainer/TopContainer" instance=ExtResource("2_2yb3a")]
+[node name="BackButton" parent="UI/Margin/VBoxContainer/TopContainer/LeftContainer" instance=ExtResource("1_fof6j")]
+layout_mode = 2
+
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="LoadButton" parent="UI/Margin/VBoxContainer/TopContainer/MiddleContainer" instance=ExtResource("3_xa06c")]
+layout_mode = 2
+
+[node name="SaveButton" parent="UI/Margin/VBoxContainer/TopContainer/MiddleContainer" instance=ExtResource("3_uvs53")]
+layout_mode = 2
+
+[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="BackgroundButton" parent="UI/Margin/VBoxContainer/TopContainer/RightContainer" instance=ExtResource("2_55pck")]
+layout_mode = 2
+
+[node name="MicrophoneButton" parent="UI/Margin/VBoxContainer/TopContainer/RightContainer" instance=ExtResource("2_2yb3a")]
 layout_mode = 2
 
 [node name="BottomContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer"]
@@ -54,3 +76,5 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="VoiceServerOffline" parent="." instance=ExtResource("4_l64jp")]
+
+[connection signal="save_requested" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]

@@ -15,17 +15,17 @@ var _options: Dictionary[String, Callable] = {
 func _ready() -> void:
 	var index: int = 0
 	
-	for language in _options:
-		add_item(language)
+	for lang in _options:
+		add_item(lang)
 		
-		if language == _current_langauge:
+		if lang == _current_langauge:
 			select(index)
 		
 		index += 1
 
 
 func _on_item_selected(index: int) -> void:
-	var language := get_item_text(index)
+	var lang := get_item_text(index)
 	
-	_current_langauge = language
-	_options[language].call()
+	_current_langauge = lang
+	_options[lang].call()

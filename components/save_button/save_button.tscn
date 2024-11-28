@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds54xww1imh3w"]
+
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_k0p4w"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_pb4s3"]
+[ext_resource type="Texture2D" uid="uid://c3lp23is2ni68" path="res://components/save_button/save.svg" id="3_b56k1"]
+[ext_resource type="Script" path="res://components/save_button/save_button.gd" id="4_spynx"]
+
+[node name="SaveButton" type="Button"]
+theme_override_styles/focus = ExtResource("1_k0p4w")
+theme_override_styles/disabled = ExtResource("1_k0p4w")
+theme_override_styles/hover_pressed = ExtResource("1_k0p4w")
+theme_override_styles/hover = ExtResource("1_k0p4w")
+theme_override_styles/pressed = ExtResource("2_pb4s3")
+theme_override_styles/normal = ExtResource("1_k0p4w")
+icon = ExtResource("3_b56k1")
+script = ExtResource("4_spynx")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "SAVE_SCENE"
+initial_position = 2
+ok_button_text = "SAVE"
+cancel_button_text = "CANCEL"
+access = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

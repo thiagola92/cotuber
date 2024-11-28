@@ -8,7 +8,7 @@ signal voice_started(voice_id: String)
 
 signal voice_stopped(voice_id: String)
 
-var users: Dictionary[String, UserData] = {}
+var users: Dictionary[String, SceneData] = {}
 
 var speaking: Dictionary[String, bool] = {}
 

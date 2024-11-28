@@ -8,11 +8,11 @@ var id := ""
 
 
 func _ready() -> void:
-	users[id] = UserData.new()
+	users[id] = SceneData.new()
 	speaking[id] = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var user = users[id]
 	var peak = db_to_linear(AudioServer.get_bus_peak_volume_left_db(_bus_index, 0))
 	
