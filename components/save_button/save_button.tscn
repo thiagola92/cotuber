@@ -21,6 +21,7 @@ initial_position = 2
 ok_button_text = "SAVE"
 cancel_button_text = "CANCEL"
 access = 2
+filters = PackedStringArray("*.tres")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

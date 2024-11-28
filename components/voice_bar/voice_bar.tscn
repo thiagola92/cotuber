@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8vdfynnn3bik"]
+
+[ext_resource type="Texture2D" uid="uid://wgjexikmnqr0" path="res://components/voice_bar/over.svg" id="1_bt3st"]
+[ext_resource type="Texture2D" uid="uid://y71hmubxbgyi" path="res://components/voice_bar/progress.svg" id="2_sus2j"]
+[ext_resource type="Script" path="res://components/voice_bar/voice_bar.gd" id="3_4eq31"]
+[ext_resource type="Texture2D" uid="uid://echbu2s8831f" path="res://components/voice_bar/arrow.svg" id="3_8pslt"]
+
+[node name="VoiceBar" type="TextureProgressBar"]
+max_value = 0.2
+step = 0.0
+texture_over = ExtResource("1_bt3st")
+texture_progress = ExtResource("2_sus2j")
+script = ExtResource("3_4eq31")
+
+[node name="Marker" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 20.0
+grow_vertical = 2
+
+[node name="TopArrow" type="TextureRect" parent="Marker"]
+layout_mode = 2
+texture = ExtResource("3_8pslt")
+flip_v = true
+
+[node name="Control" type="Control" parent="Marker"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomArrow" type="TextureRect" parent="Marker"]
+layout_mode = 2
+texture = ExtResource("3_8pslt")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

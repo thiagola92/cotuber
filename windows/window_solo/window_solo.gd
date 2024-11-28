@@ -2,25 +2,21 @@ class_name WindowSolo
 extends Control
 
 
-var _scene_data := SceneData.new()
+var _character_data := CharacterData.new()
+
+@onready var _save_button := %SaveButton
+
+@onready var _voice_bar := %VoiceBar
 
 
 func _on_save_button_save_requested(path: String) -> void:
-	#var zip_packer := ZIPPacker.new()
-	#var error := zip_packer.open(path)
-	#
-	#if error:
-		#return ErrorPopup.show_message("ERROR_SAVE_BUTTON_CREATE_FAIL")
+	_character_data.background_color = BackgroundColor.live_color
 	
-	####
-	_scene_data.background_color = BackgroundColor.live_color
-	
-	var error := ResourceSaver.save(
-		_scene_data, path, ResourceSaver.FLAG_BUNDLE_RESOURCES
-	)
+	var error := ResourceSaver.save(_character_data, path)
 	
 	if error:
-		printerr(error)
-		return ErrorPopup.show_message("ERROR_SAVING_SCENE")
-	
-	#zip_packer.close()
+		return ErrorPopup.show_message("ERROR_WINDOW_SOLO_SAVE_CHARACTER")
+
+
+func _on_voice_server_offline_volume_changed(voice_id: String, peak: float) -> void:
+	_voice_bar.value = peak

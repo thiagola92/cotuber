@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://w8eoeo3f2xmi"]
+[gd_scene load_steps=10 format=3 uid="uid://w8eoeo3f2xmi"]
 
 [ext_resource type="Script" path="res://windows/window_solo/window_solo.gd" id="1_282ns"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_fof6j"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ds54xww1imh3w" path="res://components/save_button/save_button.tscn" id="3_uvs53"]
 [ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="3_xa06c"]
 [ext_resource type="PackedScene" uid="uid://rhxby3p23oe8" path="res://components/voice_servers/offline/voice_server_offline.tscn" id="4_l64jp"]
+[ext_resource type="PackedScene" uid="uid://c8vdfynnn3bik" path="res://components/voice_bar/voice_bar.tscn" id="8_r5clk"]
 
 [node name="WindowSolo" type="Control"]
 layout_mode = 3
@@ -52,6 +53,7 @@ size_flags_horizontal = 6
 layout_mode = 2
 
 [node name="SaveButton" parent="UI/Margin/VBoxContainer/TopContainer/MiddleContainer" instance=ExtResource("3_uvs53")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="RightContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer/TopContainer"]
@@ -72,9 +74,15 @@ size_flags_vertical = 10
 [node name="IdleAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer" instance=ExtResource("2_r3gfq")]
 layout_mode = 2
 
+[node name="VoiceBar" parent="UI/Margin/VBoxContainer/BottomContainer" instance=ExtResource("8_r5clk")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
 [node name="SpeakAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer" instance=ExtResource("2_r3gfq")]
 layout_mode = 2
 
 [node name="VoiceServerOffline" parent="." instance=ExtResource("4_l64jp")]
 
 [connection signal="save_requested" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
+[connection signal="volume_changed" from="VoiceServerOffline" to="." method="_on_voice_server_offline_volume_changed"]

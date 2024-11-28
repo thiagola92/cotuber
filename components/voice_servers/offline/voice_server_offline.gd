@@ -8,7 +8,7 @@ var id := ""
 
 
 func _ready() -> void:
-	users[id] = SceneData.new()
+	users[id] = CharacterData.new()
 	speaking[id] = false
 
 

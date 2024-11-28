@@ -16,10 +16,12 @@ icon = ExtResource("1_rpaqg")
 script = ExtResource("1_ksdp7")
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "LOAD_SCENE"
+title = "Open a File"
 initial_position = 2
 ok_button_text = "Open"
 file_mode = 0
-filters = PackedStringArray("*.zip")
+access = 2
+filters = PackedStringArray("*.tres")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
