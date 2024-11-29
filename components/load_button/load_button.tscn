@@ -19,6 +19,7 @@ script = ExtResource("1_ksdp7")
 title = "Open a File"
 initial_position = 2
 ok_button_text = "Open"
+cancel_button_text = "CANCEL"
 file_mode = 0
 access = 2
 filters = PackedStringArray("*.tres")

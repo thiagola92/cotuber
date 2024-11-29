@@ -4,8 +4,6 @@ extends Control
 
 var _character_data := CharacterData.new()
 
-@onready var _save_button := %SaveButton
-
 @onready var _voice_bar := %VoiceBar
 
 
