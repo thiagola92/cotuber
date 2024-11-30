@@ -1,5 +1,10 @@
-class_name PluginNode
-extends Node
+class_name PluginData
+extends Resource
+
+
+## Virtual method
+func draw() -> void:
+	pass
 
 
 ## Virtual method

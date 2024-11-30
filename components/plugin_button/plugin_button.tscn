@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b10r1y8l0c8sv"]
+
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_0cjbh"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_yq7e7"]
+[ext_resource type="Texture2D" uid="uid://bbaqor4vuiafs" path="res://components/plugin_button/plug.svg" id="3_wjjns"]
+[ext_resource type="Script" path="res://components/plugin_button/plugin_button.gd" id="4_hntpm"]
+
+[node name="PluginButton" type="Button"]
+theme_override_styles/focus = ExtResource("1_0cjbh")
+theme_override_styles/disabled = ExtResource("1_0cjbh")
+theme_override_styles/hover_pressed = ExtResource("1_0cjbh")
+theme_override_styles/hover = ExtResource("1_0cjbh")
+theme_override_styles/pressed = ExtResource("2_yq7e7")
+theme_override_styles/normal = ExtResource("1_0cjbh")
+icon = ExtResource("3_wjjns")
+script = ExtResource("4_hntpm")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

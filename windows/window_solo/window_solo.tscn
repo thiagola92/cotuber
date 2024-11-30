@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://w8eoeo3f2xmi"]
+[gd_scene load_steps=12 format=3 uid="uid://w8eoeo3f2xmi"]
 
 [ext_resource type="Script" path="res://windows/window_solo/window_solo.gd" id="1_282ns"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_fof6j"]
@@ -9,9 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="3_xa06c"]
 [ext_resource type="PackedScene" uid="uid://rhxby3p23oe8" path="res://components/voice_servers/offline/voice_server_offline.tscn" id="4_l64jp"]
 [ext_resource type="PackedScene" uid="uid://c8vdfynnn3bik" path="res://components/voice_bar/voice_bar.tscn" id="8_r5clk"]
-[ext_resource type="PackedScene" uid="uid://cd8j5vner6ta7" path="res://components/avatar_texture/avatar_texture.tscn" id="10_1d6l8"]
-[ext_resource type="Texture2D" uid="uid://cchjnoxfpe2sr" path="res://components/avatar_texture/template_idle.svg" id="11_b0m6o"]
-[ext_resource type="Texture2D" uid="uid://bhy2s8fd76w2w" path="res://components/avatar_texture/template_speaking.svg" id="12_wq1no"]
+[ext_resource type="PackedScene" uid="uid://b10r1y8l0c8sv" path="res://components/plugin_button/plugin_button.tscn" id="9_sc0he"]
+[ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="10_8d43v"]
 
 [node name="WindowSolo" type="Control"]
 layout_mode = 3
@@ -69,35 +68,49 @@ layout_mode = 2
 [node name="MicrophoneButton" parent="UI/Margin/VBoxContainer/TopContainer/RightContainer" instance=ExtResource("2_2yb3a")]
 layout_mode = 2
 
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="BottomContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 8
 
-[node name="IdleAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer" instance=ExtResource("2_r3gfq")]
+[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IdleAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
 layout_mode = 2
 
-[node name="VoiceBar" parent="UI/Margin/VBoxContainer/BottomContainer" instance=ExtResource("8_r5clk")]
+[node name="VoiceBar" parent="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer" instance=ExtResource("8_r5clk")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="SpeakAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer" instance=ExtResource("2_r3gfq")]
+[node name="SpeakAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
 layout_mode = 2
+
+[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PluginButton" parent="UI/Margin/VBoxContainer/BottomContainer/RightContainer" instance=ExtResource("9_sc0he")]
+layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="VoiceServerOffline" parent="." instance=ExtResource("4_l64jp")]
 
-[node name="IdleAvatar" parent="." instance=ExtResource("10_1d6l8")]
+[node name="Avatar" parent="." instance=ExtResource("10_8d43v")]
 layout_mode = 1
-default_avatar = ExtResource("11_b0m6o")
-
-[node name="SpeakingAvatar" parent="." instance=ExtResource("10_1d6l8")]
-layout_mode = 1
-default_avatar = ExtResource("12_wq1no")
 
 [connection signal="save_requested" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
 [connection signal="background_changed" from="UI/Margin/VBoxContainer/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
-[connection signal="minimum_changed" from="UI/Margin/VBoxContainer/BottomContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
+[connection signal="minimum_changed" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
 [connection signal="voice_started" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_started"]
 [connection signal="voice_stopped" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_stopped"]
 [connection signal="volume_changed" from="VoiceServerOffline" to="." method="_on_voice_server_offline_volume_changed"]

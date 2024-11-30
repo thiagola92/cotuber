@@ -16,4 +16,4 @@ extends Resource
 @export var shortcut = null
 
 ## TODO: Plugins to be used during this state.
-@export var plugins = null
+@export var plugins: Array[PluginData]

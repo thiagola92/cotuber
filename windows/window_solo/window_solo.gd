@@ -8,6 +8,8 @@ var _character_data := CharacterData.new()
 
 @onready var _voice_server := $VoiceServerOffline
 
+@onready var _avatar := $Avatar
+
 
 func _ready() -> void:
 	_voice_server.create_user("", _character_data)
@@ -35,10 +37,8 @@ func _on_voice_server_offline_volume_changed(_voice_id: String, peak: float) -> 
 
 
 func _on_voice_server_offline_voice_started(_voice_id: String) -> void:
-	$IdleAvatar.hide()
-	$SpeakingAvatar.show()
+	_avatar.show_speaking_avatar()
 
 
 func _on_voice_server_offline_voice_stopped(_voice_id: String) -> void:
-	$IdleAvatar.show()
-	$SpeakingAvatar.hide()
+	_avatar.show_idle_avatar()
