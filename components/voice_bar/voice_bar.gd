@@ -14,10 +14,7 @@ func _ready() -> void:
 	set_minimum_volume(0.05)
 
 
-func get_minimum_volume() -> float:
-	return _minimum_volume
-
-
+## Used when loading characters.
 func set_minimum_volume(v: float) -> void:
 	var voice_bar_width: float = get_minimum_size().x
 	
@@ -26,8 +23,11 @@ func set_minimum_volume(v: float) -> void:
 	
 	# Percentage relative to voice_bar_width.
 	_marker.position.x = (_minimum_volume / max_value) * voice_bar_width
+	
+	minimum_changed.emit(_minimum_volume)
 
 
+## Used when user manually move the arrow.
 func _move_arrow(x: float) -> void:
 	var voice_bar_width: float = get_minimum_size().x
 	var marker_width: float = _marker.get_minimum_size().x
@@ -44,6 +44,8 @@ func _move_arrow(x: float) -> void:
 	
 	# Percentage relative to max_value.
 	_minimum_volume = (x / voice_bar_width) * max_value
+	
+	minimum_changed.emit(_minimum_volume)
 
 
 func _on_gui_input(event: InputEvent) -> void:

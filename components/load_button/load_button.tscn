@@ -16,10 +16,11 @@ icon = ExtResource("1_rpaqg")
 script = ExtResource("1_ksdp7")
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "Open a File"
+title = "LOAD_CHARACTER"
 initial_position = 2
-ok_button_text = "Open"
+ok_button_text = "LOAD"
 cancel_button_text = "CANCEL"
+mode_overrides_title = false
 file_mode = 0
 access = 2
 filters = PackedStringArray("*.tres")

@@ -13,6 +13,11 @@ var users: Dictionary[String, CharacterData] = {}
 var speaking: Dictionary[String, bool] = {}
 
 
+func create_user(id: String, character_data: CharacterData) -> void:
+	users[id] = character_data
+	speaking[id] = false
+
+
 func start_speaking(id: String) -> void:
 	voice_started.emit(id)
 

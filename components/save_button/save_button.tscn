@@ -20,6 +20,7 @@ title = "SAVE_CHARACTER"
 initial_position = 2
 ok_button_text = "SAVE"
 cancel_button_text = "CANCEL"
+mode_overrides_title = false
 access = 2
 filters = PackedStringArray("*.tres")
 
