@@ -1,28 +1,35 @@
-class_name PluginDelay
 extends PluginData
 
 
-#var timer := Timer.new()
-#
-#var change_to_idle: bool = false
-#
-#
-#func _init() -> void:
-	#timer.one_shot = true
-	#timer.wait_time = 1
-	#timer.timeout.connect(_on_timer_timeout)
-	#
-	#add_child(timer)
-#
-#
-#func start_speaking() -> void:
-	#change_to_idle = false
-	#timer.stop()
-#
-#
-#func stop_speaking() -> void:
-	#timer.start()
-#
-#
-#func _on_timer_timeout() -> void:
-	#change_to_idle = true
+## Delay in milliseconds
+@export var delay: int = 500
+
+var _timer_start: int = 0
+
+var _is_timer_running := false
+
+var _backup: Texture2D
+
+
+func process(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
+	if _is_timer_running and Time.get_ticks_msec() - _timer_start > delay:
+		_is_timer_running = false
+		idle_texture.texture = _backup
+		_backup = null
+
+
+func start_speaking(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
+	_is_timer_running = false
+
+
+func stop_speaking(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
+	_is_timer_running = true
+	
+	# Don't backup if you already have a backup,
+	# because idle_texture.texture would be speaking_texture.texture.
+	if not _backup:
+		_backup = idle_texture.texture
+		idle_texture.texture = speaking_texture.texture
+	
+	_timer_start = Time.get_ticks_msec()
+	

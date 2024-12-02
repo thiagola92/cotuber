@@ -7,12 +7,12 @@ text = "Credits"
 script = ExtResource("1_opigl")
 
 [node name="Window" type="Window" parent="."]
-transparent_bg = true
 position = Vector2i(0, 36)
 size = Vector2i(300, 200)
 visible = false
+wrap_controls = true
+transient = true
 unresizable = true
-transparent = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Window"]
 anchors_preset = 15

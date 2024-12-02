@@ -22,7 +22,7 @@ func _on_background_window_close_requested() -> void:
 
 
 func _on_background_window_focus_exited() -> void:
-	if not _color_picker.has_focus():
+	if _color_picker and not _color_picker.has_focus():
 		_background_window.hide()
 
 

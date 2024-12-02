@@ -34,11 +34,9 @@ icon = ExtResource("3_l2bom")
 script = ExtResource("4_ws3pq")
 
 [node name="BackgroundWindow" type="Window" parent="."]
-transparent_bg = true
 title = "BACKGROUND"
 initial_position = 2
 size = Vector2i(300, 230)
-visible = false
 wrap_controls = true
 transient = true
 unresizable = true

@@ -1,5 +1,36 @@
 extends Button
 
 
+signal plugins_window_requested
+
+var show_warning := true
+
+@onready var _warning_window := $WarningWindow
+
+
+func _ready() -> void:
+	_warning_window.hide()
+
+
 func _on_pressed() -> void:
-	pass # TODO: open a warning window telling how dangerous plugins are!
+	if show_warning:
+		_warning_window.popup_centered()
+	else:
+		plugins_window_requested.emit()
+
+
+func _on_warning_window_close_requested() -> void:
+	_warning_window.hide()
+
+
+func _on_warning_window_focus_exited() -> void:
+	_warning_window.hide()
+
+
+func _on_understand_check_box_toggled(toggled_on: bool) -> void:
+	show_warning = !toggled_on
+
+
+func _on_understand_button_pressed() -> void:
+	_warning_window.hide()
+	plugins_window_requested.emit()

@@ -2,7 +2,13 @@ class_name WindowSolo
 extends Control
 
 
+## Current loaded character.
 var _character_data := CharacterData.new()
+
+## Current state index.
+var _state_index := 0
+
+@onready var _ui := $UI
 
 @onready var _voice_bar := %VoiceBar
 
@@ -13,6 +19,22 @@ var _character_data := CharacterData.new()
 
 func _ready() -> void:
 	_voice_server.create_user("", _character_data)
+
+
+func _process(_delta: float) -> void:
+	for plugin in _character_data.get_state(_state_index).plugins:
+		plugin.process(
+			_avatar.get_idle_texture(),
+			_avatar.get_speaking_texture(),
+		)
+
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_APPLICATION_FOCUS_OUT:
+			_ui.hide()
+		NOTIFICATION_APPLICATION_FOCUS_IN:
+			_ui.show()
 
 
 func _on_save_button_save_requested(path: String) -> void:
@@ -38,7 +60,19 @@ func _on_voice_server_offline_volume_changed(_voice_id: String, peak: float) -> 
 
 func _on_voice_server_offline_voice_started(_voice_id: String) -> void:
 	_avatar.show_speaking_avatar()
+	
+	for plugin in _character_data.get_state(_state_index).plugins:
+		plugin.start_speaking(
+			_avatar.get_idle_texture(),
+			_avatar.get_speaking_texture(),
+		)
 
 
 func _on_voice_server_offline_voice_stopped(_voice_id: String) -> void:
 	_avatar.show_idle_avatar()
+	
+	for plugin in _character_data.get_state(_state_index).plugins:
+		plugin.stop_speaking(
+			_avatar.get_idle_texture(),
+			_avatar.get_speaking_texture(),
+		)

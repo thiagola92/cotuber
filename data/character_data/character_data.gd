@@ -18,4 +18,22 @@ extends Resource
 @export var background_color: Color
 
 ## All possible states.
-@export var states: Array[StateData] = []
+@export var _states: Array[StateData] = [StateData.new()]
+
+
+## Get a state.
+func get_state(index: int) -> StateData:
+	return _states[index]
+
+
+## Add a new state using another as base.
+func add_state(state: StateData) -> void:
+	_states.append(state.duplicate(true))
+
+
+## Remove a state but guarantee at least one state.
+func remove_state(index: int) -> void:
+	_states.remove_at(index)
+	
+	if _states.is_empty():
+		_states = [StateData.new()]

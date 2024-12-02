@@ -1,3 +1,4 @@
+class_name Avatar
 extends Control
 
 
@@ -16,9 +17,9 @@ func show_speaking_avatar() -> void:
 	_idle_avatar.hide()
 
 
-func get_idle_texture() -> Texture2D:
-	return _idle_avatar.clone_texture
+func get_idle_texture() -> TextureRect:
+	return _idle_avatar.clone
 
 
-func get_speaking_texture() -> Texture2D:
-	return _speaking_avatar.clone_texture
+func get_speaking_texture() -> TextureRect:
+	return _speaking_avatar.clone

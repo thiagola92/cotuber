@@ -6,6 +6,8 @@ class_name StateData
 extends Resource
 
 
+const PluginDelay := preload("res://data/plugin_data/plugins/plugin_delay.gd")
+
 ## Image to be used when not speaking.
 @export var idle_image: Image = Image.new()
 
@@ -15,5 +17,5 @@ extends Resource
 ## TODO: Shortcut to trigger this state.
 @export var shortcut = null
 
-## TODO: Plugins to be used during this state.
-@export var plugins: Array[PluginData]
+## Plugins to be used during this state.
+@export var plugins: Array[PluginData] = [PluginDelay.new()]

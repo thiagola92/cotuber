@@ -27,3 +27,5 @@ INPUT_DEVICE,Input device,Dispositivo de entrada
 ---AVATAR-BUTTON---,,
 ERROR_AVATAR_BUTTON_FILES_DROPPED,Only one file should be dropped,Apenas um arquivo deve ser solto
 ERROR_AVATAR_BUTTON_INVALID_FORMAT,Invalid file format,Formato do arquivo inválido
+PLUGIN_BUTTON_HIDE_WARNING,Don’t show me this again.,Não exibir isto novamente.
+PLUGIN_BUTTON_UNDERSTAND,I undestand,Eu entendo

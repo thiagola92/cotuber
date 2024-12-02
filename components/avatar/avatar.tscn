@@ -16,8 +16,8 @@ script = ExtResource("1_2xxsj")
 
 [node name="IdleAvatar" parent="." instance=ExtResource("1_nib60")]
 layout_mode = 1
-default_avatar = ExtResource("2_wb6sg")
+default = ExtResource("2_wb6sg")
 
 [node name="SpeakingAvatar" parent="." instance=ExtResource("1_nib60")]
 layout_mode = 1
-default_avatar = ExtResource("3_i4irp")
+default = ExtResource("3_i4irp")

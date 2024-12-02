@@ -15,4 +15,58 @@ theme_override_styles/normal = ExtResource("1_0cjbh")
 icon = ExtResource("3_wjjns")
 script = ExtResource("4_hntpm")
 
+[node name="WarningWindow" type="Window" parent="."]
+title = "WARNING"
+initial_position = 2
+size = Vector2i(700, 500)
+wrap_controls = true
+transient = true
+unresizable = true
+
+[node name="MarginContainer" type="MarginContainer" parent="WarningWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WarningWindow/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WarningWindow/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Warning" type="RichTextLabel" parent="WarningWindow/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font_size=32][color=\"red\"]DANGEROUS![/color][/font_size]
+[img]res://components/plugin_button/emoji0.svg[/img]
+Plugins are not safe.[/center]
+
+Make sure that you trust the plugin creator or review it code.
+
+I don't make any validation over the code executed inside the plugin, it could break the application or access your files."
+fit_content = true
+
+[node name="UnderstandCheckBox" type="CheckBox" parent="WarningWindow/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "PLUGIN_BUTTON_HIDE_WARNING"
+
+[node name="UnderstandButton" type="Button" parent="WarningWindow/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "PLUGIN_BUTTON_UNDERSTAND"
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="close_requested" from="WarningWindow" to="." method="_on_warning_window_close_requested"]
+[connection signal="focus_exited" from="WarningWindow" to="." method="_on_warning_window_focus_exited"]
+[connection signal="toggled" from="WarningWindow/MarginContainer/ScrollContainer/VBoxContainer/UnderstandCheckBox" to="." method="_on_understand_check_box_toggled"]
+[connection signal="pressed" from="WarningWindow/MarginContainer/ScrollContainer/VBoxContainer/UnderstandButton" to="." method="_on_understand_button_pressed"]

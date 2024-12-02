@@ -3,15 +3,15 @@ extends Resource
 
 
 ## Virtual method
-func draw() -> void:
+func process(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
 	pass
 
 
 ## Virtual method
-func start_speaking() -> void:
+func start_speaking(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
 	pass
 
 
 ## Virtual method
-func stop_speaking() -> void:
+func stop_speaking(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
 	pass
