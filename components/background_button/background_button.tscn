@@ -34,9 +34,9 @@ icon = ExtResource("3_l2bom")
 script = ExtResource("4_ws3pq")
 
 [node name="BackgroundWindow" type="Window" parent="."]
-title = "BACKGROUND"
+title = "BACKGROUND_BUTTON_TITLE"
 initial_position = 2
-size = Vector2i(300, 230)
+size = Vector2i(340, 230)
 wrap_controls = true
 transient = true
 unresizable = true
@@ -65,7 +65,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3dl02")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_u4ioj")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3dl02")
 button_group = SubResource("ButtonGroup_m4if5")
-text = "COLOR_DEFAULT"
+text = "BACKGROUND_BUTTON_DEFAULT"
 
 [node name="RedButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -77,7 +77,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3dl02")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_u4ioj")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3dl02")
 button_group = SubResource("ButtonGroup_m4if5")
-text = "COLOR_RED"
+text = "BACKGROUND_BUTTON_RED"
 
 [node name="GreenButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -89,7 +89,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_jy8w2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_jy8w2")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jy8w2")
 button_group = SubResource("ButtonGroup_m4if5")
-text = "COLOR_GREEN"
+text = "BACKGROUND_BUTTON_GREEN"
 
 [node name="BlueButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -101,7 +101,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_d34tf")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_d34tf")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d34tf")
 button_group = SubResource("ButtonGroup_m4if5")
-text = "COLOR_BLUE"
+text = "BACKGROUND_BUTTON_BLUE"
 
 [node name="TransparentButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -113,7 +113,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_1mi2h")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_1mi2h")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1mi2h")
 button_group = SubResource("ButtonGroup_m4if5")
-text = "COLOR_TRANSPARENT"
+text = "BACKGROUND_BUTTON_TRANSPARENT"
 
 [node name="CustomContainer" type="HBoxContainer" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -128,7 +128,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_mfajk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_mfajk")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mfajk")
 button_group = SubResource("ButtonGroup_m4if5")
-text = "COLOR_CUSTOM"
+text = "BACKGROUND_BUTTON_CUSTOM"
 
 [node name="ColorPicker" type="ColorPickerButton" parent="BackgroundWindow/MarginContainer/VBoxContainer/CustomContainer"]
 unique_name_in_owner = true
@@ -139,7 +139,7 @@ text = "     "
 [node name="ColorWarning" type="Label" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-text = "COLOR_DARKENED_WARNING"
+text = "BACKGROUND_BUTTON_DARKENED"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -16,10 +16,10 @@ icon = ExtResource("1_rpaqg")
 script = ExtResource("1_ksdp7")
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "LOAD_CHARACTER"
+title = "LOAD_BUTTON_TITLE"
 initial_position = 2
-ok_button_text = "LOAD"
-cancel_button_text = "CANCEL"
+ok_button_text = "LOAD_BUTTON_LOAD"
+cancel_button_text = "LOAD_BUTTON_CANCEL"
 mode_overrides_title = false
 file_mode = 0
 access = 2

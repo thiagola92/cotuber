@@ -47,7 +47,7 @@ icon = ExtResource("2_uaafa")
 
 [node name="SoloLabel" type="Label" parent="VBoxContainer/Options/Solo"]
 layout_mode = 2
-text = "SOLO"
+text = "WINDOW_MAIN_SOLO"
 horizontal_alignment = 1
 
 [node name="Coop" type="VBoxContainer" parent="VBoxContainer/Options"]
@@ -66,13 +66,13 @@ icon = ExtResource("3_wwum1")
 
 [node name="CoopLabel" type="Label" parent="VBoxContainer/Options/Coop"]
 layout_mode = 2
-text = "COOP"
+text = "WINDOW_MAIN_COOP"
 horizontal_alignment = 1
 
 [node name="CreditsButton" parent="VBoxContainer" instance=ExtResource("3_q55fp")]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "CREDITS"
+text = "WINDOW_MAIN_CREDITS"
 flat = true
 
 [connection signal="pressed" from="VBoxContainer/Options/Solo/SoloButton" to="." method="_on_solo_button_pressed"]

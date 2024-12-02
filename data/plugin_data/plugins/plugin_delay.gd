@@ -11,14 +11,19 @@ var _is_timer_running := false
 var _backup: Texture2D
 
 
-func process(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
+## Virtual method
+func plugin_name() -> String:
+	return "Delay"
+
+
+func process(idle_texture: TextureRect, _speaking_texture: TextureRect) -> void:
 	if _is_timer_running and Time.get_ticks_msec() - _timer_start > delay:
 		_is_timer_running = false
 		idle_texture.texture = _backup
 		_backup = null
 
 
-func start_speaking(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
+func start_speaking(_idle_texture: TextureRect, _speaking_texture: TextureRect) -> void:
 	_is_timer_running = false
 
 

@@ -16,7 +16,7 @@ icon = ExtResource("3_wjjns")
 script = ExtResource("4_hntpm")
 
 [node name="WarningWindow" type="Window" parent="."]
-title = "WARNING"
+title = "PLUGIN_BUTTON_TITLE"
 initial_position = 2
 size = Vector2i(700, 500)
 wrap_controls = true

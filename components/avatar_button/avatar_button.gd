@@ -11,12 +11,12 @@ func _on_window_files_dropped(files: PackedStringArray) -> void:
 		return
 	
 	if len(files) != 1:
-		return ErrorPopup.show_message("ERROR_AVATAR_BUTTON_FILES_DROPPED")
+		return ErrorPopup.show_message("AVATAR_BUTTON_ERROR_DROPPED")
 	
 	var image := Image.new()
 	var error := image.load(files[0])
 	
 	if error:
-		return ErrorPopup.show_message("ERROR_AVATAR_BUTTON_INVALID_FORMAT")
+		return ErrorPopup.show_message("AVATAR_BUTTON_ERROR_FORMAT")
 	
 	icon = ImageTexture.create_from_image(image)

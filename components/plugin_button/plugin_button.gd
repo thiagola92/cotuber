@@ -1,7 +1,7 @@
 extends Button
 
 
-signal plugins_window_requested
+signal plugins_popup_requested
 
 var show_warning := true
 
@@ -16,7 +16,7 @@ func _on_pressed() -> void:
 	if show_warning:
 		_warning_window.popup_centered()
 	else:
-		plugins_window_requested.emit()
+		plugins_popup_requested.emit()
 
 
 func _on_warning_window_close_requested() -> void:
@@ -24,7 +24,8 @@ func _on_warning_window_close_requested() -> void:
 
 
 func _on_warning_window_focus_exited() -> void:
-	_warning_window.hide()
+	if _warning_window:
+		_warning_window.hide()
 
 
 func _on_understand_check_box_toggled(toggled_on: bool) -> void:
@@ -33,4 +34,4 @@ func _on_understand_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_understand_button_pressed() -> void:
 	_warning_window.hide()
-	plugins_window_requested.emit()
+	plugins_popup_requested.emit()

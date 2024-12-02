@@ -16,6 +16,8 @@ var _state_index := 0
 
 @onready var _avatar := $Avatar
 
+@onready var _plugins_popup := $PluginsPopup
+
 
 func _ready() -> void:
 	_voice_server.create_user("", _character_data)
@@ -43,7 +45,7 @@ func _on_save_button_save_requested(path: String) -> void:
 	var error := ResourceSaver.save(_character_data, path)
 	
 	if error:
-		return ErrorPopup.show_message("ERROR_WINDOW_SOLO_SAVE_CHARACTER")
+		return ErrorPopup.show_message("WINDOW_SOLO_ERROR_SAVE_CHARACTER")
 
 
 func _on_background_button_background_changed(color: Color) -> void:
@@ -52,6 +54,10 @@ func _on_background_button_background_changed(color: Color) -> void:
 
 func _on_voice_bar_minimum_changed(value: float) -> void:
 	_character_data.minimum_volume = value
+
+
+func _on_plugin_button_plugins_popup_requested() -> void:
+	_plugins_popup.open(_character_data.get_state(_state_index).plugins)
 
 
 func _on_voice_server_offline_volume_changed(_voice_id: String, peak: float) -> void:

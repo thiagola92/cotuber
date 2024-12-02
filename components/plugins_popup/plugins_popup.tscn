@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwta7e6m21q1p"]
+
+[ext_resource type="Script" path="res://components/plugins_popup/plugins_popup.gd" id="1_g1qvh"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="2_f3wcb"]
+[ext_resource type="Texture2D" uid="uid://dqnanq4dtikkp" path="res://components/plugins_popup/add.svg" id="2_u44md"]
+
+[node name="PluginsPopup" type="Window"]
+title = "PLUGINS_POPUP_TITLE"
+initial_position = 2
+size = Vector2i(700, 500)
+wrap_controls = true
+transient = true
+unresizable = true
+script = ExtResource("1_g1qvh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "PLUGINS_POPUP_ADD_LABEL"
+
+[node name="Options" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/hover_pressed = ExtResource("2_f3wcb")
+icon = ExtResource("2_u44md")
+flat = true
+
+[node name="PluginsList" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/AddButton" to="." method="_on_add_button_pressed"]

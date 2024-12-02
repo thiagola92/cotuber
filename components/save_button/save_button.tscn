@@ -16,10 +16,10 @@ icon = ExtResource("3_b56k1")
 script = ExtResource("4_spynx")
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "SAVE_CHARACTER"
+title = "SAVE_BUTTON_TITLE"
 initial_position = 2
-ok_button_text = "SAVE"
-cancel_button_text = "CANCEL"
+ok_button_text = "SAVE_BUTTON_SAVE"
+cancel_button_text = "SAVE_BUTTON_CANCEL"
 mode_overrides_title = false
 access = 2
 filters = PackedStringArray("*.tres")

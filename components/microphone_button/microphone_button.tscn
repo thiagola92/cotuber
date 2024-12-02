@@ -16,7 +16,7 @@ icon = ExtResource("3_bjm6e")
 script = ExtResource("1_wkubc")
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
-title = "INPUT_DEVICE"
+title = "MICROPHONE_BUTTON_TITLE"
 initial_position = 2
 borderless = false
 

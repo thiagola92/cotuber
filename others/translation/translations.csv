@@ -1,31 +1,27 @@
 keys,en,pt
----WINDOW-MAIN---,,
-SOLO,Solo,Solo
-COOP,Cooperative,Cooperativo
-CREDITS,Credits,Créditos
----WINDOW-SOLO---,,
-ERROR_WINDOW_SOLO_SAVE_CHARACTER,Fail to save character,Falha ao salvar personagem
----LOAD-BUTTON---,,
-LOAD_CHARACTER,Load character,Carregar personagem
-LOAD,Load,Carregar
-CANCEL,Cancel,Cancelar
----SAVE-BUTTON---,,
-SAVE_CHARACTER,Save character,Salvar personagem
-SAVE,Save,Salvar
-CANCEL,Cancel,Cancelar
----BACKGROUND-BUTTON---,,
-BACKGROUND,Background,Tela de fundo
-COLOR_DEFAULT,Default,Padrão
-COLOR_RED,Red,Vermelho
-COLOR_GREEN,Green,Verde
-COLOR_BLUE,Blue,Azul
-COLOR_TRANSPARENT,Transparent,Transparente
-COLOR_CUSTOM,Custom,Customizada
-COLOR_DARKENED_WARNING,Colors will be 40% darkened while not live,Cores serão 40% mais escuras fora enquanto não estiver ao vivo
----MICROPHONE-BUTTON---,,
-INPUT_DEVICE,Input device,Dispositivo de entrada
----AVATAR-BUTTON---,,
-ERROR_AVATAR_BUTTON_FILES_DROPPED,Only one file should be dropped,Apenas um arquivo deve ser solto
-ERROR_AVATAR_BUTTON_INVALID_FORMAT,Invalid file format,Formato do arquivo inválido
+WINDOW_MAIN_SOLO,Solo,Solo
+WINDOW_MAIN_COOP,Cooperative,Cooperativo
+WINDOW_MAIN_CREDITS,Credits,Créditos
+WINDOW_SOLO_ERROR_SAVE_CHARACTER,Fail to save character,Falha ao salvar personagem
+LOAD_BUTTON_TITLE,Load character,Carregar personagem
+LOAD_BUTTON_LOAD,Load,Carregar
+LOAD_BUTTON_CANCEL,Cancel,Cancelar
+SAVE_BUTTON_TITLE,Save character,Salvar personagem
+SAVE_BUTTON_SAVE,Save,Salvar
+SAVE_BUTTON_CANCEL,Cancel,Cancelar
+BACKGROUND_BUTTON_TITLE,Background,Tela de fundo
+BACKGROUND_BUTTON_DEFAULT,Default,Padrão
+BACKGROUND_BUTTON_RED,Red,Vermelho
+BACKGROUND_BUTTON_GREEN,Green,Verde
+BACKGROUND_BUTTON_BLUE,Blue,Azul
+BACKGROUND_BUTTON_TRANSPARENT,Transparent,Transparente
+BACKGROUND_BUTTON_CUSTOM,Custom,Customizada
+BACKGROUND_BUTTON_DARKENED,Colors will be 40% darkened while not live,Cores serão 40% mais escuras fora enquanto não estiver ao vivo
+MICROPHONE_BUTTON_TITLE,Input device,Dispositivo de entrada
+AVATAR_BUTTON_ERROR_DROPPED,Only one file should be dropped,Apenas um arquivo deve ser solto
+AVATAR_BUTTON_ERROR_FORMAT,Invalid file format,Formato do arquivo inválido
+PLUGIN_BUTTON_TITLE,Warning,Atenção
 PLUGIN_BUTTON_HIDE_WARNING,Don’t show me this again.,Não exibir isto novamente.
 PLUGIN_BUTTON_UNDERSTAND,I undestand,Eu entendo
+PLUGINS_POPUP_TITLE,Plugins,Plugins
+PLUGINS_POPUP_ADD_LABEL,Add plugin:,Adicionar plugin:

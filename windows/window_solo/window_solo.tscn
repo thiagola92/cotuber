@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://w8eoeo3f2xmi"]
+[gd_scene load_steps=13 format=3 uid="uid://w8eoeo3f2xmi"]
 
 [ext_resource type="Script" path="res://windows/window_solo/window_solo.gd" id="1_282ns"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_fof6j"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://rhxby3p23oe8" path="res://components/voice_servers/offline/voice_server_offline.tscn" id="4_l64jp"]
 [ext_resource type="PackedScene" uid="uid://c8vdfynnn3bik" path="res://components/voice_bar/voice_bar.tscn" id="8_r5clk"]
 [ext_resource type="PackedScene" uid="uid://b10r1y8l0c8sv" path="res://components/plugin_button/plugin_button.tscn" id="9_sc0he"]
+[ext_resource type="PackedScene" uid="uid://dwta7e6m21q1p" path="res://components/plugins_popup/plugins_popup.tscn" id="10_3qrkn"]
 [ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="10_8d43v"]
 
 [node name="WindowSolo" type="Control"]
@@ -103,6 +104,8 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 10
 
+[node name="PluginsPopup" parent="." instance=ExtResource("10_3qrkn")]
+
 [node name="VoiceServerOffline" parent="." instance=ExtResource("4_l64jp")]
 
 [node name="Avatar" parent="." instance=ExtResource("10_8d43v")]
@@ -111,6 +114,7 @@ layout_mode = 1
 [connection signal="save_requested" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
 [connection signal="background_changed" from="UI/Margin/VBoxContainer/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
 [connection signal="minimum_changed" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
+[connection signal="plugins_popup_requested" from="UI/Margin/VBoxContainer/BottomContainer/RightContainer/PluginButton" to="." method="_on_plugin_button_plugins_popup_requested"]
 [connection signal="voice_started" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_started"]
 [connection signal="voice_stopped" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_stopped"]
 [connection signal="volume_changed" from="VoiceServerOffline" to="." method="_on_voice_server_offline_volume_changed"]

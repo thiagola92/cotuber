@@ -2,6 +2,7 @@ class_name VoiceServer
 extends Node
 
 
+@warning_ignore("unused_signal")
 signal volume_changed(voice_id: String, peak: float)
 
 signal voice_started(voice_id: String)
