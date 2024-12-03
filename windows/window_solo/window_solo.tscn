@@ -115,6 +115,8 @@ layout_mode = 1
 [connection signal="background_changed" from="UI/Margin/VBoxContainer/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
 [connection signal="minimum_changed" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
 [connection signal="plugins_popup_requested" from="UI/Margin/VBoxContainer/BottomContainer/RightContainer/PluginButton" to="." method="_on_plugin_button_plugins_popup_requested"]
+[connection signal="adding_plugin" from="PluginsPopup" to="." method="_on_plugins_popup_adding_plugin"]
+[connection signal="removing_plugin" from="PluginsPopup" to="." method="_on_plugins_popup_removing_plugin"]
 [connection signal="voice_started" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_started"]
 [connection signal="voice_stopped" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_stopped"]
 [connection signal="volume_changed" from="VoiceServerOffline" to="." method="_on_voice_server_offline_volume_changed"]

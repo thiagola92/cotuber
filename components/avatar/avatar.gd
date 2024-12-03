@@ -17,6 +17,11 @@ func show_speaking_avatar() -> void:
 	_idle_avatar.hide()
 
 
+func reset_avatar() -> void:
+	_idle_avatar.create_clone()
+	_speaking_avatar.create_clone()
+
+
 func get_idle_texture() -> TextureRect:
 	return _idle_avatar.clone
 

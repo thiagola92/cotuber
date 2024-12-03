@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwta7e6m21q1p"]
+[gd_scene load_steps=10 format=3 uid="uid://dwta7e6m21q1p"]
 
 [ext_resource type="Script" path="res://components/plugins_popup/plugins_popup.gd" id="1_g1qvh"]
-[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="2_f3wcb"]
 [ext_resource type="Texture2D" uid="uid://dqnanq4dtikkp" path="res://components/plugins_popup/add.svg" id="2_u44md"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2okkj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xv5wu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ketu3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1ch1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g44pj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2f0s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ln4s3"]
 
 [node name="PluginsPopup" type="Window"]
 title = "PLUGINS_POPUP_TITLE"
@@ -40,13 +53,24 @@ size_flags_horizontal = 8
 layout_mode = 2
 text = "PLUGINS_POPUP_ADD_LABEL"
 
-[node name="Options" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="PluginOptions" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2okkj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2okkj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_2okkj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2okkj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2okkj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2okkj")
 
 [node name="AddButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_styles/hover_pressed = ExtResource("2_f3wcb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xv5wu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ketu3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_v1ch1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g44pj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m2f0s")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ln4s3")
 icon = ExtResource("2_u44md")
 flat = true
 

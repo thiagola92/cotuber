@@ -35,8 +35,10 @@ func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_APPLICATION_FOCUS_OUT:
 			_ui.hide()
+			BackgroundColor.live = true
 		NOTIFICATION_APPLICATION_FOCUS_IN:
 			_ui.show()
+			BackgroundColor.live = false
 
 
 func _on_save_button_save_requested(path: String) -> void:
@@ -58,6 +60,18 @@ func _on_voice_bar_minimum_changed(value: float) -> void:
 
 func _on_plugin_button_plugins_popup_requested() -> void:
 	_plugins_popup.open(_character_data.get_state(_state_index).plugins)
+
+
+func _on_plugins_popup_adding_plugin(plugin: PluginData) -> void:
+	_character_data.get_state(_state_index).plugins.append(plugin)
+	_avatar.reset_avatar()
+	_plugins_popup.fill_plugins_list(_character_data.get_state(_state_index).plugins)
+
+
+func _on_plugins_popup_removing_plugin(plugin: PluginData) -> void:
+	_character_data.get_state(_state_index).plugins.erase(plugin)
+	_avatar.reset_avatar()
+	_plugins_popup.fill_plugins_list(_character_data.get_state(_state_index).plugins)
 
 
 func _on_voice_server_offline_volume_changed(_voice_id: String, peak: float) -> void:
