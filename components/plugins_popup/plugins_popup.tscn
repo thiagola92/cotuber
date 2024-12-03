@@ -20,7 +20,8 @@
 [node name="PluginsPopup" type="Window"]
 title = "PLUGINS_POPUP_TITLE"
 initial_position = 2
-size = Vector2i(700, 500)
+size = Vector2i(300, 500)
+visible = false
 wrap_controls = true
 transient = true
 unresizable = true
@@ -80,4 +81,5 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/AddButton" to="." method="_on_add_button_pressed"]

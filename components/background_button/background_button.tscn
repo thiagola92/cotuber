@@ -37,6 +37,7 @@ script = ExtResource("4_ws3pq")
 title = "BACKGROUND_BUTTON_TITLE"
 initial_position = 2
 size = Vector2i(340, 230)
+visible = false
 wrap_controls = true
 transient = true
 unresizable = true

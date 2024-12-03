@@ -30,7 +30,7 @@ func fill_plugins_list(plugins: Array[PluginData]) -> void:
 	
 	# Fill with all used plugins.
 	for plugin in plugins:
-		var plugin_row: PluginRow = PluginRow.instantiate().init(plugin)
+		var plugin_row = PluginRow.instantiate().init(plugin)
 		plugin_row.removing_plugin.connect(_on_plugin_row_removing_plugin)
 		_plugins_list.add_child(plugin_row)
 
@@ -49,10 +49,15 @@ func _on_close_requested() -> void:
 	hide()
 
 
+func _on_focus_exited() -> void:
+	hide()
+
+
 func _on_add_button_pressed() -> void:
 	var index: int = _plugin_options.selected
 	var plugin_name: String = _plugin_options.get_item_text(index)
 	
+	# Search plugin requested in the plugins directory.
 	for plugin in PluginsDir.get_plugins():
 		if plugin.plugin_name() == plugin_name:
 			adding_plugin.emit(plugin.duplicate())

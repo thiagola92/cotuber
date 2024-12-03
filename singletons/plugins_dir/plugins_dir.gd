@@ -22,11 +22,12 @@ func _make_dir() -> void:
 
 func _create_defaults() -> void:
 	for plugin in _defaults:
-		var filepath := "%s/%s.tres" % [PATH, plugin.plugin_name().to_snake_case()]
-		var error := ResourceSaver.save(plugin, filepath, ResourceSaver.FLAG_BUNDLE_RESOURCES)
+		var filename := (plugin.get_script() as Script).resource_path.get_file()
+		var filepath := "%s/%s" % [PATH, filename]
+		var error := ResourceSaver.save(plugin.get_script(), filepath)
 		
 		if error and error != 32:
-			push_error("Fail to create a default plugin: %s", plugin.plugin_name())
+			push_error("Fail to create a default plugin: %s" % filename)
 
 
 func get_plugins() -> Array[PluginData]:
@@ -38,11 +39,19 @@ func get_plugins() -> Array[PluginData]:
 	
 	for file in dir.get_files():
 		var filepath := "%s/%s" % [PATH, file]
-		var plugin = ResourceLoader.load(filepath, "PluginData", ResourceLoader.CACHE_MODE_IGNORE)
+		var script = ResourceLoader.load(filepath, "Script")
+		var plugin: PluginData = PluginData.new()
 		
-		if plugin and plugin is PluginData:
-			plugins.append(plugin)
-		else:
-			push_error("Fail to open plugin: %s" % file)
+		if not script or not script is Script:
+			push_error("Fail to open plugin as Script: %s" % file)
+			continue
+		
+		plugin.set_script(script)
+		
+		if not plugin is PluginData:
+			push_error("Fail to load plugin as PluginData: %s" % file)
+			continue
+	
+		plugins.append(plugin)
 	
 	return plugins

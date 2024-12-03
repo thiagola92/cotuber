@@ -19,6 +19,7 @@ script = ExtResource("4_hntpm")
 title = "PLUGIN_BUTTON_TITLE"
 initial_position = 2
 size = Vector2i(700, 500)
+visible = false
 wrap_controls = true
 transient = true
 unresizable = true
