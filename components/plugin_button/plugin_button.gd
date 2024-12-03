@@ -23,11 +23,6 @@ func _on_warning_window_close_requested() -> void:
 	_warning_window.hide()
 
 
-func _on_warning_window_focus_exited() -> void:
-	if _warning_window:
-		_warning_window.hide()
-
-
 func _on_understand_check_box_toggled(toggled_on: bool) -> void:
 	show_warning = !toggled_on
 

@@ -145,7 +145,6 @@ horizontal_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="close_requested" from="BackgroundWindow" to="." method="_on_background_window_close_requested"]
-[connection signal="focus_exited" from="BackgroundWindow" to="." method="_on_background_window_focus_exited"]
 [connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/DefaultButton" to="." method="_on_color_button_toggled" binds= [Color(0.301961, 0.301961, 0.301961, 1)]]
 [connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/RedButton" to="." method="_on_color_button_toggled" binds= [Color(1, 0, 0, 1)]]
 [connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/GreenButton" to="." method="_on_color_button_toggled" binds= [Color(0, 1, 0, 1)]]

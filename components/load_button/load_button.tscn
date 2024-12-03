@@ -18,7 +18,7 @@ script = ExtResource("1_ksdp7")
 [node name="FileDialog" type="FileDialog" parent="."]
 title = "LOAD_BUTTON_TITLE"
 initial_position = 2
-ok_button_text = "LOAD_BUTTON_LOAD"
+ok_button_text = "Open"
 cancel_button_text = "LOAD_BUTTON_CANCEL"
 mode_overrides_title = false
 file_mode = 0

@@ -86,6 +86,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="IdleAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="VoiceBar" parent="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer" instance=ExtResource("8_r5clk")]
@@ -93,7 +94,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="SpeakAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
+[node name="SpeakingAvatarButton" parent="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="RightContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer/BottomContainer"]
@@ -113,7 +115,9 @@ layout_mode = 1
 
 [connection signal="save_requested" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
 [connection signal="background_changed" from="UI/Margin/VBoxContainer/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
+[connection signal="image_dropped" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/IdleAvatarButton" to="." method="_on_idle_avatar_button_image_dropped"]
 [connection signal="minimum_changed" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
+[connection signal="image_dropped" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/SpeakingAvatarButton" to="." method="_on_speaking_avatar_button_image_dropped"]
 [connection signal="plugins_popup_requested" from="UI/Margin/VBoxContainer/BottomContainer/RightContainer/PluginButton" to="." method="_on_plugin_button_plugins_popup_requested"]
 [connection signal="adding_plugin" from="PluginsPopup" to="." method="_on_plugins_popup_adding_plugin"]
 [connection signal="removing_plugin" from="PluginsPopup" to="." method="_on_plugins_popup_removing_plugin"]

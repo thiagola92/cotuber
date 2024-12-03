@@ -1,6 +1,9 @@
 extends Button
 
 
+signal image_dropped(image: Image)
+
+
 func _ready() -> void:
 	get_window().files_dropped.connect(_on_window_files_dropped)
 
@@ -19,4 +22,4 @@ func _on_window_files_dropped(files: PackedStringArray) -> void:
 	if error:
 		return ErrorPopup.show_message("AVATAR_BUTTON_ERROR_FORMAT")
 	
-	icon = ImageTexture.create_from_image(image)
+	image_dropped.emit(image)

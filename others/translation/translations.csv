@@ -2,7 +2,6 @@ keys,en,pt
 WINDOW_MAIN_SOLO,Solo,Solo
 WINDOW_MAIN_COOP,Cooperative,Cooperativo
 WINDOW_MAIN_CREDITS,Credits,Créditos
-WINDOW_SOLO_ERROR_SAVE_CHARACTER,Fail to save character,Falha ao salvar personagem
 LOAD_BUTTON_TITLE,Load character,Carregar personagem
 LOAD_BUTTON_LOAD,Load,Carregar
 LOAD_BUTTON_CANCEL,Cancel,Cancelar

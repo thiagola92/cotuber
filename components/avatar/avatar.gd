@@ -28,3 +28,11 @@ func get_idle_texture() -> TextureRect:
 
 func get_speaking_texture() -> TextureRect:
 	return _speaking_avatar.clone
+
+
+func set_idle_texture(texture: Texture2D) -> void:
+	_idle_avatar.set_texture(texture)
+
+
+func set_speaking_texture(texture: Texture2D) -> void:
+	_speaking_avatar.set_texture(texture)

@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_xqmbm"]
 
 [node name="AvatarButton" type="Button"]
+custom_minimum_size = Vector2(96, 96)
 theme_override_styles/focus = ExtResource("1_jdlkb")
 theme_override_styles/disabled = ExtResource("1_jdlkb")
 theme_override_styles/hover_pressed = ExtResource("1_jdlkb")
@@ -13,4 +14,5 @@ theme_override_styles/hover = ExtResource("1_jdlkb")
 theme_override_styles/pressed = ExtResource("2_xqmbm")
 theme_override_styles/normal = ExtResource("1_jdlkb")
 icon = ExtResource("1_b1uyy")
+expand_icon = true
 script = ExtResource("1_g3u5u")

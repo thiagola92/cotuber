@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://penr57pwy6l3"]
+[gd_scene load_steps=3 format=3 uid="uid://penr57pwy6l3"]
 
 [ext_resource type="Script" path="res://components/avatar/avatar.gd" id="1_2xxsj"]
 [ext_resource type="PackedScene" uid="uid://cd8j5vner6ta7" path="res://components/avatar_texture/avatar_texture.tscn" id="1_nib60"]
-[ext_resource type="Texture2D" uid="uid://cchjnoxfpe2sr" path="res://components/avatar_texture/template_idle.svg" id="2_wb6sg"]
-[ext_resource type="Texture2D" uid="uid://bhy2s8fd76w2w" path="res://components/avatar_texture/template_speaking.svg" id="3_i4irp"]
 
 [node name="Avatar" type="Control"]
 layout_mode = 3
@@ -16,8 +14,6 @@ script = ExtResource("1_2xxsj")
 
 [node name="IdleAvatar" parent="." instance=ExtResource("1_nib60")]
 layout_mode = 1
-default = ExtResource("2_wb6sg")
 
 [node name="SpeakingAvatar" parent="." instance=ExtResource("1_nib60")]
 layout_mode = 1
-default = ExtResource("3_i4irp")

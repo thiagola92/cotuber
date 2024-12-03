@@ -9,10 +9,10 @@ extends Resource
 const PluginDelay := preload("res://data/plugin_data/plugins/plugin_delay.gd")
 
 ## Image to be used when not speaking.
-@export var idle_image: Image = Image.new()
+@export var idle_image: Image = preload("res://data/state_data/template_idle.svg").get_image()
 
 ## Image to be used when speaking.
-@export var speaking_image: Image = Image.new()
+@export var speaking_image: Image = preload("res://data/state_data/template_speaking.svg").get_image()
 
 ## TODO: Shortcut to trigger this state.
 @export var shortcut = null

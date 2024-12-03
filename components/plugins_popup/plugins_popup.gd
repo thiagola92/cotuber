@@ -6,7 +6,7 @@ signal adding_plugin(plugin: PluginData)
 
 signal removing_plugin(plugin: PluginData)
 
-const PluginRow := preload("res://components/plugins_popup/plugin_row/PluginRow.tscn")
+const PluginRow := preload("res://components/plugins_popup/plugin_row/plugin_row.tscn")
 
 @onready var _plugin_options := %PluginOptions
 
@@ -46,10 +46,6 @@ func _refresh_options() -> void:
 
 
 func _on_close_requested() -> void:
-	hide()
-
-
-func _on_focus_exited() -> void:
 	hide()
 
 

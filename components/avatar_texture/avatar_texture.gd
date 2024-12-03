@@ -2,9 +2,6 @@ class_name AvatarTexture
 extends Control
 
 
-## Default avatar to be used when no avatar has being defined.
-@export var default: Texture2D
-
 ## TextureRect which plugins and user can interact.
 var clone: TextureRect
 
@@ -12,8 +9,8 @@ var clone: TextureRect
 @onready var _original := $OriginalTexture
 
 
-func _ready() -> void:
-	_original.texture = default
+func set_texture(texture: Texture2D) -> void:
+	_original.texture = texture
 	_original.hide()
 	
 	create_clone()

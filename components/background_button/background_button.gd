@@ -21,11 +21,6 @@ func _on_background_window_close_requested() -> void:
 	_background_window.hide()
 
 
-func _on_background_window_focus_exited() -> void:
-	if _color_picker and not _color_picker.has_focus():
-		_background_window.hide()
-
-
 func _on_color_button_toggled(color: Color) -> void:
 	BackgroundColor.live_color = color
 	background_changed.emit(color)
