@@ -11,7 +11,6 @@ var _is_timer_running := false
 var _backup: Texture2D
 
 
-## Virtual method
 func plugin_name() -> String:
 	return "Delay"
 

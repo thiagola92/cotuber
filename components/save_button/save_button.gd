@@ -74,10 +74,6 @@ func save(character: CharacterData, path: String) -> void:
 	zip.close()
 
 
-func _get_character_json(character: CharacterData) -> String:
-	return ""
-
-
 func _on_pressed() -> void:
 	_file_dialog.popup_centered()
 
