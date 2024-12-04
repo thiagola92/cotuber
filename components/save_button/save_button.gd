@@ -63,9 +63,9 @@ func save(character: CharacterData, path: String) -> void:
 		"minimum_volume": character.minimum_volume,
 		"image_position": character.image_position,
 		"image_size": character.image_size,
-		"background_color": character.background_color,
+		"background_color": character.background_color.to_html(),
 		"states": states
-	}, "  ")
+	}, "  ", false)
 	
 	zip.start_file("character.json")
 	zip.write_file(json.to_utf8_buffer())

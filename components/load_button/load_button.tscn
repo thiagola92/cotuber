@@ -23,7 +23,7 @@ cancel_button_text = "LOAD_BUTTON_CANCEL"
 mode_overrides_title = false
 file_mode = 0
 access = 2
-filters = PackedStringArray("*.tres")
+filters = PackedStringArray("*.zip")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

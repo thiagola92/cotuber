@@ -113,6 +113,7 @@ size_flags_horizontal = 10
 [node name="Avatar" parent="." instance=ExtResource("10_8d43v")]
 layout_mode = 1
 
+[connection signal="character_loaded" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
 [connection signal="save_requested" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
 [connection signal="background_changed" from="UI/Margin/VBoxContainer/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
 [connection signal="image_dropped" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/IdleAvatarButton" to="." method="_on_idle_avatar_button_image_dropped"]

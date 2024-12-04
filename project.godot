@@ -25,7 +25,8 @@ driver/enable_input=true
 [autoload]
 
 BackgroundColor="*res://singletons/background_color/background_color.tscn"
-PluginsDir="*res://singletons/plugins_dir/PluginsDir.tscn"
+PluginsDir="*res://singletons/plugins_dir/plugins_dir.tscn"
+TmpDir="*res://singletons/tmp_dir/tmp_dir.tscn"
 ErrorPopup="*res://singletons/error_popup/ErrorPopup.tscn"
 
 [display]
