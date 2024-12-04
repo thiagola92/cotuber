@@ -42,7 +42,7 @@ func _refresh_options() -> void:
 	_plugin_options.clear()
 	
 	for plugin in PluginsDir.get_plugins():
-		_plugin_options.add_item(plugin.plugin_name())
+		_plugin_options.add_item(plugin.filename())
 
 
 func _on_close_requested() -> void:
@@ -51,11 +51,11 @@ func _on_close_requested() -> void:
 
 func _on_add_button_pressed() -> void:
 	var index: int = _plugin_options.selected
-	var plugin_name: String = _plugin_options.get_item_text(index)
+	var text: String = _plugin_options.get_item_text(index)
 	
 	# Search plugin requested in the plugins directory.
 	for plugin in PluginsDir.get_plugins():
-		if plugin.plugin_name() == plugin_name:
+		if plugin.filename() == text:
 			adding_plugin.emit(plugin.duplicate())
 			return
 

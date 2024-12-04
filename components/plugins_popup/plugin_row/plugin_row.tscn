@@ -49,11 +49,10 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_o1ud3")
 icon = ExtResource("2_vj48c")
 flat = true
 
-[node name="PluginSettings" type="GridContainer" parent="."]
-unique_name_in_owner = true
+[node name="PluginSettings" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 2
-columns = 2
+size_flags_vertical = 3
 
 [connection signal="toggled" from="HBoxContainer/ArrowButton" to="." method="_on_arrow_button_toggled"]
 [connection signal="pressed" from="HBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]

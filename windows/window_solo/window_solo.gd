@@ -68,7 +68,7 @@ func _update_speaking_image(image: Image) -> void:
 func _on_load_button_character_loaded(character: CharacterData) -> void:
 	_character = character
 	_state_index = 0
-	BackgroundColor.color = _character.background_color
+	BackgroundColor.live_color = _character.background_color
 	
 	_update_idle_image(_character.states[_state_index].idle_image)
 	_update_speaking_image(_character.states[_state_index].speaking_image)

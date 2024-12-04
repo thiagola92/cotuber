@@ -6,7 +6,7 @@ class_name StateData
 extends Resource
 
 
-const PluginDelay := preload("res://data/plugin_data/plugins/plugin_delay.gd")
+const PluginDelay := preload("res://data/plugin_data/plugins/delay.gd")
 
 ## Image to be used when not speaking.
 @export var idle_image: Image = preload("res://data/state_data/template_idle.svg").get_image()

@@ -4,7 +4,7 @@ extends Node
 const PATH := "user://plugins"
 
 var _defaults: Array[PluginData] = [
-	preload("res://data/plugin_data/plugins/plugin_delay.gd").new(),
+	preload("res://data/plugin_data/plugins/delay.gd").new(),
 ]
 
 
@@ -22,7 +22,7 @@ func _make_dir() -> void:
 
 func _create_defaults() -> void:
 	for plugin in _defaults:
-		var filename := (plugin.get_script() as Script).resource_path.get_file()
+		var filename := plugin.filename()
 		var filepath := "%s/%s" % [PATH, filename]
 		var error := ResourceSaver.save(plugin.get_script(), filepath)
 		

@@ -22,9 +22,8 @@ func _on_file_dialog_file_selected(path: String) -> void:
 	
 	var json = zip.read_file("character.json").get_string_from_utf8()
 	var c = JSON.parse_string(json)
-	print(c)
 	
-	if not c:
+	if not c or not c is Dictionary:
 		return push_error("Failed to parse character.json")
 	
 	var character := CharacterData.new()
@@ -33,7 +32,6 @@ func _on_file_dialog_file_selected(path: String) -> void:
 	character.image_size =  type_convert(c["image_size"], TYPE_VECTOR2)
 	character.background_color = Color.from_string(c["background_color"], Color.YELLOW)
 	character.states.clear()
-	
 	
 	for s in c["states"]:
 		var state := StateData.new()
@@ -60,27 +58,25 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		
 		for p in s["plugins"]:
 			var plugin := PluginData.new()
-			var source_code: String
-			var script: Script
+			var plugin_path := "%s/%s" % [character.states.size(), state.plugins.size()]
 			
 			if not zip.file_exists(p["source_code"]):
 				return push_error("Missing plugin source code: ", p["source_code"])
 			
-			source_code = zip.read_file(p["source_code"]).get_string_from_utf8()
+			# Create temporary script file so we can load with ResourceLoader.
+			var source_code := zip.read_file(p["source_code"]).get_string_from_utf8()
 			error = TmpDir.create_tmp_file("plugin.gd", source_code)
 			
 			if error:
 				return push_error("Failed to create temporary plugin file: ", p["source_code"])
 			
-			script = ResourceLoader.load(TmpDir.path("plugin.gd"), "Script")
+			var script = ResourceLoader.load(TmpDir.path("plugin.gd"), "Script")
 			
 			if not script is Script:
 				return push_error("Failed to load plugin script: ", p["source_code"])
 			
 			plugin.set_script(script)
-			
-			for prop in p["properties"]:
-				plugin.set(prop["name"], prop["value"])
+			plugin.load_plugin(zip, plugin_path, p["data"])
 			
 			state.plugins.append(plugin)
 		

@@ -29,26 +29,16 @@ func save(character: CharacterData, path: String) -> void:
 		zip.close_file()
 		
 		for plugin in state.plugins:
-			var properties = []
 			var script := (plugin.get_script() as Script)
-			var filename := script.resource_path.get_file()
-			var plugin_path := "%s/%s" % [states.size(), filename]
-			
-			for property in script.get_script_property_list():
-				if not property["usage"] & PROPERTY_USAGE_STORAGE:
-					continue
-				
-				properties.append({
-					"name": property["name"],
-					"value": plugin.get(property["name"])
-				})
+			var plugin_path := "%s/%s" % [states.size(), plugins.size()]
+			var source_code_path := "%s/%s" % [plugin_path, plugin.filename()]
 			
 			plugins.append({
-				"source_code": plugin_path,
-				"properties": properties,
+				"source_code": source_code_path,
+				"data": plugin.save_plugin(zip, plugin_path),
 			})
 			
-			zip.start_file(plugin_path)
+			zip.start_file(source_code_path)
 			zip.write_file(script.source_code.to_utf8_buffer())
 			zip.close_file()
 		
