@@ -12,6 +12,8 @@ var _state_index := 0
 
 @onready var _save_button := %SaveButton
 
+@onready var _states_menu := %StatesMenu
+
 @onready var _idle_avatar_button := %IdleAvatarButton
 
 @onready var _voice_bar := %VoiceBar
@@ -55,6 +57,8 @@ func _update_idle_image(image: Image) -> void:
 	_character.states[_state_index].idle_image = image
 	_idle_avatar_button.icon = texture
 	_avatar.set_idle_texture(texture)
+	_states_menu.fill_states_list(_character.states, _state_index)
+	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
 func _update_speaking_image(image: Image) -> void:
@@ -63,6 +67,8 @@ func _update_speaking_image(image: Image) -> void:
 	_character.states[_state_index].speaking_image = image
 	_speaking_avatar_button.icon = texture
 	_avatar.set_speaking_texture(texture)
+	_states_menu.fill_states_list(_character.states, _state_index)
+	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_load_button_character_loaded(character: CharacterData) -> void:
@@ -72,6 +78,8 @@ func _on_load_button_character_loaded(character: CharacterData) -> void:
 	
 	_update_idle_image(_character.states[_state_index].idle_image)
 	_update_speaking_image(_character.states[_state_index].speaking_image)
+	_states_menu.fill_states_list(_character.states, _state_index)
+	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_save_button_save_requested(path: String) -> void:
@@ -80,6 +88,26 @@ func _on_save_button_save_requested(path: String) -> void:
 
 func _on_background_button_background_changed(color: Color) -> void:
 	_character.background_color = color
+
+
+func _on_states_menu_create_request() -> void:
+	var clone := _character.states[_state_index].duplicate()
+	_character.states.append(clone)
+	_state_index = _character.states.size() - 1
+	
+	_update_idle_image(_character.states[_state_index].idle_image)
+	_update_speaking_image(_character.states[_state_index].speaking_image)
+	_states_menu.fill_states_list(_character.states, _state_index)
+	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+
+
+func _on_states_menu_pressed(index: int) -> void:
+	_state_index = index
+	
+	_update_idle_image(_character.states[_state_index].idle_image)
+	_update_speaking_image(_character.states[_state_index].speaking_image)
+	_states_menu.fill_states_list(_character.states, _state_index)
+	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_idle_avatar_button_image_dropped(image: Image) -> void:

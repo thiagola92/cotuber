@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://w8eoeo3f2xmi"]
+[gd_scene load_steps=14 format=3 uid="uid://w8eoeo3f2xmi"]
 
 [ext_resource type="Script" path="res://windows/window_solo/window_solo.gd" id="1_282ns"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_fof6j"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ds54xww1imh3w" path="res://components/save_button/save_button.tscn" id="3_uvs53"]
 [ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="3_xa06c"]
 [ext_resource type="PackedScene" uid="uid://rhxby3p23oe8" path="res://components/voice_servers/offline/voice_server_offline.tscn" id="4_l64jp"]
+[ext_resource type="PackedScene" uid="uid://c4ouhejmbnyic" path="res://components/states_menu/states_menu.tscn" id="7_7asab"]
 [ext_resource type="PackedScene" uid="uid://c8vdfynnn3bik" path="res://components/voice_bar/voice_bar.tscn" id="8_r5clk"]
 [ext_resource type="PackedScene" uid="uid://b10r1y8l0c8sv" path="res://components/plugin_button/plugin_button.tscn" id="9_sc0he"]
 [ext_resource type="PackedScene" uid="uid://dwta7e6m21q1p" path="res://components/plugins_popup/plugins_popup.tscn" id="10_3qrkn"]
@@ -73,6 +74,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="StatesMenu" parent="UI/Margin/VBoxContainer/MiddleContainer" instance=ExtResource("7_7asab")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+
 [node name="BottomContainer" type="HBoxContainer" parent="UI/Margin/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
@@ -116,6 +122,8 @@ layout_mode = 1
 [connection signal="character_loaded" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
 [connection signal="save_requested" from="UI/Margin/VBoxContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
 [connection signal="background_changed" from="UI/Margin/VBoxContainer/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
+[connection signal="create_request" from="UI/Margin/VBoxContainer/MiddleContainer/StatesMenu" to="." method="_on_states_menu_create_request"]
+[connection signal="pressed" from="UI/Margin/VBoxContainer/MiddleContainer/StatesMenu" to="." method="_on_states_menu_pressed"]
 [connection signal="image_dropped" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/IdleAvatarButton" to="." method="_on_idle_avatar_button_image_dropped"]
 [connection signal="minimum_changed" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
 [connection signal="image_dropped" from="UI/Margin/VBoxContainer/BottomContainer/MiddleContainer/SpeakingAvatarButton" to="." method="_on_speaking_avatar_button_image_dropped"]
