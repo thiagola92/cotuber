@@ -1,7 +1,7 @@
 extends Button
 
 
-signal new_image(image: Image)
+signal image_received(image: Image)
 
 @onready var _file_dialog := $FileDialog
 
@@ -18,7 +18,7 @@ func _set_image(file: String) -> void:
 	if error:
 		return ErrorPopup.show_message("AVATAR_BUTTON_ERROR_FORMAT")
 	
-	new_image.emit(image)
+	image_received.emit(image)
 
 
 func _on_window_files_dropped(files: PackedStringArray) -> void:

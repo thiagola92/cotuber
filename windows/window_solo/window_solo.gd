@@ -116,7 +116,7 @@ func _on_states_menu_pressed(index: int) -> void:
 	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
-func _on_idle_avatar_button_new_image(image: Image) -> void:
+func _on_idle_avatar_button_image_received(image: Image) -> void:
 	_update_idle_image(image)
 
 
@@ -124,7 +124,7 @@ func _on_voice_bar_minimum_changed(value: float) -> void:
 	_character.minimum_volume = value
 
 
-func _on_speaking_avatar_button_new_image(image: Image) -> void:
+func _on_speaking_avatar_button_image_received(image: Image) -> void:
 	_update_speaking_image(image)
 
 
