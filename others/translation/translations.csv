@@ -15,7 +15,7 @@ BACKGROUND_BUTTON_GREEN,Green,Verde
 BACKGROUND_BUTTON_BLUE,Blue,Azul
 BACKGROUND_BUTTON_TRANSPARENT,Transparent,Transparente
 BACKGROUND_BUTTON_CUSTOM,Custom,Customizada
-BACKGROUND_BUTTON_DARKENED,Colors will be 40% darkened while not live,Cores serão 40% mais escuras fora enquanto não estiver ao vivo
+BACKGROUND_BUTTON_DARKENED,Colors will be 40% darkened while windows is focused,Cores serão 40% mais escuras enquanto o foco estiver na janela
 MICROPHONE_BUTTON_TITLE,Input device,Dispositivo de entrada
 AVATAR_BUTTON_ERROR_DROPPED,Only one file should be dropped,Apenas um arquivo deve ser solto
 AVATAR_BUTTON_ERROR_FORMAT,Invalid file format,Formato do arquivo inválido

@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="80"
+   width="104"
    height="40"
-   viewBox="0 0 80 40"
+   viewBox="0 0 104 40"
    version="1.1"
    id="svg1"
    inkscape:version="1.4 (1:1.4+202410161351+e7c3feb100)"
-   sodipodi:docname="arrow_down.svg"
+   sodipodi:docname="bottom_limit.svg"
    inkscape:export-filename="maker.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -28,8 +28,8 @@
      inkscape:document-units="px"
      showgrid="true"
      inkscape:zoom="5.6568544"
-     inkscape:cx="38.360542"
-     inkscape:cy="43.752231"
+     inkscape:cx="39.244425"
+     inkscape:cy="54.712386"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="1920"
@@ -58,8 +58,9 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;fill-opacity:1;stroke:#b1b1b1;stroke-width:5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
-       d="M 5,32.786129 40,7.7861295 75,32.786129"
-       id="path1" />
+       style="fill:none;stroke:#b1b1b1;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 5,35 V 5 h 95 v 30"
+       id="path1"
+       sodipodi:nodetypes="cccc" />
   </g>
 </svg>

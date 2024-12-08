@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clrhrd133urpv"
-path="res://.godot/imported/arrow_down.svg-82fcd7f5b5e8e892a393bb0d113a5104.ctex"
+path="res://.godot/imported/bottom_limit.svg-eb5b70c2bde4d019d8415bbe017839a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://components/states_menu/arrow_down.svg"
-dest_files=["res://.godot/imported/arrow_down.svg-82fcd7f5b5e8e892a393bb0d113a5104.ctex"]
+source_file="res://components/states_menu/bottom_limit.svg"
+dest_files=["res://.godot/imported/bottom_limit.svg-eb5b70c2bde4d019d8415bbe017839a9.ctex"]
 
 [params]
 

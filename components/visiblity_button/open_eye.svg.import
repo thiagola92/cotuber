@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqnanq4dtikkp"
-path="res://.godot/imported/add.svg-f39bcbd3d3db4c2b0bca4d0a37e64b20.ctex"
+uid="uid://cc6sbxvbu42e4"
+path="res://.godot/imported/open_eye.svg-e5f3afbc3aa099484c4a546626713135.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://components/plugins_popup/add.svg"
-dest_files=["res://.godot/imported/add.svg-f39bcbd3d3db4c2b0bca4d0a37e64b20.ctex"]
+source_file="res://components/visiblity_button/open_eye.svg"
+dest_files=["res://.godot/imported/open_eye.svg-e5f3afbc3aa099484c4a546626713135.ctex"]
 
 [params]
 
@@ -32,6 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=0.25
+svg/scale=1.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

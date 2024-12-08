@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjr3nnoguw3x2"]
+
+[ext_resource type="Texture2D" uid="uid://cc6sbxvbu42e4" path="res://components/visiblity_button/open_eye.svg" id="1_ml0qi"]
+[ext_resource type="Script" path="res://components/visiblity_button/visibility_button.gd" id="1_r77rm"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_xa0b1"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_heabp"]
+
+[node name="VisibilityButton" type="Button"]
+theme_override_styles/focus = ExtResource("1_xa0b1")
+theme_override_styles/disabled = ExtResource("1_xa0b1")
+theme_override_styles/hover_pressed = ExtResource("1_xa0b1")
+theme_override_styles/hover = ExtResource("1_xa0b1")
+theme_override_styles/pressed = ExtResource("2_heabp")
+theme_override_styles/normal = ExtResource("1_xa0b1")
+toggle_mode = true
+icon = ExtResource("1_ml0qi")
+script = ExtResource("1_r77rm")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

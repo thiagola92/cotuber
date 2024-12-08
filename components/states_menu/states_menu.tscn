@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://c4ouhejmbnyic"]
 
 [ext_resource type="Script" path="res://components/states_menu/states_menu.gd" id="1_u6ae1"]
-[ext_resource type="Texture2D" uid="uid://cpohdftfjlov3" path="res://components/states_menu/arrow_up.svg" id="2_c5fpr"]
-[ext_resource type="Texture2D" uid="uid://clrhrd133urpv" path="res://components/states_menu/arrow_down.svg" id="3_j70gf"]
+[ext_resource type="Texture2D" uid="uid://cpohdftfjlov3" path="res://components/states_menu/top_limit.svg" id="2_c5fpr"]
+[ext_resource type="Texture2D" uid="uid://clrhrd133urpv" path="res://components/states_menu/bottom_limit.svg" id="3_j70gf"]
 [ext_resource type="PackedScene" uid="uid://c264d30ssk5ew" path="res://components/states_menu/state_button/state_button.tscn" id="3_m1iiu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snxbw"]
@@ -43,7 +43,7 @@ script = ExtResource("1_u6ae1")
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="UpButton" type="Button" parent="VBoxContainer"]
+[node name="TopLimit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_snxbw")
@@ -58,7 +58,7 @@ icon = ExtResource("2_c5fpr")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="StatesList" type="VBoxContainer" parent="VBoxContainer/StatesScroll"]
 unique_name_in_owner = true
@@ -68,9 +68,8 @@ size_flags_vertical = 3
 
 [node name="StateOption" parent="VBoxContainer/StatesScroll/StatesList" instance=ExtResource("3_m1iiu")]
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="DownButton" type="Button" parent="VBoxContainer"]
+[node name="BottomLimit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0666n")

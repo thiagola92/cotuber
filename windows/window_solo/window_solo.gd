@@ -20,11 +20,13 @@ var _state_index := 0
 
 @onready var _speaking_avatar_button := %SpeakingAvatarButton
 
+@onready var _visibility_button := %VisibilityButton
+
+@onready var _plugins_popup := $PluginsPopup
+
 @onready var _voice_server := $VoiceServerOffline
 
 @onready var _avatar := $Avatar
-
-@onready var _plugins_popup := $PluginsPopup
 
 
 func _ready() -> void:
@@ -44,10 +46,14 @@ func _process(_delta: float) -> void:
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_APPLICATION_FOCUS_OUT:
-			_ui.hide()
+			if _visibility_button.button_pressed:
+				_ui.hide()
+			
 			BackgroundColor.live = true
 		NOTIFICATION_APPLICATION_FOCUS_IN:
-			_ui.show()
+			if _visibility_button.button_pressed:
+				_ui.show()
+			
 			BackgroundColor.live = false
 
 
