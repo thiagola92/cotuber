@@ -66,7 +66,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="StateOption" parent="VBoxContainer/StatesScroll/StatesList" instance=ExtResource("3_m1iiu")]
+[node name="StateButton" parent="VBoxContainer/StatesScroll/StatesList" instance=ExtResource("3_m1iiu")]
 layout_mode = 2
 
 [node name="BottomLimit" type="Button" parent="VBoxContainer"]

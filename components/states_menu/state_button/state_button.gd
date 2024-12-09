@@ -1,9 +1,14 @@
+class_name StateButton
 extends Button
 
+
+signal switch_requested(from: int, to: int)
 
 const button_shiny := preload("res://components/states_menu/state_button/button_shiny.tres")
 
 const button_shiny_pressed := preload("res://components/states_menu/state_button/button_shiny_pressed.tres")
+
+var index := 0
 
 var _idle: Texture2D
 
@@ -26,6 +31,35 @@ func make_shiny() -> void:
 	add_theme_stylebox_override("hover", button_shiny)
 	add_theme_stylebox_override("pressed", button_shiny_pressed)
 	add_theme_stylebox_override("normal", button_shiny)
+
+
+func _get_drag_data(_at_position: Vector2) -> Variant:
+	return self
+
+
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	if not data is StateButton:
+		return false
+	
+	if data == self:
+		return false
+	
+	# TODO: Draw line to show where will be placed.
+	if at_position.y <= size.y / 2:
+		pass
+	else:
+		pass
+	
+	return (data as StateButton).is_in_group("state_button")
+
+
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	data = data as StateButton
+	
+	if at_position.y <= size.y / 2:
+		switch_requested.emit(data.index, index)
+	else:
+		switch_requested.emit(data.index, index + 1)
 
 
 func _on_mouse_entered() -> void:

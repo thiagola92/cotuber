@@ -96,7 +96,26 @@ func _on_background_button_background_changed(color: Color) -> void:
 	_character.background_color = color
 
 
-func _on_states_menu_create_request() -> void:
+func _on_states_menu_switch_requested(from: int, to: int) -> void:
+	var state := _character.states[_state_index]
+	
+	_character.states.insert(to, _character.states[from])
+	
+	if from < to:
+		# When inserted in front of "from" position,
+		# the "from" position is not affected by reorder.
+		_character.states.remove_at(from)
+	else:
+		# When inserted behind the current position,
+		# the "from" position will shift one position.
+		_character.states.remove_at(from + 1)
+	
+	_state_index = _character.states.find(state)
+	
+	_states_menu.fill_states_list(_character.states, _state_index)
+
+
+func _on_states_menu_create_requested() -> void:
 	var clone := _character.states[_state_index].duplicate()
 	_character.states.append(clone)
 	_state_index = _character.states.size() - 1

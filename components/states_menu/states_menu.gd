@@ -3,11 +3,13 @@ extends MarginContainer
 
 signal pressed(index: int)
 
-signal create_request
+signal switch_requested(from: int, to: int)
 
-const StateButton := preload("res://components/states_menu/state_button/state_button.tscn")
+signal create_requested
 
-const AddButton := preload("res://components/states_menu/add_button/add_button.tscn")
+const StateButtonScene := preload("res://components/states_menu/state_button/state_button.tscn")
+
+const AddButtonScene := preload("res://components/states_menu/add_button/add_button.tscn")
 
 @onready var _state_scroll := %StatesScroll
 
@@ -21,16 +23,19 @@ func fill_states_list(states: Array[StateData], current_index: int) -> void:
 	
 	for index in states.size():
 		var state := states[index]
-		var state_button: Button = StateButton.instantiate()
+		var state_button: StateButton = StateButtonScene.instantiate()
 		
 		state_button.pressed.connect(_on_state_button_pressed.bind(index))
+		state_button.switch_requested.connect(_on_state_button_switch_requested)
 		state_button.set_images(state.idle_image, state.speaking_image)
+		state_button.index = index
+		state_button.add_to_group("state_button")
 		_states_list.add_child(state_button)
 		
 		if index == current_index:
 			state_button.make_shiny()
 	
-	var add_button: Button = AddButton.instantiate()
+	var add_button: Button = AddButtonScene.instantiate()
 	add_button.pressed.connect(_on_add_button_pressed)
 	_states_list.add_child(add_button)
 
@@ -39,5 +44,9 @@ func _on_state_button_pressed(index: int) -> void:
 	pressed.emit(index)
 
 
+func _on_state_button_switch_requested(from: int, to: int) -> void:
+	switch_requested.emit(from, to)
+
+
 func _on_add_button_pressed() -> void:
-	create_request.emit()
+	create_requested.emit()
