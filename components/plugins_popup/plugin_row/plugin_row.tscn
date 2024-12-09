@@ -35,7 +35,8 @@ flat = true
 [node name="NameLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Plugin name"
+text = "plugin name"
+vertical_alignment = 1
 
 [node name="RemoveButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
