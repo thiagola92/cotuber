@@ -16,6 +16,8 @@ var _speaking: Texture2D
 
 @onready var timer := $Timer
 
+@onready var line := $Line
+
 
 func set_images(idle: Image, speaking: Image) -> void:
 	_idle = ImageTexture.create_from_image(idle)
@@ -44,11 +46,12 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if data == self:
 		return false
 	
-	# TODO: Draw line to show where will be placed.
+	line.show()
+	
 	if at_position.y <= size.y / 2:
-		pass
+		line.position.y = 0
 	else:
-		pass
+		line.position.y = size.y - line.size.y
 	
 	return (data as StateButton).is_in_group("state_button")
 
@@ -68,6 +71,7 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	timer.stop()
+	line.hide()
 	icon = _idle
 
 
