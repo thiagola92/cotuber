@@ -64,7 +64,7 @@ func _update_idle_image(image: Image) -> void:
 	_idle_avatar_button.icon = texture
 	_avatar.set_idle_texture(texture)
 	_states_menu.fill_states_list(_character.states, _state_index)
-	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+	#_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
 func _update_speaking_image(image: Image) -> void:
@@ -74,7 +74,7 @@ func _update_speaking_image(image: Image) -> void:
 	_speaking_avatar_button.icon = texture
 	_avatar.set_speaking_texture(texture)
 	_states_menu.fill_states_list(_character.states, _state_index)
-	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+	#_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_load_button_character_loaded(character: CharacterData) -> void:

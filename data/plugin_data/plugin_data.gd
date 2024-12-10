@@ -8,6 +8,12 @@ func filename() -> String:
 
 ## Virtual method
 @warning_ignore("unused_parameter")
+func init(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
+	pass
+
+
+## Virtual method
+@warning_ignore("unused_parameter")
 func process(idle_texture: TextureRect, speaking_texture: TextureRect) -> void:
 	pass
 

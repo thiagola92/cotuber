@@ -27,6 +27,7 @@ flip_v = true
 [node name="Control" type="Control" parent="Marker"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="BottomArrow" type="TextureRect" parent="Marker"]
 layout_mode = 2
