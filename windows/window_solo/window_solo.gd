@@ -59,22 +59,22 @@ func _notification(what: int) -> void:
 
 func _update_idle_image(image: Image) -> void:
 	var texture := ImageTexture.create_from_image(image)
-	
 	_character.states[_state_index].idle_image = image
+	
+	# Update every place where this image could be visible.
 	_idle_avatar_button.icon = texture
 	_avatar.set_idle_texture(texture)
 	_states_menu.fill_states_list(_character.states, _state_index)
-	#_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
 func _update_speaking_image(image: Image) -> void:
 	var texture := ImageTexture.create_from_image(image)
-	
 	_character.states[_state_index].speaking_image = image
+	
+	# Update every place where this image could be visible.
 	_speaking_avatar_button.icon = texture
 	_avatar.set_speaking_texture(texture)
 	_states_menu.fill_states_list(_character.states, _state_index)
-	#_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_load_button_character_loaded(character: CharacterData) -> void:
@@ -85,6 +85,8 @@ func _on_load_button_character_loaded(character: CharacterData) -> void:
 	_update_idle_image(_character.states[_state_index].idle_image)
 	_update_speaking_image(_character.states[_state_index].speaking_image)
 	_states_menu.fill_states_list(_character.states, _state_index)
+	
+	# Also update windows/popups in case they are open.
 	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
@@ -123,6 +125,8 @@ func _on_states_menu_create_requested() -> void:
 	_update_idle_image(_character.states[_state_index].idle_image)
 	_update_speaking_image(_character.states[_state_index].speaking_image)
 	_states_menu.fill_states_list(_character.states, _state_index)
+	
+	# Also update windows/popups in case they are open.
 	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
@@ -132,6 +136,8 @@ func _on_states_menu_pressed(index: int) -> void:
 	_update_idle_image(_character.states[_state_index].idle_image)
 	_update_speaking_image(_character.states[_state_index].speaking_image)
 	_states_menu.fill_states_list(_character.states, _state_index)
+	
+	# Also update windows/popups in case they are open.
 	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
@@ -153,8 +159,8 @@ func _on_plugin_button_plugins_popup_requested() -> void:
 
 func _on_plugins_popup_adding_plugin(plugin: PluginData) -> void:
 	_character.states[_state_index].plugins.append(plugin)
-	_avatar.reset_avatar()
 	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+	_avatar.reset_avatar()
 
 
 func _on_plugins_popup_move_requested(from: int, to: int) -> void:
@@ -172,12 +178,13 @@ func _on_plugins_popup_move_requested(from: int, to: int) -> void:
 		plugins.remove_at(from + 1)
 	
 	_plugins_popup.fill_plugins_list(plugins)
+	_avatar.reset_avatar()
 
 
 func _on_plugins_popup_remove_requested(plugin: PluginData) -> void:
 	_character.states[_state_index].plugins.erase(plugin)
-	_avatar.reset_avatar()
 	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+	_avatar.reset_avatar()
 
 
 func _on_voice_server_offline_volume_changed(_voice_id: String, peak: float) -> void:

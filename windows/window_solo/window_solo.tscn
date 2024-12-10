@@ -120,6 +120,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="PluginsPopup" parent="." instance=ExtResource("10_3qrkn")]
+visible = false
 
 [node name="VoiceServerOffline" parent="." instance=ExtResource("4_l64jp")]
 
