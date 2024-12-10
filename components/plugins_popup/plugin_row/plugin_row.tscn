@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ekx00lwyt6tw"]
+[gd_scene load_steps=7 format=3 uid="uid://ekx00lwyt6tw"]
 
 [ext_resource type="Script" path="res://components/plugins_popup/plugin_row/plugin_row.gd" id="1_qmvgn"]
 [ext_resource type="Texture2D" uid="uid://d348cyqxu3hom" path="res://components/plugins_popup/plugin_row/arrow_right.svg" id="2_7h5ru"]
 [ext_resource type="Texture2D" uid="uid://drn4tl31r7bg7" path="res://components/plugins_popup/plugin_row/sub.svg" id="2_vj48c"]
+[ext_resource type="Texture2D" uid="uid://b4c0521qos6s7" path="res://components/plugins_popup/plugin_row/line.svg" id="4_gmmyv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ieynd"]
 
@@ -55,5 +56,20 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Line" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+texture = ExtResource("4_gmmyv")
+
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="HBoxContainer/ArrowButton" to="." method="_on_arrow_button_toggled"]
 [connection signal="pressed" from="HBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]

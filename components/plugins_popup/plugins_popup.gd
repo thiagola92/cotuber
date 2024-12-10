@@ -4,9 +4,11 @@ extends Window
 
 signal adding_plugin(plugin: PluginData)
 
-signal removing_plugin(plugin: PluginData)
+signal move_requested(from: int, to: int)
 
-const PluginRow := preload("res://components/plugins_popup/plugin_row/plugin_row.tscn")
+signal remove_requested(plugin: PluginData)
+
+const PluginRowScene := preload("res://components/plugins_popup/plugin_row/plugin_row.tscn")
 
 @onready var _plugin_options := %PluginOptions
 
@@ -29,9 +31,12 @@ func fill_plugins_list(plugins: Array[PluginData]) -> void:
 		_plugins_list.remove_child(child)
 	
 	# Fill with all used plugins.
-	for plugin in plugins:
-		var plugin_row = PluginRow.instantiate().init(plugin)
-		plugin_row.removing_plugin.connect(_on_plugin_row_removing_plugin)
+	for index in plugins.size():
+		var plugin := plugins[index]
+		var plugin_row = PluginRowScene.instantiate().init(index, plugin)
+		plugin_row.move_requested.connect(_on_plugin_row_move_requested)
+		plugin_row.remove_requested.connect(_on_plugin_row_remove_requested)
+		plugin_row.add_to_group("plugin_row")
 		_plugins_list.add_child(plugin_row)
 
 
@@ -60,5 +65,9 @@ func _on_add_button_pressed() -> void:
 			return
 
 
-func _on_plugin_row_removing_plugin(plugin: PluginData) -> void:
-	removing_plugin.emit(plugin)
+func _on_plugin_row_move_requested(from: int, to: int) -> void:
+	move_requested.emit(from, to)
+
+
+func _on_plugin_row_remove_requested(plugin: PluginData) -> void:
+	remove_requested.emit(plugin)

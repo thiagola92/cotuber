@@ -96,7 +96,7 @@ func _on_background_button_background_changed(color: Color) -> void:
 	_character.background_color = color
 
 
-func _on_states_menu_switch_requested(from: int, to: int) -> void:
+func _on_states_menu_move_requested(from: int, to: int) -> void:
 	var state := _character.states[_state_index]
 	
 	_character.states.insert(to, _character.states[from])
@@ -157,7 +157,24 @@ func _on_plugins_popup_adding_plugin(plugin: PluginData) -> void:
 	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
 
 
-func _on_plugins_popup_removing_plugin(plugin: PluginData) -> void:
+func _on_plugins_popup_move_requested(from: int, to: int) -> void:
+	var plugins := _character.states[_state_index].plugins
+	
+	plugins.insert(to, plugins[from])
+	
+	if from < to:
+		# When inserted in front of "from" position,
+		# the "from" position is not affected by reorder.
+		plugins.remove_at(from)
+	else:
+		# When inserted behind the current position,
+		# the "from" position will shift one position.
+		plugins.remove_at(from + 1)
+	
+	_plugins_popup.fill_plugins_list(plugins)
+
+
+func _on_plugins_popup_remove_requested(plugin: PluginData) -> void:
 	_character.states[_state_index].plugins.erase(plugin)
 	_avatar.reset_avatar()
 	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)

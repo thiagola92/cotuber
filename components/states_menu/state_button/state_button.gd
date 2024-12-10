@@ -2,7 +2,7 @@ class_name StateButton
 extends Button
 
 
-signal switch_requested(from: int, to: int)
+signal move_requested(from: int, to: int)
 
 const button_shiny := preload("res://components/states_menu/state_button/button_shiny.tres")
 
@@ -14,16 +14,18 @@ var _idle: Texture2D
 
 var _speaking: Texture2D
 
-@onready var timer := $Timer
+@onready var _timer := $Timer
 
-@onready var line := $Line
+@onready var _line := $Line
 
 
-func set_images(idle: Image, speaking: Image) -> void:
+func init(idle: Image, speaking: Image, idx: int) -> StateButton:
 	_idle = ImageTexture.create_from_image(idle)
 	_speaking = ImageTexture.create_from_image(speaking)
-	
+	index = idx
 	icon = _idle
+	
+	return self
 
 
 func make_shiny() -> void:
@@ -46,12 +48,12 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if data == self:
 		return false
 	
-	line.show()
+	_line.show()
 	
 	if at_position.y <= size.y / 2:
-		line.position.y = 0
+		_line.position.y = 0
 	else:
-		line.position.y = size.y - line.size.y
+		_line.position.y = size.y - _line.size.y
 	
 	return (data as StateButton).is_in_group("state_button")
 
@@ -60,18 +62,18 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	data = data as StateButton
 	
 	if at_position.y <= size.y / 2:
-		switch_requested.emit(data.index, index)
+		move_requested.emit(data.index, index)
 	else:
-		switch_requested.emit(data.index, index + 1)
+		move_requested.emit(data.index, index + 1)
 
 
 func _on_mouse_entered() -> void:
-	timer.start()
+	_timer.start()
 
 
 func _on_mouse_exited() -> void:
-	timer.stop()
-	line.hide()
+	_timer.stop()
+	_line.hide()
 	icon = _idle
 
 

@@ -3,7 +3,7 @@ extends MarginContainer
 
 signal pressed(index: int)
 
-signal switch_requested(from: int, to: int)
+signal move_requested(from: int, to: int)
 
 signal create_requested
 
@@ -26,9 +26,8 @@ func fill_states_list(states: Array[StateData], current_index: int) -> void:
 		var state_button: StateButton = StateButtonScene.instantiate()
 		
 		state_button.pressed.connect(_on_state_button_pressed.bind(index))
-		state_button.switch_requested.connect(_on_state_button_switch_requested)
-		state_button.set_images(state.idle_image, state.speaking_image)
-		state_button.index = index
+		state_button.move_requested.connect(_on_state_button_move_requested)
+		state_button.init(state.idle_image, state.speaking_image, index)
 		state_button.add_to_group("state_button")
 		_states_list.add_child(state_button)
 		
@@ -44,8 +43,8 @@ func _on_state_button_pressed(index: int) -> void:
 	pressed.emit(index)
 
 
-func _on_state_button_switch_requested(from: int, to: int) -> void:
-	switch_requested.emit(from, to)
+func _on_state_button_move_requested(from: int, to: int) -> void:
+	move_requested.emit(from, to)
 
 
 func _on_add_button_pressed() -> void:
