@@ -10,7 +10,7 @@ const ARROW_RIGHT := preload("res://components/plugins_popup/plugin_row/arrow_ri
 
 const ARROW_DOWN := preload("res://components/plugins_popup/plugin_row/arrow_down.svg")
 
-var _index: int
+var index: int
 
 var _plugin: PluginData
 
@@ -28,9 +28,9 @@ func _ready() -> void:
 	_plugin_settings.add_child(_plugin.create_view())
 
 
-func init(index: int, plugin: PluginData):
+func init(plugin: PluginData, idx: int):
 	_plugin = plugin
-	_index = index
+	index = idx
 	return self
 
 
@@ -56,7 +56,12 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	return
+	data = data as PluginRow
+	
+	if at_position.y <= size.y / 2:
+		move_requested.emit(data.index, index)
+	else:
+		move_requested.emit(data.index, index + 1)
 
 
 func _on_mouse_exited() -> void:

@@ -11,8 +11,6 @@ const StateButtonScene := preload("res://components/states_menu/state_button/sta
 
 const AddButtonScene := preload("res://components/states_menu/add_button/add_button.tscn")
 
-@onready var _state_scroll := %StatesScroll
-
 @onready var _states_list := %StatesList
 
 

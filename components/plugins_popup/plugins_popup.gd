@@ -33,7 +33,7 @@ func fill_plugins_list(plugins: Array[PluginData]) -> void:
 	# Fill with all used plugins.
 	for index in plugins.size():
 		var plugin := plugins[index]
-		var plugin_row = PluginRowScene.instantiate().init(index, plugin)
+		var plugin_row = PluginRowScene.instantiate().init(plugin, index)
 		plugin_row.move_requested.connect(_on_plugin_row_move_requested)
 		plugin_row.remove_requested.connect(_on_plugin_row_remove_requested)
 		plugin_row.add_to_group("plugin_row")

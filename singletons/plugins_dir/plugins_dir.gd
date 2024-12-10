@@ -5,6 +5,7 @@ const PATH := "user://plugins"
 
 var _defaults: Array[PluginData] = [
 	preload("res://data/plugin_data/plugins/delay.gd").new(),
+	preload("res://data/plugin_data/plugins/dark.gd").new(),
 ]
 
 
