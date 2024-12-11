@@ -31,16 +31,13 @@ var _state_index := 0
 
 func _ready() -> void:
 	_voice_server.create_user("", _character)
-	_update_idle_image(_character.states[_state_index].idle_image)
-	_update_speaking_image(_character.states[_state_index].speaking_image)
+	
+	_reload()
 
 
 func _process(_delta: float) -> void:
 	for plugin in _character.states[_state_index].plugins:
-		plugin.process(
-			_avatar.get_idle_texture(),
-			_avatar.get_speaking_texture(),
-		)
+		plugin.process(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
 
 
 func _notification(what: int) -> void:
@@ -57,24 +54,41 @@ func _notification(what: int) -> void:
 			BackgroundColor.live = false
 
 
+func _reload() -> void:
+	var idle_texture := ImageTexture.create_from_image(
+		_character.states[_state_index].idle_image
+	)
+	
+	var speaking_texture := ImageTexture.create_from_image(
+		_character.states[_state_index].speaking_image
+	)
+	
+	# Update every place where images are used.
+	_idle_avatar_button.icon = idle_texture
+	_speaking_avatar_button.icon = speaking_texture
+	_avatar.set_idle_texture(idle_texture)
+	_avatar.set_speaking_texture(speaking_texture)
+	_states_menu.fill_states_list(_character.states, _state_index)
+	_avatar.show_idle_avatar()
+	
+	# Also update windows/popups in case they are visible.
+	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+	
+	# Initialize all plugins.
+	for plugin in _character.states[_state_index].plugins:
+		plugin.init(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
+
+
 func _update_idle_image(image: Image) -> void:
-	var texture := ImageTexture.create_from_image(image)
 	_character.states[_state_index].idle_image = image
 	
-	# Update every place where this image could be visible.
-	_idle_avatar_button.icon = texture
-	_avatar.set_idle_texture(texture)
-	_states_menu.fill_states_list(_character.states, _state_index)
+	_reload()
 
 
 func _update_speaking_image(image: Image) -> void:
-	var texture := ImageTexture.create_from_image(image)
 	_character.states[_state_index].speaking_image = image
 	
-	# Update every place where this image could be visible.
-	_speaking_avatar_button.icon = texture
-	_avatar.set_speaking_texture(texture)
-	_states_menu.fill_states_list(_character.states, _state_index)
+	_reload()
 
 
 func _on_load_button_character_loaded(character: CharacterData) -> void:
@@ -82,12 +96,7 @@ func _on_load_button_character_loaded(character: CharacterData) -> void:
 	_state_index = 0
 	BackgroundColor.live_color = _character.background_color
 	
-	_update_idle_image(_character.states[_state_index].idle_image)
-	_update_speaking_image(_character.states[_state_index].speaking_image)
-	_states_menu.fill_states_list(_character.states, _state_index)
-	
-	# Also update windows/popups in case they are open.
-	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+	_reload()
 
 
 func _on_save_button_save_requested(path: String) -> void:
@@ -114,7 +123,7 @@ func _on_states_menu_move_requested(from: int, to: int) -> void:
 	
 	_state_index = _character.states.find(state)
 	
-	_states_menu.fill_states_list(_character.states, _state_index)
+	_reload()
 
 
 func _on_states_menu_create_requested() -> void:
@@ -122,27 +131,19 @@ func _on_states_menu_create_requested() -> void:
 	_character.states.append(clone)
 	_state_index = _character.states.size() - 1
 	
-	_update_idle_image(_character.states[_state_index].idle_image)
-	_update_speaking_image(_character.states[_state_index].speaking_image)
-	_states_menu.fill_states_list(_character.states, _state_index)
-	
-	# Also update windows/popups in case they are open.
-	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+	_reload()
 
 
 func _on_states_menu_pressed(index: int) -> void:
 	_state_index = index
 	
-	_update_idle_image(_character.states[_state_index].idle_image)
-	_update_speaking_image(_character.states[_state_index].speaking_image)
-	_states_menu.fill_states_list(_character.states, _state_index)
-	
-	# Also update windows/popups in case they are open.
-	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
+	_reload()
 
 
 func _on_idle_avatar_button_image_received(image: Image) -> void:
-	_update_idle_image(image)
+	_character.states[_state_index].idle_image = image
+	
+	_reload()
 
 
 func _on_voice_bar_minimum_changed(value: float) -> void:
@@ -150,7 +151,9 @@ func _on_voice_bar_minimum_changed(value: float) -> void:
 
 
 func _on_speaking_avatar_button_image_received(image: Image) -> void:
-	_update_speaking_image(image)
+	_character.states[_state_index].speaking_image = image
+	
+	_reload()
 
 
 func _on_plugin_button_plugins_popup_requested() -> void:
@@ -159,8 +162,8 @@ func _on_plugin_button_plugins_popup_requested() -> void:
 
 func _on_plugins_popup_adding_plugin(plugin: PluginData) -> void:
 	_character.states[_state_index].plugins.append(plugin)
-	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
-	_avatar.reset_avatar()
+	
+	_reload()
 
 
 func _on_plugins_popup_move_requested(from: int, to: int) -> void:
@@ -177,14 +180,13 @@ func _on_plugins_popup_move_requested(from: int, to: int) -> void:
 		# the "from" position will shift one position.
 		plugins.remove_at(from + 1)
 	
-	_plugins_popup.fill_plugins_list(plugins)
-	_avatar.reset_avatar()
+	_reload()
 
 
 func _on_plugins_popup_remove_requested(plugin: PluginData) -> void:
 	_character.states[_state_index].plugins.erase(plugin)
-	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
-	_avatar.reset_avatar()
+	
+	_reload()
 
 
 func _on_voice_server_offline_volume_changed(_voice_id: String, peak: float) -> void:
@@ -195,17 +197,11 @@ func _on_voice_server_offline_voice_started(_voice_id: String) -> void:
 	_avatar.show_speaking_avatar()
 	
 	for plugin in _character.states[_state_index].plugins:
-		plugin.start_speaking(
-			_avatar.get_idle_texture(),
-			_avatar.get_speaking_texture(),
-		)
+		plugin.start_speaking(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
 
 
 func _on_voice_server_offline_voice_stopped(_voice_id: String) -> void:
 	_avatar.show_idle_avatar()
 	
 	for plugin in _character.states[_state_index].plugins:
-		plugin.stop_speaking(
-			_avatar.get_idle_texture(),
-			_avatar.get_speaking_texture(),
-		)
+		plugin.stop_speaking(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
