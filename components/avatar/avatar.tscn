@@ -1,19 +1,87 @@
-[gd_scene load_steps=3 format=3 uid="uid://penr57pwy6l3"]
+[gd_scene load_steps=7 format=3 uid="uid://penr57pwy6l3"]
 
 [ext_resource type="Script" path="res://components/avatar/avatar.gd" id="1_2xxsj"]
 [ext_resource type="PackedScene" uid="uid://cd8j5vner6ta7" path="res://components/avatar_texture/avatar_texture.tscn" id="1_nib60"]
+[ext_resource type="Texture2D" uid="uid://dqfnrrm2jukcw" path="res://components/avatar/top_left.svg" id="2_web5j"]
+[ext_resource type="Texture2D" uid="uid://dr88u5necaajq" path="res://components/avatar/top_right.svg" id="3_n4lnr"]
+[ext_resource type="Texture2D" uid="uid://bgdnneh2v4hdc" path="res://components/avatar/bottom_left.svg" id="5_h6uhf"]
+[ext_resource type="Texture2D" uid="uid://dr6k0sf052hfu" path="res://components/avatar/bottom_right.svg" id="6_qhgtc"]
 
 [node name="Avatar" type="Control"]
 layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 400.0
+mouse_filter = 1
+script = ExtResource("1_2xxsj")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2xxsj")
 
-[node name="IdleAvatar" parent="." instance=ExtResource("1_nib60")]
-layout_mode = 1
+[node name="Top" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 0
 
-[node name="SpeakingAvatar" parent="." instance=ExtResource("1_nib60")]
-layout_mode = 1
+[node name="TopLeft" type="TextureRect" parent="Container/Top"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 12
+texture = ExtResource("2_web5j")
+
+[node name="Space" type="Control" parent="Container/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="TopRight" type="TextureRect" parent="Container/Top"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 11
+texture = ExtResource("3_n4lnr")
+
+[node name="Middle" type="CenterContainer" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 13
+
+[node name="IdleAvatar" parent="Container/Middle" instance=ExtResource("1_nib60")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeakingAvatar" parent="Container/Middle" instance=ExtResource("1_nib60")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Bottom" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="BottomLeft" type="TextureRect" parent="Container/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 11
+texture = ExtResource("5_h6uhf")
+
+[node name="Space" type="Control" parent="Container/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="BottomRight" type="TextureRect" parent="Container/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 12
+texture = ExtResource("6_qhgtc")
+
+[connection signal="gui_input" from="Container/Top/TopLeft" to="." method="_on_top_left_gui_input"]
+[connection signal="gui_input" from="Container/Top/TopRight" to="." method="_on_top_right_gui_input"]
+[connection signal="gui_input" from="Container/Middle" to="." method="_on_middle_gui_input"]
+[connection signal="gui_input" from="Container/Bottom/BottomLeft" to="." method="_on_bottom_left_gui_input"]
+[connection signal="gui_input" from="Container/Bottom/BottomRight" to="." method="_on_bottom_right_gui_input"]

@@ -124,8 +124,10 @@ visible = false
 
 [node name="VoiceServerOffline" parent="." instance=ExtResource("4_l64jp")]
 
-[node name="Avatar" parent="." instance=ExtResource("10_8d43v")]
-layout_mode = 1
+[node name="Image" type="CanvasLayer" parent="."]
+
+[node name="Avatar" parent="Image" instance=ExtResource("10_8d43v")]
+unique_name_in_owner = true
 
 [connection signal="character_loaded" from="UI/Margin/HideableContainer/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
 [connection signal="save_requested" from="UI/Margin/HideableContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]

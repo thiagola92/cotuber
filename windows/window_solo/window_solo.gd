@@ -26,7 +26,7 @@ var _state_index := 0
 
 @onready var _voice_server := $VoiceServerOffline
 
-@onready var _avatar := $Avatar
+@onready var _avatar := %Avatar
 
 
 func _ready() -> void:
@@ -66,8 +66,7 @@ func _reload() -> void:
 	# Update every place where images are used.
 	_idle_avatar_button.icon = idle_texture
 	_speaking_avatar_button.icon = speaking_texture
-	_avatar.set_idle_texture(idle_texture)
-	_avatar.set_speaking_texture(speaking_texture)
+	_avatar.set_textures(idle_texture, speaking_texture)
 	_states_menu.fill_states_list(_character.states, _state_index)
 	_avatar.show_idle_avatar()
 	
