@@ -45,11 +45,13 @@ func _notification(what: int) -> void:
 		NOTIFICATION_APPLICATION_FOCUS_OUT:
 			if _visibility_button.button_pressed:
 				_ui.hide()
+				_avatar.hide_tools()
 			
 			BackgroundColor.live = true
 		NOTIFICATION_APPLICATION_FOCUS_IN:
 			if _visibility_button.button_pressed:
 				_ui.show()
+				_avatar.show_tools()
 			
 			BackgroundColor.live = false
 

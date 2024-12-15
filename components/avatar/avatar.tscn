@@ -11,7 +11,7 @@
 layout_mode = 3
 anchors_preset = 0
 offset_right = 400.0
-offset_bottom = 400.0
+offset_bottom = 448.0
 mouse_filter = 1
 script = ExtResource("1_2xxsj")
 
@@ -28,26 +28,32 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="TopLeft" type="TextureRect" parent="Container/Top"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 12
 texture = ExtResource("2_web5j")
 
 [node name="Space" type="Control" parent="Container/Top"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
 [node name="TopRight" type="TextureRect" parent="Container/Top"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 mouse_default_cursor_shape = 11
 texture = ExtResource("3_n4lnr")
 
-[node name="Middle" type="CenterContainer" parent="Container"]
+[node name="Middle" type="MarginContainer" parent="Container"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 13
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
 
 [node name="IdleAvatar" parent="Container/Middle" instance=ExtResource("1_nib60")]
 unique_name_in_owner = true
@@ -64,6 +70,7 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="BottomLeft" type="TextureRect" parent="Container/Bottom"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 mouse_default_cursor_shape = 11
@@ -75,6 +82,8 @@ size_flags_horizontal = 3
 mouse_filter = 1
 
 [node name="BottomRight" type="TextureRect" parent="Container/Bottom"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 12

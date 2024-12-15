@@ -1,27 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd8j5vner6ta7"]
+[gd_scene load_steps=3 format=3 uid="uid://cd8j5vner6ta7"]
 
 [ext_resource type="Script" path="res://components/avatar_texture/avatar_texture.gd" id="1_npx06"]
+[ext_resource type="Texture2D" uid="uid://w0bemst87d6f" path="res://components/avatar_texture/template_idle.svg" id="2_1xr4k"]
 
 [node name="AvatarTexture" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_npx06")
 
 [node name="OriginalTexture" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
 mouse_filter = 2
-stretch_mode = 3
+texture = ExtResource("2_1xr4k")
+expand_mode = 1
+stretch_mode = 4

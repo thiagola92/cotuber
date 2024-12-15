@@ -15,6 +15,12 @@ func set_texture(texture: Texture2D) -> void:
 	create_clone()
 
 
+func update_size(s: Vector2) -> void:
+	if clone:
+		_original.size = s
+		create_clone()
+
+
 ## Free previous clone and create a new one.[br]
 ## Used when loading a character or adding/removing plugins,
 ## because this cases you need to reapply all plugins to the base texture.
