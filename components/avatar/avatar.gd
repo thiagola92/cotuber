@@ -8,11 +8,17 @@ var _dragging_limit: Vector2
 
 @onready var _top_left := %TopLeft
 
+@onready var _top_right := %TopRight
+
 @onready var _middle := %Middle
 
 @onready var _idle_avatar := %IdleAvatar
 
 @onready var _speaking_avatar := %SpeakingAvatar
+
+@onready var _bottom_left := %BottomLeft
+
+@onready var _bottom_right := %BottomRight
 
 
 func _ready() -> void:
@@ -20,13 +26,13 @@ func _ready() -> void:
 
 
 func show_idle_avatar() -> void:
-	_idle_avatar.show()
-	_speaking_avatar.hide()
+	_idle_avatar.clone.show()
+	_speaking_avatar.clone.hide()
 
 
 func show_speaking_avatar() -> void:
-	_speaking_avatar.show()
-	_idle_avatar.hide()
+	_speaking_avatar.clone.show()
+	_idle_avatar.clone.hide()
 
 
 func get_idle_texture() -> TextureRect:
@@ -44,10 +50,16 @@ func set_textures(idle: Texture2D, speaking: Texture2D) -> void:
 
 func hide_tools() -> void:
 	_top_left.hide()
+	_top_right.hide()
+	_bottom_left.hide()
+	_bottom_right.hide()
 
 
 func show_tools() -> void:
 	_top_left.show()
+	_top_right.show()
+	_bottom_left.show()
+	_bottom_right.show()
 
 
 func _move_to_center() -> void:

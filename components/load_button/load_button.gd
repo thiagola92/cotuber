@@ -58,25 +58,31 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		
 		for p in s["plugins"]:
 			var plugin := PluginData.new()
-			var plugin_path := "%s/%s" % [character.states.size(), state.plugins.size()]
+			var plugin_path: String = p["source_code"]
+			var plugin_dir := plugin_path.get_basename()
+			var plugin_filename := plugin_path.get_file()
 			
-			if not zip.file_exists(p["source_code"]):
-				return push_error("Missing plugin source code: ", p["source_code"])
+			if not zip.file_exists(plugin_path):
+				return push_error("Missing plugin source code: ", plugin_path)
 			
 			# Create temporary script file so we can load with ResourceLoader.
-			var source_code := zip.read_file(p["source_code"]).get_string_from_utf8()
-			error = TmpDir.create_tmp_file("plugin.gd", source_code)
+			var source_code := zip.read_file(plugin_path).get_string_from_utf8()
+			error = TmpDir.create_tmp_file(plugin_filename, source_code)
 			
 			if error:
-				return push_error("Failed to create temporary plugin file: ", p["source_code"])
+				return push_error("Failed to create temporary plugin file: ", plugin_path)
 			
-			var script = ResourceLoader.load(TmpDir.path("plugin.gd"), "Script")
+			var script = ResourceLoader.load(
+				TmpDir.path(plugin_filename),
+				"Script",
+				ResourceLoader.CACHE_MODE_IGNORE
+			)
 			
 			if not script is Script:
-				return push_error("Failed to load plugin script: ", p["source_code"])
+				return push_error("Failed to load plugin script: ", plugin_path)
 			
 			plugin.set_script(script)
-			plugin.load_plugin(zip, plugin_path, p["data"])
+			plugin.load_plugin(zip, plugin_dir, p["data"])
 			
 			state.plugins.append(plugin)
 		

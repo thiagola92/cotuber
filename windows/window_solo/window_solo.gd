@@ -72,9 +72,6 @@ func _reload() -> void:
 	_states_menu.fill_states_list(_character.states, _state_index)
 	_avatar.show_idle_avatar()
 	
-	# Also update windows/popups in case they are visible.
-	_plugins_popup.fill_plugins_list(_character.states[_state_index].plugins)
-	
 	# Initialize all plugins.
 	for plugin in _character.states[_state_index].plugins:
 		plugin.init(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
@@ -98,6 +95,9 @@ func _on_load_button_character_loaded(character: CharacterData) -> void:
 	BackgroundColor.live_color = _character.background_color
 	
 	_reload()
+	
+	# Reaload windows/popups in case they are visible.
+	_plugins_popup.reload_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_save_button_save_requested(path: String) -> void:
@@ -133,12 +133,18 @@ func _on_states_menu_create_requested() -> void:
 	_state_index = _character.states.size() - 1
 	
 	_reload()
+	
+	# Reaload windows/popups in case they are visible.
+	_plugins_popup.reload_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_states_menu_pressed(index: int) -> void:
 	_state_index = index
 	
 	_reload()
+	
+	# Reaload windows/popups in case they are visible.
+	_plugins_popup.reload_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_idle_avatar_button_image_received(image: Image) -> void:
@@ -165,6 +171,9 @@ func _on_plugins_popup_adding_plugin(plugin: PluginData) -> void:
 	_character.states[_state_index].plugins.append(plugin)
 	
 	_reload()
+	
+	# Reaload windows/popups in case they are visible.
+	_plugins_popup.reload_plugins_list(_character.states[_state_index].plugins)
 
 
 func _on_plugins_popup_move_requested(from: int, to: int) -> void:
@@ -187,6 +196,13 @@ func _on_plugins_popup_move_requested(from: int, to: int) -> void:
 func _on_plugins_popup_remove_requested(plugin: PluginData) -> void:
 	_character.states[_state_index].plugins.erase(plugin)
 	
+	_reload()
+	
+	# Reaload windows/popups in case they are visible.
+	_plugins_popup.reload_plugins_list(_character.states[_state_index].plugins)
+
+
+func _on_plugins_popup_restart_requested() -> void:
 	_reload()
 
 

@@ -2,6 +2,8 @@ class_name PluginsPopup
 extends Window
 
 
+signal restart_requested
+
 signal adding_plugin(plugin: PluginData)
 
 signal move_requested(from: int, to: int)
@@ -21,11 +23,11 @@ func _ready() -> void:
 
 func open(plugins: Array[PluginData]) -> void:
 	_refresh_options()
-	fill_plugins_list(plugins)
+	reload_plugins_list(plugins)
 	popup_centered()
 
 
-func fill_plugins_list(plugins: Array[PluginData]) -> void:
+func reload_plugins_list(plugins: Array[PluginData]) -> void:
 	# Clear before filling.
 	for child in _plugins_list.get_children():
 		_plugins_list.remove_child(child)
@@ -34,6 +36,10 @@ func fill_plugins_list(plugins: Array[PluginData]) -> void:
 	for index in plugins.size():
 		var plugin := plugins[index]
 		var plugin_row = PluginRowScene.instantiate().init(plugin, index)
+		
+		if not plugin.restart_requested.is_connected(_on_plugin_restart_requested):
+			plugin.restart_requested.connect(_on_plugin_restart_requested)
+		
 		plugin_row.move_requested.connect(_on_plugin_row_move_requested)
 		plugin_row.remove_requested.connect(_on_plugin_row_remove_requested)
 		plugin_row.add_to_group("plugin_row")
@@ -63,6 +69,10 @@ func _on_add_button_pressed() -> void:
 		if plugin.filename() == text:
 			adding_plugin.emit(plugin.duplicate())
 			return
+
+
+func _on_plugin_restart_requested() -> void:
+	restart_requested.emit()
 
 
 func _on_plugin_row_move_requested(from: int, to: int) -> void:

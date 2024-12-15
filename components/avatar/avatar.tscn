@@ -41,7 +41,7 @@ size_flags_horizontal = 3
 mouse_filter = 1
 
 [node name="TopRight" type="TextureRect" parent="Container/Top"]
-visible = false
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 mouse_default_cursor_shape = 11
@@ -70,7 +70,7 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="BottomLeft" type="TextureRect" parent="Container/Bottom"]
-visible = false
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 mouse_default_cursor_shape = 11
@@ -83,7 +83,6 @@ mouse_filter = 1
 
 [node name="BottomRight" type="TextureRect" parent="Container/Bottom"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 12
