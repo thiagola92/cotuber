@@ -25,6 +25,7 @@ grow_vertical = 2
 script = ExtResource("1_282ns")
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Margin" type="MarginContainer" parent="UI"]
 anchors_preset = 15
@@ -37,85 +38,85 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HideableContainer" type="VBoxContainer" parent="UI/Margin"]
+[node name="Container" type="VBoxContainer" parent="UI/Margin"]
 layout_mode = 2
 
-[node name="TopContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer"]
+[node name="TopContainer" type="HBoxContainer" parent="UI/Margin/Container"]
 layout_mode = 2
 
-[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer/TopContainer"]
+[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BackButton" parent="UI/Margin/HideableContainer/TopContainer/LeftContainer" instance=ExtResource("1_fof6j")]
+[node name="BackButton" parent="UI/Margin/Container/TopContainer/LeftContainer" instance=ExtResource("1_fof6j")]
 layout_mode = 2
 
-[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer/TopContainer"]
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="LoadButton" parent="UI/Margin/HideableContainer/TopContainer/MiddleContainer" instance=ExtResource("3_xa06c")]
+[node name="LoadButton" parent="UI/Margin/Container/TopContainer/MiddleContainer" instance=ExtResource("3_xa06c")]
 layout_mode = 2
 
-[node name="SaveButton" parent="UI/Margin/HideableContainer/TopContainer/MiddleContainer" instance=ExtResource("3_uvs53")]
+[node name="SaveButton" parent="UI/Margin/Container/TopContainer/MiddleContainer" instance=ExtResource("3_uvs53")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer/TopContainer"]
+[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="BackgroundButton" parent="UI/Margin/HideableContainer/TopContainer/RightContainer" instance=ExtResource("2_55pck")]
+[node name="BackgroundButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("2_55pck")]
 layout_mode = 2
 
-[node name="MicrophoneButton" parent="UI/Margin/HideableContainer/TopContainer/RightContainer" instance=ExtResource("2_2yb3a")]
+[node name="MicrophoneButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("2_2yb3a")]
 layout_mode = 2
 
-[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer"]
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StatesMenu" parent="UI/Margin/HideableContainer/MiddleContainer" instance=ExtResource("7_7asab")]
+[node name="StatesMenu" parent="UI/Margin/Container/MiddleContainer" instance=ExtResource("7_7asab")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="BottomContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer"]
+[node name="BottomContainer" type="HBoxContainer" parent="UI/Margin/Container"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer/BottomContainer"]
+[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VisibilityButton" parent="UI/Margin/HideableContainer/BottomContainer/LeftContainer" instance=ExtResource("11_t3vow")]
+[node name="VisibilityButton" parent="UI/Margin/Container/BottomContainer/LeftContainer" instance=ExtResource("11_t3vow")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer/BottomContainer"]
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="IdleAvatarButton" parent="UI/Margin/HideableContainer/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
+[node name="IdleAvatarButton" parent="UI/Margin/Container/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VoiceBar" parent="UI/Margin/HideableContainer/BottomContainer/MiddleContainer" instance=ExtResource("8_r5clk")]
+[node name="VoiceBar" parent="UI/Margin/Container/BottomContainer/MiddleContainer" instance=ExtResource("8_r5clk")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="SpeakingAvatarButton" parent="UI/Margin/HideableContainer/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
+[node name="SpeakingAvatarButton" parent="UI/Margin/Container/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/HideableContainer/BottomContainer"]
+[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PluginButton" parent="UI/Margin/HideableContainer/BottomContainer/RightContainer" instance=ExtResource("9_sc0he")]
+[node name="PluginButton" parent="UI/Margin/Container/BottomContainer/RightContainer" instance=ExtResource("9_sc0he")]
 layout_mode = 2
 size_flags_horizontal = 10
 
@@ -129,16 +130,16 @@ visible = false
 [node name="Avatar" parent="Image" instance=ExtResource("10_8d43v")]
 unique_name_in_owner = true
 
-[connection signal="character_loaded" from="UI/Margin/HideableContainer/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
-[connection signal="save_requested" from="UI/Margin/HideableContainer/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
-[connection signal="background_changed" from="UI/Margin/HideableContainer/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
-[connection signal="create_requested" from="UI/Margin/HideableContainer/MiddleContainer/StatesMenu" to="." method="_on_states_menu_create_requested"]
-[connection signal="move_requested" from="UI/Margin/HideableContainer/MiddleContainer/StatesMenu" to="." method="_on_states_menu_move_requested"]
-[connection signal="pressed" from="UI/Margin/HideableContainer/MiddleContainer/StatesMenu" to="." method="_on_states_menu_pressed"]
-[connection signal="image_received" from="UI/Margin/HideableContainer/BottomContainer/MiddleContainer/IdleAvatarButton" to="." method="_on_idle_avatar_button_image_received"]
-[connection signal="minimum_changed" from="UI/Margin/HideableContainer/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
-[connection signal="image_received" from="UI/Margin/HideableContainer/BottomContainer/MiddleContainer/SpeakingAvatarButton" to="." method="_on_speaking_avatar_button_image_received"]
-[connection signal="plugins_popup_requested" from="UI/Margin/HideableContainer/BottomContainer/RightContainer/PluginButton" to="." method="_on_plugin_button_plugins_popup_requested"]
+[connection signal="character_loaded" from="UI/Margin/Container/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
+[connection signal="save_requested" from="UI/Margin/Container/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
+[connection signal="background_changed" from="UI/Margin/Container/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
+[connection signal="create_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_create_requested"]
+[connection signal="move_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_move_requested"]
+[connection signal="pressed" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_pressed"]
+[connection signal="image_received" from="UI/Margin/Container/BottomContainer/MiddleContainer/IdleAvatarButton" to="." method="_on_idle_avatar_button_image_received"]
+[connection signal="minimum_changed" from="UI/Margin/Container/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
+[connection signal="image_received" from="UI/Margin/Container/BottomContainer/MiddleContainer/SpeakingAvatarButton" to="." method="_on_speaking_avatar_button_image_received"]
+[connection signal="plugins_popup_requested" from="UI/Margin/Container/BottomContainer/RightContainer/PluginButton" to="." method="_on_plugin_button_plugins_popup_requested"]
 [connection signal="adding_plugin" from="PluginsPopup" to="." method="_on_plugins_popup_adding_plugin"]
 [connection signal="move_requested" from="PluginsPopup" to="." method="_on_plugins_popup_move_requested"]
 [connection signal="remove_requested" from="PluginsPopup" to="." method="_on_plugins_popup_remove_requested"]

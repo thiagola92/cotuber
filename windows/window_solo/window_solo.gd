@@ -30,7 +30,7 @@ var _state_index := 0
 
 
 func _ready() -> void:
-	_voice_server.create_user("", _character)
+	_voice_server.create_user(_voice_server.id, _character)
 	
 	_reload()
 
@@ -92,6 +92,7 @@ func _update_speaking_image(image: Image) -> void:
 func _on_load_button_character_loaded(character: CharacterData) -> void:
 	_character = character
 	_state_index = 0
+	_voice_server.users[_voice_server.id] = _character
 	BackgroundColor.live_color = _character.background_color
 	
 	_reload()
