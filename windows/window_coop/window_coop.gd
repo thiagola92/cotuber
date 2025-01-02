@@ -96,11 +96,28 @@ func _reload_friends() -> void:
 			)
 
 
-func _on_voice_server_voice_connected(voice_id: String) -> void:
-	var avatar := AvatarFriendScene.instantiate()
-	avatar.name = voice_id
+func _on_load_button_character_loaded(character: CharacterData) -> void:
+	_character = character
+	_state_index = 0
+	voice_server.users[voice_server.id] = _character
+	BackgroundColor.live_color = _character.background_color
 	
-	_friends.add_child(avatar, true)
+	_reload()
+
+
+func _on_friend_load_button_character_loaded(character: CharacterData, voice_id: String) -> void:
+	voice_server.users[voice_id] = character
+	_reload_friends()
+
+
+func _on_voice_server_voice_connected(voice_id: String) -> void:
+	var friend := AvatarFriendScene.instantiate()
+	friend.name = voice_id
+	friend.character_loaded.connect(
+		_on_friend_load_button_character_loaded.bind(voice_id)
+	)
+	
+	_friends.add_child(friend, true)
 	_reload_friends()
 
 

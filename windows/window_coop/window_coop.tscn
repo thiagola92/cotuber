@@ -62,3 +62,5 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[connection signal="character_loaded" from="UI/Margin/Container/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
