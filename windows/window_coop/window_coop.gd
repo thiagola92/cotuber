@@ -13,6 +13,8 @@ var _character := CharacterData.new()
 ## Current state index.
 var _state_index := 0
 
+@onready var _ui := $UI
+
 @onready var _avatar := %Avatar
 
 @onready var _friends := %Friends
@@ -26,6 +28,26 @@ func _ready() -> void:
 	
 	_reload()
 	_reload_friends()
+
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_APPLICATION_FOCUS_OUT:
+			_ui.hide()
+			_avatar.hide_tools()
+			
+			for friend: AvatarFriend in _friends.get_children():
+				friend.hide_tools()
+			
+			BackgroundColor.live = true
+		NOTIFICATION_APPLICATION_FOCUS_IN:
+			_ui.show()
+			_avatar.show_tools()
+			
+			for friend: AvatarFriend in _friends.get_children():
+				friend.show_tools()
+			
+			BackgroundColor.live = false
 
 
 func _reload() -> void:

@@ -16,6 +16,7 @@ script = ExtResource("1_ws8g5")
 [node name="Avatar" parent="." instance=ExtResource("1_fhop6")]
 
 [node name="LoadButton" parent="Avatar" instance=ExtResource("2_wx8dk")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
