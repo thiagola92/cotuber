@@ -11,9 +11,10 @@ func _on_network_pressed() -> void:
 
 
 func _on_voice_server_created(voice_server: VoiceServer) -> void:
-	var window_coop := WindowCoopScene.instantiate() as WindowCoop
+	var window_coop: WindowCoop = WindowCoopScene.instantiate() as WindowCoop
 	window_coop.add_child(voice_server)
 	window_coop.voice_server = voice_server
 	
 	get_parent().add_child(window_coop)
+	get_tree().current_scene = window_coop
 	queue_free()

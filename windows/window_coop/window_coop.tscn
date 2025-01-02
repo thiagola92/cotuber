@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://csqh4vd5sq2hp"]
+[gd_scene load_steps=6 format=3 uid="uid://csqh4vd5sq2hp"]
 
 [ext_resource type="Script" path="res://windows/window_coop/window_coop.gd" id="1_0tbb6"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_jbfnp"]
 [ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="2_oj564"]
 [ext_resource type="PackedScene" uid="uid://dygfhgna7fi5y" path="res://components/microphone_button/microphone_button.tscn" id="3_b5sqd"]
+[ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="5_cm14j"]
 
 [node name="WindowCoop" type="Control"]
 layout_mode = 3
@@ -51,3 +52,13 @@ size_flags_horizontal = 10
 layout_mode = 2
 
 [node name="Images" type="CanvasLayer" parent="."]
+
+[node name="Avatar" parent="Images" instance=ExtResource("5_cm14j")]
+unique_name_in_owner = true
+
+[node name="Friends" type="Control" parent="Images"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

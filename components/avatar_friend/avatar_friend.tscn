@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://mjoamhm417jq"]
+
+[ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="1_fhop6"]
+[ext_resource type="Script" path="res://components/avatar_friend/avatar_friend.gd" id="1_ws8g5"]
+[ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="2_wx8dk"]
+
+[node name="AvatarFriend" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ws8g5")
+
+[node name="Avatar" parent="." instance=ExtResource("1_fhop6")]
+
+[node name="LoadButton" parent="Avatar" instance=ExtResource("2_wx8dk")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -48.0
+offset_right = 96.0
+offset_bottom = 48.0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[connection signal="character_loaded" from="Avatar/LoadButton" to="." method="_on_load_button_character_loaded"]

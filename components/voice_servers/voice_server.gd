@@ -2,15 +2,19 @@ class_name VoiceServer
 extends Node
 
 
+@warning_ignore("unused_signal")
 signal voice_connected(voice_id: String)
 
+@warning_ignore("unused_signal")
 signal voice_disconnected(voice_id: String)
 
 @warning_ignore("unused_signal")
 signal volume_changed(voice_id: String, peak: float)
 
+@warning_ignore("unused_signal")
 signal voice_started(voice_id: String)
 
+@warning_ignore("unused_signal")
 signal voice_stopped(voice_id: String)
 
 var id: String = ""
@@ -30,9 +34,11 @@ func delete_user(voice_id: String) -> void:
 	speaking.erase(voice_id)
 
 
+@warning_ignore("unused_parameter")
 func start_speaking(voice_id: String) -> void:
-	voice_started.emit(voice_id)
+	pass
 
 
+@warning_ignore("unused_parameter")
 func stop_speaking(voice_id: String) -> void:
-	voice_stopped.emit(voice_id)
+	pass

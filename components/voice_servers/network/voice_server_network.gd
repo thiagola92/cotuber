@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	tree_exiting.connect(_on_tree_exiting)
 
 
 func _process(_delta: float) -> void:
@@ -41,9 +42,13 @@ func _stop_speaking() -> void:
 
 func _on_peer_connected(peer: int) -> void:
 	create_user(str(peer), CharacterData.new())
-	voice_connected.emit(peer)
+	voice_connected.emit(str(peer))
 
 
 func _on_peer_disconnected(peer: int) -> void:
 	delete_user(str(peer))
-	voice_disconnected.emit(peer)
+	voice_disconnected.emit(str(peer))
+
+
+func _on_tree_exiting() -> void:
+	multiplayer.multiplayer_peer = null
