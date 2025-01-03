@@ -25,13 +25,15 @@ func update_size(s: Vector2) -> void:
 ## Used when loading a character or adding/removing plugins,
 ## because this cases you need to reapply all plugins to the base texture.
 func create_clone() -> TextureRect:
+	var was_visible: bool = true
+	
 	if clone:
+		was_visible = clone.visible
 		clone.hide()
 		clone.queue_free()
-		clone = null
 	
 	clone = _original.duplicate()
-	clone.show()
+	clone.visible = was_visible
 	
 	add_child(clone)
 	
