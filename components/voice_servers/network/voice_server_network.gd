@@ -32,12 +32,12 @@ func _process(_delta: float) -> void:
 
 @rpc("any_peer", "call_local", "unreliable")
 func _start_speaking() -> void:
-	start_speaking(str(multiplayer.get_remote_sender_id()))
+	voice_started.emit(str(multiplayer.get_remote_sender_id()))
 
 
 @rpc("any_peer", "call_local", "unreliable")
 func _stop_speaking() -> void:
-	stop_speaking(str(multiplayer.get_remote_sender_id()))
+	voice_stopped.emit(str(multiplayer.get_remote_sender_id()))
 
 
 func _on_peer_connected(peer: int) -> void:
