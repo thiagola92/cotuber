@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_sgokv"]
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_j025h"]
 [ext_resource type="Texture2D" uid="uid://c4h8sjuc6jcae" path="res://components/background_button/background.svg" id="3_l2bom"]
-[ext_resource type="Script" path="res://components/background_button/background_button.gd" id="4_ws3pq"]
+[ext_resource type="Script" uid="uid://du6b8fmej82vu" path="res://components/background_button/background_button.gd" id="4_ws3pq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mxnm"]
 

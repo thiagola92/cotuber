@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://w8eoeo3f2xmi"]
+[gd_scene load_steps=16 format=3 uid="uid://w8eoeo3f2xmi"]
 
-[ext_resource type="Script" path="res://windows/window_solo/window_solo.gd" id="1_282ns"]
+[ext_resource type="Script" uid="uid://4gmlik6s41q7" path="res://windows/window_solo/window_solo.gd" id="1_282ns"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_fof6j"]
 [ext_resource type="PackedScene" uid="uid://dygfhgna7fi5y" path="res://components/microphone_button/microphone_button.tscn" id="2_2yb3a"]
 [ext_resource type="PackedScene" uid="uid://710g6pia33tv" path="res://components/background_button/background_button.tscn" id="2_55pck"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://rhxby3p23oe8" path="res://components/voice_servers/offline/voice_server_offline.tscn" id="4_l64jp"]
 [ext_resource type="PackedScene" uid="uid://c4ouhejmbnyic" path="res://components/states_menu/states_menu.tscn" id="7_7asab"]
 [ext_resource type="PackedScene" uid="uid://c8vdfynnn3bik" path="res://components/voice_bar/voice_bar.tscn" id="8_r5clk"]
+[ext_resource type="PackedScene" uid="uid://fp87vcua68fa" path="res://components/shortcut_button/shortcut_button.tscn" id="9_hhk4y"]
 [ext_resource type="PackedScene" uid="uid://b10r1y8l0c8sv" path="res://components/plugin_button/plugin_button.tscn" id="9_sc0he"]
 [ext_resource type="PackedScene" uid="uid://dwta7e6m21q1p" path="res://components/plugins_popup/plugins_popup.tscn" id="10_3qrkn"]
 [ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="10_8d43v"]
@@ -75,6 +76,10 @@ layout_mode = 2
 [node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="ShortcutButton" parent="UI/Margin/Container/MiddleContainer" instance=ExtResource("9_hhk4y")]
+layout_mode = 2
+size_flags_vertical = 8
 
 [node name="StatesMenu" parent="UI/Margin/Container/MiddleContainer" instance=ExtResource("7_7asab")]
 unique_name_in_owner = true

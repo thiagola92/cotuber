@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://fp87vcua68fa"]
+
+[ext_resource type="Texture2D" uid="uid://conx5kqqjmmie" path="res://components/shortcut_button/key.svg" id="1_5v3ej"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_5xrfb"]
+[ext_resource type="Script" uid="uid://cqk387a82cctf" path="res://components/shortcut_button/shortcut_button.gd" id="1_lgs6l"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_sd35b"]
+
+[node name="ShortcutButton" type="Button"]
+theme_override_styles/focus = ExtResource("1_5xrfb")
+theme_override_styles/disabled = ExtResource("1_5xrfb")
+theme_override_styles/hover_pressed = ExtResource("1_5xrfb")
+theme_override_styles/hover = ExtResource("1_5xrfb")
+theme_override_styles/pressed = ExtResource("2_sd35b")
+theme_override_styles/normal = ExtResource("1_5xrfb")
+icon = ExtResource("1_5v3ej")
+script = ExtResource("1_lgs6l")
+
+[node name="ShortcutWindow" type="Window" parent="."]
+handle_input_locally = false
+initial_position = 2
+size = Vector2i(600, 100)
+
+[node name="MarginContainer" type="MarginContainer" parent="ShortcutWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShortcutWindow/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ShortcutLine" type="LineEdit" parent="ShortcutWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+editable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShortcutWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="SaveButton" type="Button" parent="ShortcutWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SHORTCUT_BUTTON_SAVE"
+
+[node name="ClearButton" type="Button" parent="ShortcutWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SHORTCUT_BUTTON_CLEAR"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="close_requested" from="ShortcutWindow" to="." method="_on_shortcut_window_close_requested"]
+[connection signal="window_input" from="ShortcutWindow" to="." method="_on_shortcut_window_window_input"]
+[connection signal="pressed" from="ShortcutWindow/MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="ShortcutWindow/MarginContainer/VBoxContainer/HBoxContainer/ClearButton" to="." method="_on_clear_button_pressed"]

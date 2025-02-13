@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dygfhgna7fi5y"]
 
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_30qyx"]
-[ext_resource type="Script" path="res://components/microphone_button/microphone_button.gd" id="1_wkubc"]
+[ext_resource type="Script" uid="uid://drhpdbcb2lefq" path="res://components/microphone_button/microphone_button.gd" id="1_wkubc"]
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_e2quc"]
 [ext_resource type="Texture2D" uid="uid://cvfoceofeblmx" path="res://components/microphone_button/microphone.svg" id="3_bjm6e"]
 

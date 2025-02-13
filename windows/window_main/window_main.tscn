@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://x3s5tq2aem5b"]
 
-[ext_resource type="Script" path="res://windows/window_main/window_main.gd" id="1_y4gk1"]
+[ext_resource type="Script" uid="uid://c2io6tff64olv" path="res://windows/window_main/window_main.gd" id="1_y4gk1"]
 [ext_resource type="Texture2D" uid="uid://bt6ofa5y7gk7c" path="res://windows/window_main/solo.svg" id="2_uaafa"]
 [ext_resource type="PackedScene" uid="uid://bqxkctxy7xdpu" path="res://components/language_button/language_button.tscn" id="2_xhvv3"]
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="2_yw847"]

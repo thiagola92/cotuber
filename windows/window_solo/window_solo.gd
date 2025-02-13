@@ -36,6 +36,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if Input.is_key_pressed(KEY_N):
+		printt("_process")
+	
 	for plugin in _character.states[_state_index].plugins:
 		plugin.process(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
 

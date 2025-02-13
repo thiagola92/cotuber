@@ -28,11 +28,16 @@ BackgroundColor="*res://singletons/background_color/background_color.tscn"
 PluginsDir="*res://singletons/plugins_dir/plugins_dir.tscn"
 TmpDir="*res://singletons/tmp_dir/tmp_dir.tscn"
 ErrorPopup="*res://singletons/error_popup/ErrorPopup.tscn"
+OSShortcut="*res://addons/os_shortcut/os_shortcut.gd"
 
 [display]
 
 window/size/transparent=true
 window/per_pixel_transparency/allowed=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/os_shortcut/plugin.cfg")
 
 [file_customization]
 
