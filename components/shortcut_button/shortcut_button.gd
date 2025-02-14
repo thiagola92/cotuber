@@ -22,7 +22,7 @@ func _set_visible_shortcut(event: InputEventKey) -> void:
 	if _visible_shortcut:
 		_shortcut_line.text = _visible_shortcut.as_text_keycode()
 	else:
-		_shortcut_line.text = ""
+		_shortcut_line.text = "No shortcut"
 
 
 func _on_pressed() -> void:

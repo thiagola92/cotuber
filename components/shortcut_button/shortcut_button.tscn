@@ -17,6 +17,7 @@ script = ExtResource("1_lgs6l")
 
 [node name="ShortcutWindow" type="Window" parent="."]
 handle_input_locally = false
+title = "SHORTCUT_WINDOW_TITLE"
 initial_position = 2
 size = Vector2i(600, 100)
 

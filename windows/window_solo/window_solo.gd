@@ -12,6 +12,8 @@ var _state_index := 0
 
 @onready var _save_button := %SaveButton
 
+@onready var _shortcut_button := %ShortcutButton
+
 @onready var _states_menu := %StatesMenu
 
 @onready var _idle_avatar_button := %IdleAvatarButton
@@ -36,11 +38,23 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_key_pressed(KEY_N):
-		printt("_process")
-	
 	for plugin in _character.states[_state_index].plugins:
 		plugin.process(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		_unhandled_key_press(event as InputEventKey)
+
+
+func _unhandled_key_press(event: InputEventKey) -> void:
+	for index in _character.states.size():
+		var state = _character.states[index]
+		
+		if state.shortcut and state.shortcut.as_text() == event.as_text():
+			_state_index = index
+			_reload()
+			return
 
 
 func _notification(what: int) -> void:
@@ -60,6 +74,8 @@ func _notification(what: int) -> void:
 
 
 func _reload() -> void:
+	var state: StateData = _character.states[_state_index]
+	
 	var idle_texture := ImageTexture.create_from_image(
 		_character.states[_state_index].idle_image
 	)
@@ -76,8 +92,11 @@ func _reload() -> void:
 	_avatar.show_idle_avatar()
 	
 	# Initialize all plugins.
-	for plugin in _character.states[_state_index].plugins:
+	for plugin in state.plugins:
 		plugin.init(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
+	
+	# Reload others state settings.
+	_shortcut_button.state_shortcut = state.shortcut
 
 
 func _update_idle_image(image: Image) -> void:
@@ -110,6 +129,10 @@ func _on_save_button_save_requested(path: String) -> void:
 
 func _on_background_button_background_changed(color: Color) -> void:
 	_character.background_color = color
+
+
+func _on_shortcut_button_shortcut_changed(event: InputEventKey) -> void:
+	_character.states[_state_index].shortcut = event
 
 
 func _on_states_menu_move_requested(from: int, to: int) -> void:

@@ -14,8 +14,8 @@ const PluginDelay := preload("res://data/plugin_data/plugins/delay.gd")
 ## Image to be used when speaking.
 @export var speaking_image: Image = preload("res://data/state_data/template_speaking.svg").get_image()
 
-## TODO: Shortcut to trigger this state.
-@export var shortcut = null
+## Shortcut to trigger this state.
+@export var shortcut: InputEventKey = null
 
 ## Plugins to be used during this state.
 @export var plugins: Array[PluginData] = [PluginDelay.new()]

@@ -78,6 +78,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ShortcutButton" parent="UI/Margin/Container/MiddleContainer" instance=ExtResource("9_hhk4y")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 
@@ -138,6 +139,7 @@ unique_name_in_owner = true
 [connection signal="character_loaded" from="UI/Margin/Container/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
 [connection signal="save_requested" from="UI/Margin/Container/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
 [connection signal="background_changed" from="UI/Margin/Container/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
+[connection signal="shortcut_changed" from="UI/Margin/Container/MiddleContainer/ShortcutButton" to="." method="_on_shortcut_button_shortcut_changed"]
 [connection signal="create_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_create_requested"]
 [connection signal="move_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_move_requested"]
 [connection signal="pressed" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_pressed"]

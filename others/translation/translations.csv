@@ -24,3 +24,6 @@ PLUGIN_BUTTON_HIDE_WARNING,Don’t show me this again.,Não exibir isto novament
 PLUGIN_BUTTON_UNDERSTAND,I undestand,Eu entendo
 PLUGINS_POPUP_TITLE,Plugins,Plugins
 PLUGINS_POPUP_ADD_LABEL,Add plugin:,Adicionar plugin:
+SHORTCUT_BUTTON_SAVE,Save,Salvar
+SHORTCUT_BUTTON_CLEAR,Clear,Limpar
+SHORTCUT_WINDOW_TITLE,Shortcut,Atalho
