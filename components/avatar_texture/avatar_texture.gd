@@ -8,6 +8,9 @@ var clone: TextureRect
 ## TextureRect after image being imported, shouldn't be changed by user or plugins.
 @onready var _original := $OriginalTexture
 
+## Nodes that holds the clone and any extra nodes that plugins would want to add.
+@onready var _clone_area: Control = $CloneArea
+
 
 func set_texture(texture: Texture2D) -> void:
 	_original.texture = texture
@@ -29,12 +32,14 @@ func create_clone() -> TextureRect:
 	
 	if clone:
 		was_visible = clone.visible
-		clone.hide()
-		clone.queue_free()
+		
+		for child in _clone_area.get_children():
+			child.hide()
+			child.queue_free()
 	
 	clone = _original.duplicate()
 	clone.visible = was_visible
 	
-	add_child(clone)
+	_clone_area.add_child(clone)
 	
 	return clone

@@ -16,9 +16,10 @@ func save(character: CharacterData, path: String) -> void:
 	var states = []
 	
 	for state in character.states:
-		var plugins = []
 		var idle_path := "%s/idle.png" % states.size()
 		var speaking_path := "%s/speaking.png" % states.size()
+		var plugins = []
+		var shortcut_text := ""
 	
 		zip.start_file(idle_path)
 		zip.write_file(state.idle_image.save_png_to_buffer())
@@ -27,6 +28,9 @@ func save(character: CharacterData, path: String) -> void:
 		zip.start_file(speaking_path)
 		zip.write_file(state.speaking_image.save_png_to_buffer())
 		zip.close_file()
+		
+		if state.shortcut:
+			shortcut_text = state.shortcut.as_text()
 		
 		for plugin in state.plugins:
 			var script := (plugin.get_script() as Script)
@@ -45,7 +49,7 @@ func save(character: CharacterData, path: String) -> void:
 		states.append({
 			"idle_image": idle_path,
 			"speaking_image": speaking_path,
-			"shortcut": state.shortcut,
+			"shortcut": shortcut_text,
 			"plugins": plugins,
 		})
 	

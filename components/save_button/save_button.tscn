@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_k0p4w"]
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_pb4s3"]
 [ext_resource type="Texture2D" uid="uid://c3lp23is2ni68" path="res://components/save_button/save.svg" id="3_b56k1"]
-[ext_resource type="Script" path="res://components/save_button/save_button.gd" id="4_spynx"]
+[ext_resource type="Script" uid="uid://ijymliowc5of" path="res://components/save_button/save_button.gd" id="4_spynx"]
 
 [node name="SaveButton" type="Button"]
 theme_override_styles/focus = ExtResource("1_k0p4w")

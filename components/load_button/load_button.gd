@@ -38,7 +38,7 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		var state := StateData.new()
 		state.idle_image = Image.new()
 		state.speaking_image = Image.new()
-		state.shortcut = s["shortcut"]
+		state.shortcut = null
 		state.plugins.clear()
 		
 		if not zip.file_exists(s["idle_image"]):
@@ -56,6 +56,23 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		
 		if error:
 			return push_error("Failed to load speaking image")
+		
+		if s["shortcut"] != "":
+			var keys := (s["shortcut"] as String).split("+")
+			state.shortcut = InputEventKey.new()
+			
+			for k in keys:
+				match k:
+					"Alt":
+						state.shortcut.alt_pressed = true
+					"Ctrl":
+						state.shortcut.ctrl_pressed = true
+					"Meta":
+						state.shortcut.meta_pressed = true
+					"Shift":
+						state.shortcut.shift_pressed = true
+					_:
+						state.shortcut.keycode = OS.find_keycode_from_string(k)
 		
 		for p in s["plugins"]:
 			var plugin := PluginData.new()

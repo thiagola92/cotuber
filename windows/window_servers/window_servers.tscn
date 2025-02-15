@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cudtyln6kq7o0"]
 
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_onhom"]
-[ext_resource type="Script" path="res://windows/window_servers/window_servers.gd" id="1_q726x"]
+[ext_resource type="Script" uid="uid://0gwelj1gqcjw" path="res://windows/window_servers/window_servers.gd" id="1_q726x"]
 [ext_resource type="Texture2D" uid="uid://b8fjrj1u7ykdp" path="res://windows/window_servers/network.svg" id="1_ywjwy"]
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_fcleu"]
 [ext_resource type="Texture2D" uid="uid://qyw40fa2wfni" path="res://windows/window_servers/discord.svg" id="4_iwwqb"]
@@ -46,6 +46,7 @@ theme_override_styles/normal = ExtResource("1_onhom")
 icon = ExtResource("1_ywjwy")
 
 [node name="Discord" type="Button" parent="HBoxContainer/ScrollContainer/Options"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/focus = ExtResource("1_onhom")
@@ -57,6 +58,7 @@ theme_override_styles/normal = ExtResource("1_onhom")
 icon = ExtResource("4_iwwqb")
 
 [node name="Steam" type="Button" parent="HBoxContainer/ScrollContainer/Options"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/focus = ExtResource("1_onhom")

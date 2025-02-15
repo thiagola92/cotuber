@@ -37,8 +37,13 @@ func _on_shortcut_window_close_requested() -> void:
 
 func _on_shortcut_window_window_input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.pressed and get_tree().root.get_window().has_focus():
-			_set_visible_shortcut(event)
+		if get_tree().root.get_window().has_focus():
+			if event.pressed and not event.echo:
+				_set_visible_shortcut(event)
+
+
+func _on_clear_button_pressed() -> void:
+	_set_visible_shortcut(null)
 
 
 func _on_save_button_pressed() -> void:
@@ -47,5 +52,5 @@ func _on_save_button_pressed() -> void:
 	shortcut_changed.emit(state_shortcut)
 
 
-func _on_clear_button_pressed() -> void:
-	_set_visible_shortcut(null)
+func _on_cancel_button_pressed() -> void:
+	_shortcut_window.hide()
