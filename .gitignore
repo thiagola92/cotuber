@@ -1,6 +1,7 @@
 # Project
-/export/**
-!/export/.gitkeep
+/export/linux/**
+/export/windows/**
+/export/macos/**
 !/export/linux/.gitkeep
 !/export/windows/.gitkeep
 !/export/macos/.gitkeep
