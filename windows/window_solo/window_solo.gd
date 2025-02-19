@@ -57,22 +57,6 @@ func _unhandled_key_press(event: InputEventKey) -> void:
 			return
 
 
-func _notification(what: int) -> void:
-	match what:
-		NOTIFICATION_APPLICATION_FOCUS_OUT:
-			if _visibility_button.button_pressed:
-				_ui.hide()
-				_avatar.hide_tools()
-			
-			BackgroundColor.live = true
-		NOTIFICATION_APPLICATION_FOCUS_IN:
-			if _visibility_button.button_pressed:
-				_ui.show()
-				_avatar.show_tools()
-			
-			BackgroundColor.live = false
-
-
 func _reload() -> void:
 	var state: StateData = _character.states[_state_index]
 	
@@ -174,6 +158,22 @@ func _on_states_menu_pressed(index: int) -> void:
 	_plugins_popup.reload_plugins_list(_character.states[_state_index].plugins)
 
 
+func _on_visibility_button_pressed() -> void:
+	_ui.hide()
+	_avatar.hide_tools()
+	_visibility_button.show_canvas()
+	
+	BackgroundColor.live = true
+
+
+func _on_visibility_button_canvas_double_clicked() -> void:
+	_ui.show()
+	_avatar.show_tools()
+	_visibility_button.hide_canvas()
+	
+	BackgroundColor.live = false
+
+
 func _on_idle_avatar_button_image_received(image: Image) -> void:
 	_character.states[_state_index].idle_image = image
 	
@@ -249,3 +249,7 @@ func _on_voice_server_offline_voice_stopped(_voice_id: String) -> void:
 	
 	for plugin in _character.states[_state_index].plugins:
 		plugin.stop_speaking(_avatar.get_idle_texture(), _avatar.get_speaking_texture())
+
+
+func _on_avatar_double_clicked() -> void:
+	_on_visibility_button_canvas_double_clicked()

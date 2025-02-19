@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv14lcc3x0jt3"]
+[gd_scene load_steps=3 format=3 uid="uid://bv14lcc3x0jt3"]
 
-[ext_resource type="Script" path="res://components/voice_servers_containers/network_container/client_container/client_container.gd" id="1_biq52"]
+[ext_resource type="Script" uid="uid://b1ubb0wt23mfo" path="res://components/voice_servers_containers/network_container/client_container/client_container.gd" id="1_biq52"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3jpqg"]
 
 [node name="ClientContainer" type="MarginContainer"]
 anchors_preset = 15
@@ -21,7 +23,8 @@ layout_mode = 2
 [node name="Explanation" type="RichTextLabel" parent="Container"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "How client works"
+bbcode_enabled = true
+text = "NETWORK_CONTAINER_CLIENT_EXPLANATION"
 
 [node name="GridContainer" type="GridContainer" parent="Container"]
 layout_mode = 2
@@ -29,7 +32,7 @@ columns = 3
 
 [node name="IPLabel" type="Label" parent="Container/GridContainer"]
 layout_mode = 2
-text = "NETWORK_CONTAINER_IP: "
+text = "NETWORK_CONTAINER_IP"
 
 [node name="IPEdit" type="LineEdit" parent="Container/GridContainer"]
 unique_name_in_owner = true
@@ -43,7 +46,7 @@ layout_mode = 2
 
 [node name="PortLabel" type="Label" parent="Container/GridContainer"]
 layout_mode = 2
-text = "NETWORK_CONTAINER_PORT: "
+text = "NETWORK_CONTAINER_PORT"
 
 [node name="PortEdit" type="LineEdit" parent="Container/GridContainer"]
 unique_name_in_owner = true
@@ -59,7 +62,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "CLIENT_CONTAINER_START"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3jpqg")
+text = "NETWORK_CONTAINER_START"
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 unique_name_in_owner = true

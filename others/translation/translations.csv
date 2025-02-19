@@ -28,3 +28,32 @@ SHORTCUT_BUTTON_SAVE,Save,Salvar
 SHORTCUT_BUTTON_CLEAR,Clear,Limpar
 SHORTCUT_BUTTON_TITLE,Shortcut,Atalho
 SHORTCUT_BUTTON_CANCEL,Cancel,Cancelar
+NETWORK_CONTAINER_SERVER,Server,Servidor
+NETWORK_CONTAINER_CLIENT,Client,Cliente
+NETWORK_CONTAINER_PORT,Port: ,Porta
+NETWORK_CONTAINER_START,Start,Iniciar
+NETWORK_CONTAINER_IP,IP: ,IP
+NETWORK_CONTAINER_UNKNOWN_ERROR,Unknow error,Erro desconhecido
+NETWORK_CONTAINER_CONNECTION_IN_USE,Connection in use,Conexão em uso
+NETWORK_CONTAINER_INVALID_PORT,Invalid port,Porta inválida
+NETWORK_CONTAINER_INVALID_IP,Invalid IP,IP inválido
+NETWORK_CONTAINER_SERVER_EXPLANATION,"[p]The classic [i]peer-to-peer[/i] (P2P) connection where everybody notify each other about status change.[/p]
+[center][img]res://components/voice_servers_containers/network_container/server_container/p2p.svg[/img][/center]
+[p]Somebody still needs to be the server because it’s through this person that everybody will find each other.[/p]
+[p]Here you will initialize a server in your computer so others can connect to it through your IP and a specific port.[/p]
+[center][img]res://components/voice_servers_containers/network_container/server_container/modem.svg[/img][/center]
+[p]Requires more knowledge about network because you need to setup your modem so when a new connection looking for the specific port appears, it get redirect to yours machine.[/p]
+[center][img]res://components/voice_servers_containers/network_container/server_container/modem2.svg[/img][/center]
+[p]Nowadays, there is cases where your IP it’s not open to the world because your internet provider may be putting you behind a [i]network address translation[/i] (NAT), in this cases there is not much to do other than using services like [url=https://www.zerotier.com/]ZeroTier[/url].[/p]","[p]A clássica conexão [i]peer-to-peer[/i] (P2P), onde todos notificão uns aos outros sobre mudança no estado.[/p]
+[center][img]res://components/voice_servers_containers/network_container/server_container/p2p.svg[/img][/center]
+[p]Alguém ainda precisa ser o server pois é atravez dele que todas as conexões vão se encontrar.[/p]
+[p]Aqui você iniciaizará o server na sua máquina para que outros se conectem atráves do seu IP e a porta escolhida por você.[/p]
+[center][img]res://components/voice_servers_containers/network_container/server_container/modem.svg[/img][/center]
+[p]Requer mais conhecimento sobre rede pois você precisa configurar seu modem para que quando uma conexão nova procurando pela sua porta apareca, ela se redirecionada para sua máquina.[/p]
+[center][img]res://components/voice_servers_containers/network_container/server_container/modem2.svg[/img][/center]
+[p]Hoje em dia tem casos em que seu IP não é exposto para todos no mundo pois seu provedor de internet pode estar botando você atrás de uma [i]network address translation[/i] (NAT), neste caso não existe muito que se poda fazer além de utilizar serviços como [url=https://www.zerotier.com/]ZeroTier[/url].[/p]"
+NETWORK_CONTAINER_CLIENT_EXPLANATION,"[p]The classic [i]peer-to-peer[/i] (P2P) connection where everybody notify each other about status change.[/p]
+[center][img]res://components/voice_servers_containers/network_container/server_container/p2p.svg[/img][/center]
+[p]Here you will connect to a server through IP and a specific port.[/p]","[p]The classic [i]peer-to-peer[/i] (P2P) connection where everybody notify each other about status change.[/p]
+[center][img]res://components/voice_servers_containers/network_container/server_container/p2p.svg[/img][/center]
+[p]Here you will connect to a server through IP and a specific port.[/p]"

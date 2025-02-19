@@ -46,11 +46,11 @@ func _on_start_button_pressed() -> void:
 	
 	match error:
 		ERR_CANT_CREATE:
-			_accept_dialog.dialog_text = "CLIENT_CONTAINER_UNKNOWN_ERROR"
+			_accept_dialog.dialog_text = "NETWORK_CONTAINER_UNKNOWN_ERROR"
 			_accept_dialog.popup_centered()
 			return
 		ERR_ALREADY_IN_USE:
-			_accept_dialog.dialog_text = "CLIENT_CONTAINER_CONNECTION_IN_USE"
+			_accept_dialog.dialog_text = "NETWORK_CONTAINER_CONNECTION_IN_USE"
 			_accept_dialog.popup_centered()
 			return
 	

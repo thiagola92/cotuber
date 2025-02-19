@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mjoamhm417jq"]
 
 [ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="1_fhop6"]
-[ext_resource type="Script" path="res://components/avatar_friend/avatar_friend.gd" id="1_ws8g5"]
+[ext_resource type="Script" uid="uid://pdw4up7wmpsn" path="res://components/avatar_friend/avatar_friend.gd" id="1_ws8g5"]
 [ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="2_wx8dk"]
 
 [node name="AvatarFriend" type="Control"]
@@ -27,4 +27,5 @@ offset_bottom = 48.0
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
+[connection signal="double_clicked" from="Avatar" to="." method="_on_avatar_double_clicked"]
 [connection signal="character_loaded" from="Avatar/LoadButton" to="." method="_on_load_button_character_loaded"]

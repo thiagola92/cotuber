@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b10r1y8l0c8sv"]
+[gd_scene load_steps=6 format=3 uid="uid://b10r1y8l0c8sv"]
 
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_0cjbh"]
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_yq7e7"]
 [ext_resource type="Texture2D" uid="uid://bbaqor4vuiafs" path="res://components/plugin_button/plug.svg" id="3_wjjns"]
-[ext_resource type="Script" path="res://components/plugin_button/plugin_button.gd" id="4_hntpm"]
+[ext_resource type="Script" uid="uid://dvu15qrqus25o" path="res://components/plugin_button/plugin_button.gd" id="4_hntpm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfcq5"]
 
 [node name="PluginButton" type="Button"]
 theme_override_styles/focus = ExtResource("1_0cjbh")
@@ -64,6 +66,7 @@ text = "PLUGIN_BUTTON_HIDE_WARNING"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kfcq5")
 text = "PLUGIN_BUTTON_UNDERSTAND"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

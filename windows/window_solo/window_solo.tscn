@@ -143,6 +143,8 @@ unique_name_in_owner = true
 [connection signal="create_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_create_requested"]
 [connection signal="move_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_move_requested"]
 [connection signal="pressed" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_pressed"]
+[connection signal="canvas_double_clicked" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_canvas_double_clicked"]
+[connection signal="pressed" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_pressed"]
 [connection signal="image_received" from="UI/Margin/Container/BottomContainer/MiddleContainer/IdleAvatarButton" to="." method="_on_idle_avatar_button_image_received"]
 [connection signal="minimum_changed" from="UI/Margin/Container/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
 [connection signal="image_received" from="UI/Margin/Container/BottomContainer/MiddleContainer/SpeakingAvatarButton" to="." method="_on_speaking_avatar_button_image_received"]
@@ -154,3 +156,4 @@ unique_name_in_owner = true
 [connection signal="voice_started" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_started"]
 [connection signal="voice_stopped" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_stopped"]
 [connection signal="volume_changed" from="VoiceServerOffline" to="." method="_on_voice_server_offline_volume_changed"]
+[connection signal="double_clicked" from="Image/Avatar" to="." method="_on_avatar_double_clicked"]

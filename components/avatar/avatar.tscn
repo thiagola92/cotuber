@@ -88,6 +88,7 @@ size_flags_horizontal = 0
 mouse_default_cursor_shape = 12
 texture = ExtResource("6_qhgtc")
 
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="Container/Top/TopLeft" to="." method="_on_top_left_gui_input"]
 [connection signal="gui_input" from="Container/Top/TopRight" to="." method="_on_top_right_gui_input"]
 [connection signal="gui_input" from="Container/Middle" to="." method="_on_middle_gui_input"]

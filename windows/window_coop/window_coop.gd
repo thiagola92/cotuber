@@ -13,6 +13,8 @@ var _character := CharacterData.new()
 ## Current state index.
 var _state_index := 0
 
+@onready var _visibility_button := $%VisibilityButton
+
 @onready var _ui := $UI
 
 @onready var _avatar := %Avatar
@@ -55,26 +57,6 @@ func _process_friends() -> void:
 				friend.avatar.get_idle_texture(),
 				friend.avatar.get_speaking_texture()
 			)
-
-
-func _notification(what: int) -> void:
-	match what:
-		NOTIFICATION_APPLICATION_FOCUS_OUT:
-			_ui.hide()
-			_avatar.hide_tools()
-			
-			for friend: AvatarFriend in _friends.get_children():
-				friend.hide_tools()
-			
-			BackgroundColor.live = true
-		NOTIFICATION_APPLICATION_FOCUS_IN:
-			_ui.show()
-			_avatar.show_tools()
-			
-			for friend: AvatarFriend in _friends.get_children():
-				friend.show_tools()
-			
-			BackgroundColor.live = false
 
 
 func _reload_yourself() -> void:
@@ -132,6 +114,32 @@ func _on_load_button_character_loaded(character: CharacterData) -> void:
 	_reload_yourself()
 
 
+func _on_visibility_button_pressed() -> void:
+	_ui.hide()
+	_avatar.hide_tools()
+	_visibility_button.show_canvas()
+	
+	for friend: AvatarFriend in _friends.get_children():
+		friend.hide_tools()
+	
+	BackgroundColor.live = true
+
+
+func _on_visibility_button_canvas_double_clicked() -> void:
+	_ui.show()
+	_avatar.show_tools()
+	_visibility_button.hide_canvas()
+	
+	for friend: AvatarFriend in _friends.get_children():
+		friend.show_tools()
+	
+	BackgroundColor.live = false
+
+
+func _on_avatar_double_clicked() -> void:
+	_on_visibility_button_canvas_double_clicked()
+
+
 func _on_friend_load_button_character_loaded(character: CharacterData, voice_id: String) -> void:
 	voice_server.users[voice_id] = character
 	_reload_friends()
@@ -140,8 +148,13 @@ func _on_friend_load_button_character_loaded(character: CharacterData, voice_id:
 func _on_voice_server_voice_connected(voice_id: String) -> void:
 	var friend := AvatarFriendScene.instantiate()
 	friend.name = voice_id
+	
 	friend.character_loaded.connect(
 		_on_friend_load_button_character_loaded.bind(voice_id)
+	)
+	
+	friend.double_clicked.connect(
+		_on_visibility_button_canvas_double_clicked
 	)
 	
 	_friends.add_child(friend, true)

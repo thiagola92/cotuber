@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cudtyln6kq7o0"]
+[gd_scene load_steps=10 format=3 uid="uid://cudtyln6kq7o0"]
 
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_onhom"]
 [ext_resource type="Script" uid="uid://0gwelj1gqcjw" path="res://windows/window_servers/window_servers.gd" id="1_q726x"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qyw40fa2wfni" path="res://windows/window_servers/discord.svg" id="4_iwwqb"]
 [ext_resource type="Texture2D" uid="uid://d0ttchgepayp6" path="res://windows/window_servers/steam.svg" id="5_36s7u"]
 [ext_resource type="PackedScene" uid="uid://c2wfdnw0ljktv" path="res://components/voice_servers_containers/network_container/network_container.tscn" id="6_jl7l5"]
+[ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="7_odhsx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wukd1"]
 
@@ -33,6 +34,11 @@ vertical_scroll_mode = 3
 
 [node name="Options" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" parent="HBoxContainer/ScrollContainer/Options" instance=ExtResource("7_odhsx")]
+layout_mode = 2
+size_flags_vertical = 2
 
 [node name="Network" type="Button" parent="HBoxContainer/ScrollContainer/Options"]
 layout_mode = 2

@@ -4,6 +4,8 @@ extends Control
 
 signal character_loaded(character: CharacterData)
 
+signal double_clicked
+
 @onready var avatar: Avatar = $Avatar
 
 @onready var _load_button: LoadButton = %LoadButton
@@ -21,3 +23,7 @@ func show_tools() -> void:
 
 func _on_load_button_character_loaded(character: CharacterData) -> void:
 	character_loaded.emit(character)
+
+
+func _on_avatar_double_clicked() -> void:
+	double_clicked.emit()

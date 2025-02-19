@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chlcvieux1r7m"]
 
-[ext_resource type="Script" path="res://components/voice_servers/network/voice_server_network.gd" id="1_tbtv3"]
+[ext_resource type="Script" uid="uid://chmhcxwh8yasg" path="res://components/voice_servers/network/voice_server_network.gd" id="1_tbtv3"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_iyhq1"]
 

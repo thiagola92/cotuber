@@ -34,11 +34,11 @@ func _on_start_button_pressed() -> void:
 	
 	match error:
 		ERR_CANT_CREATE:
-			_accept_dialog.dialog_text = "SERVER_CONTAINER_UNKNOWN_ERROR"
+			_accept_dialog.dialog_text = "NETWORK_CONTAINER_UNKNOWN_ERROR"
 			_accept_dialog.popup_centered()
 			return
 		ERR_ALREADY_IN_USE:
-			_accept_dialog.dialog_text = "SERVER_CONTAINER_CONNECTION_IN_USE"
+			_accept_dialog.dialog_text = "NETWORK_CONTAINER_CONNECTION_IN_USE"
 			_accept_dialog.popup_centered()
 			return
 	
@@ -47,3 +47,7 @@ func _on_start_button_pressed() -> void:
 	var voice_server := VoiceServerScene.instantiate() as VoiceServer
 	
 	voice_server_created.emit(voice_server)
+
+
+func _on_explanation_meta_clicked(meta: Variant) -> void:
+	OS.shell_open(meta)

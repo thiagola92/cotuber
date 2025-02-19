@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2pwe7e6f1gw8"]
 
-[ext_resource type="Script" path="res://components/credits_button/credits_button.gd" id="1_opigl"]
+[ext_resource type="Script" uid="uid://ikkcxluyaadg" path="res://components/credits_button/credits_button.gd" id="1_opigl"]
 
 [node name="CreditsButton" type="Button"]
 text = "Credits"
@@ -34,7 +34,7 @@ size_flags_vertical = 3
 bbcode_enabled = true
 text = "[img]res://others/icon.svg[/img]
 
-Copyright © 2024 [url=https://github.com/thiagola92]ThiagoLA92[/url]"
+Copyright © 2024-2025 [url=https://github.com/thiagola92]ThiagoLA92[/url]"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

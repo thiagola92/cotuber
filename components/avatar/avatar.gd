@@ -2,6 +2,9 @@ class_name Avatar
 extends Control
 
 
+# Double clicking the avatar should also make buttons visible.
+signal double_clicked
+
 var _is_dragging := false
 
 var _dragging_limit: Vector2
@@ -66,6 +69,12 @@ func _move_to_center() -> void:
 	var center := (get_window().size as Vector2) / 2 - size / 2
 	
 	global_position = center
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.double_click and event.button_index == MOUSE_BUTTON_LEFT:
+			double_clicked.emit()
 
 
 func _on_top_left_gui_input(event: InputEvent) -> void:
