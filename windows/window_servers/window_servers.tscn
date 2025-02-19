@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://cudtyln6kq7o0"]
+
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_onhom"]
+[ext_resource type="Script" uid="uid://0gwelj1gqcjw" path="res://windows/window_servers/window_servers.gd" id="1_q726x"]
+[ext_resource type="Texture2D" uid="uid://b8fjrj1u7ykdp" path="res://windows/window_servers/network.svg" id="1_ywjwy"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_fcleu"]
+[ext_resource type="Texture2D" uid="uid://qyw40fa2wfni" path="res://windows/window_servers/discord.svg" id="4_iwwqb"]
+[ext_resource type="Texture2D" uid="uid://d0ttchgepayp6" path="res://windows/window_servers/steam.svg" id="5_36s7u"]
+[ext_resource type="PackedScene" uid="uid://c2wfdnw0ljktv" path="res://components/voice_servers_containers/network_container/network_container.tscn" id="6_jl7l5"]
+[ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="7_odhsx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wukd1"]
+
+[node name="WindowServers" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_q726x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Options" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" parent="HBoxContainer/ScrollContainer/Options" instance=ExtResource("7_odhsx")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Network" type="Button" parent="HBoxContainer/ScrollContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = ExtResource("1_onhom")
+theme_override_styles/disabled = ExtResource("1_onhom")
+theme_override_styles/hover_pressed = ExtResource("1_onhom")
+theme_override_styles/hover = ExtResource("1_onhom")
+theme_override_styles/pressed = ExtResource("2_fcleu")
+theme_override_styles/normal = ExtResource("1_onhom")
+icon = ExtResource("1_ywjwy")
+
+[node name="Discord" type="Button" parent="HBoxContainer/ScrollContainer/Options"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = ExtResource("1_onhom")
+theme_override_styles/disabled = ExtResource("1_onhom")
+theme_override_styles/hover_pressed = ExtResource("1_onhom")
+theme_override_styles/hover = ExtResource("1_onhom")
+theme_override_styles/pressed = ExtResource("2_fcleu")
+theme_override_styles/normal = ExtResource("1_onhom")
+icon = ExtResource("4_iwwqb")
+
+[node name="Steam" type="Button" parent="HBoxContainer/ScrollContainer/Options"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = ExtResource("1_onhom")
+theme_override_styles/disabled = ExtResource("1_onhom")
+theme_override_styles/hover_pressed = ExtResource("1_onhom")
+theme_override_styles/hover = ExtResource("1_onhom")
+theme_override_styles/pressed = ExtResource("2_fcleu")
+theme_override_styles/normal = ExtResource("1_onhom")
+icon = ExtResource("5_36s7u")
+
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wukd1")
+current_tab = 0
+tabs_visible = false
+
+[node name="NetworkContainer" parent="HBoxContainer/TabContainer" instance=ExtResource("6_jl7l5")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[connection signal="pressed" from="HBoxContainer/ScrollContainer/Options/Network" to="." method="_on_network_pressed"]
+[connection signal="voice_server_created" from="HBoxContainer/TabContainer/NetworkContainer" to="." method="_on_voice_server_created"]

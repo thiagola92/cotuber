@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://nsnhc7w8s33t"]
+
+[ext_resource type="Script" path="res://singletons/tmp_dir/tmp_dir.gd" id="1_hh5jt"]
+
+[node name="TmpDir" type="Node"]
+script = ExtResource("1_hh5jt")

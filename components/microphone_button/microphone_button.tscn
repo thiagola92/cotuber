@@ -1,26 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmjwjg6s3pkke"]
+[gd_scene load_steps=5 format=3 uid="uid://dygfhgna7fi5y"]
 
-[ext_resource type="StyleBox" uid="uid://cbumgy5hpee3m" path="res://components/microphone_button/microphone_button.tres" id="1_asbdw"]
-[ext_resource type="Texture2D" uid="uid://b5tn7coo1fdle" path="res://components/microphone_button/microphone.svg" id="1_wkyp6"]
-[ext_resource type="Script" path="res://components/microphone_button/microphone_button.gd" id="2_63kwi"]
-[ext_resource type="StyleBox" uid="uid://c4pjqys8fllft" path="res://components/microphone_button/microphone_button_pressed.tres" id="2_wj0sn"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_30qyx"]
+[ext_resource type="Script" uid="uid://drhpdbcb2lefq" path="res://components/microphone_button/microphone_button.gd" id="1_wkubc"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_e2quc"]
+[ext_resource type="Texture2D" uid="uid://cvfoceofeblmx" path="res://components/microphone_button/microphone.svg" id="3_bjm6e"]
 
 [node name="MicrophoneButton" type="Button"]
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_styles/focus = ExtResource("1_asbdw")
-theme_override_styles/disabled = ExtResource("1_asbdw")
-theme_override_styles/hover_pressed = ExtResource("1_asbdw")
-theme_override_styles/hover = ExtResource("1_asbdw")
-theme_override_styles/pressed = ExtResource("2_wj0sn")
-theme_override_styles/normal = ExtResource("1_asbdw")
-icon = ExtResource("1_wkyp6")
-script = ExtResource("2_63kwi")
+theme_override_styles/focus = ExtResource("1_30qyx")
+theme_override_styles/disabled = ExtResource("1_30qyx")
+theme_override_styles/hover_pressed = ExtResource("1_30qyx")
+theme_override_styles/hover = ExtResource("1_30qyx")
+theme_override_styles/pressed = ExtResource("2_e2quc")
+theme_override_styles/normal = ExtResource("1_30qyx")
+icon = ExtResource("3_bjm6e")
+script = ExtResource("1_wkubc")
 
-[node name="MicrophonesMenu" type="PopupMenu" parent="."]
-max_size = Vector2i(500, 300)
-hide_on_item_selection = false
+[node name="PopupMenu" type="PopupMenu" parent="."]
+title = "MICROPHONE_BUTTON_TITLE"
+initial_position = 2
+borderless = false
 
-[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="index_pressed" from="MicrophonesMenu" to="." method="_on_microphones_menu_index_pressed"]
+[connection signal="index_pressed" from="PopupMenu" to="." method="_on_popup_menu_index_pressed"]

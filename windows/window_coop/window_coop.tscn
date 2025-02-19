@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://g2ovfell25dy"]
+[gd_scene load_steps=7 format=3 uid="uid://csqh4vd5sq2hp"]
 
-[ext_resource type="Script" path="res://windows/window_coop/window_coop.gd" id="1_sckc4"]
+[ext_resource type="Script" uid="uid://cbscbq36fpmqn" path="res://windows/window_coop/window_coop.gd" id="1_0tbb6"]
+[ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_jbfnp"]
+[ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="2_oj564"]
+[ext_resource type="PackedScene" uid="uid://dygfhgna7fi5y" path="res://components/microphone_button/microphone_button.tscn" id="3_b5sqd"]
+[ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="5_cm14j"]
+[ext_resource type="PackedScene" uid="uid://cjr3nnoguw3x2" path="res://components/visiblity_button/visibility_button.tscn" id="5_v1uh1"]
 
-[node name="WindowCoop" type="MarginContainer"]
+[node name="WindowCoop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0tbb6")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Margin" type="MarginContainer" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,61 +25,70 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
-script = ExtResource("1_sckc4")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="Container" type="VBoxContainer" parent="UI/Margin"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="TopContainer" type="HBoxContainer" parent="UI/Margin/Container"]
 layout_mode = 2
-columns = 2
 
-[node name="NetworkButton" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
 layout_mode = 2
-text = "Network (IPv4 or IPv6)"
-alignment = 0
+size_flags_horizontal = 2
 
-[node name="NetworkQuestion" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="BackButton" parent="UI/Margin/Container/TopContainer/LeftContainer" instance=ExtResource("1_jbfnp")]
 layout_mode = 2
-text = "?"
-alignment = 0
 
-[node name="DiscordButton2" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
 layout_mode = 2
-text = "Discord (Embedded App SDK)"
-alignment = 0
+size_flags_horizontal = 6
 
-[node name="DiscordQuestion2" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="LoadButton" parent="UI/Margin/Container/TopContainer/MiddleContainer" instance=ExtResource("2_oj564")]
 layout_mode = 2
-text = "?"
-alignment = 0
 
-[node name="DiscordButton1" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
 layout_mode = 2
-text = "Discord (Game SDK)"
-alignment = 0
+size_flags_horizontal = 10
 
-[node name="DiscordQuestion1" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="MicrophoneButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("3_b5sqd")]
 layout_mode = 2
-text = "?"
-alignment = 0
 
-[node name="DiscordButton3" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container"]
 layout_mode = 2
-text = "Discord (Unofficial)"
-alignment = 0
+size_flags_vertical = 3
 
-[node name="DiscordQuestion3" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="BottomContainer" type="HBoxContainer" parent="UI/Margin/Container"]
 layout_mode = 2
-text = "?"
-alignment = 0
 
-[node name="SteamButton" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
 layout_mode = 2
-text = "Steam"
-alignment = 0
+size_flags_horizontal = 3
 
-[node name="SteamQuestion" type="Button" parent="ScrollContainer/GridContainer"]
+[node name="VisibilityButton" parent="UI/Margin/Container/BottomContainer/LeftContainer" instance=ExtResource("5_v1uh1")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "?"
-alignment = 0
+
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Images" type="CanvasLayer" parent="."]
+
+[node name="Avatar" parent="Images" instance=ExtResource("5_cm14j")]
+unique_name_in_owner = true
+
+[node name="Friends" type="Control" parent="Images"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="character_loaded" from="UI/Margin/Container/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
+[connection signal="canvas_double_clicked" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_canvas_double_clicked"]
+[connection signal="pressed" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_pressed"]
+[connection signal="double_clicked" from="Images/Avatar" to="." method="_on_avatar_double_clicked"]

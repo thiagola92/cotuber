@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://ekx00lwyt6tw"]
+
+[ext_resource type="Script" path="res://components/plugins_popup/plugin_row/plugin_row.gd" id="1_qmvgn"]
+[ext_resource type="Texture2D" uid="uid://d348cyqxu3hom" path="res://components/plugins_popup/plugin_row/arrow_right.svg" id="2_7h5ru"]
+[ext_resource type="Texture2D" uid="uid://drn4tl31r7bg7" path="res://components/plugins_popup/plugin_row/sub.svg" id="2_vj48c"]
+[ext_resource type="Texture2D" uid="uid://b4c0521qos6s7" path="res://components/plugins_popup/plugin_row/line.svg" id="4_gmmyv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ieynd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o1ud3"]
+
+[node name="PluginRow" type="VBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_qmvgn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ArrowButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ieynd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ieynd")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ieynd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ieynd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ieynd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ieynd")
+toggle_mode = true
+icon = ExtResource("2_7h5ru")
+flat = true
+
+[node name="NameLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "plugin name"
+vertical_alignment = 1
+
+[node name="RemoveButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o1ud3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o1ud3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o1ud3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o1ud3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o1ud3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o1ud3")
+icon = ExtResource("2_vj48c")
+flat = true
+
+[node name="PluginSettings" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Line" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+texture = ExtResource("4_gmmyv")
+
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="toggled" from="HBoxContainer/ArrowButton" to="." method="_on_arrow_button_toggled"]
+[connection signal="pressed" from="HBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]

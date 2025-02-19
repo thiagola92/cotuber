@@ -11,27 +11,49 @@ config_version=5
 [application]
 
 config/name="Cotuber"
-run/main_scene="res://windows/windows_main/main.tscn"
+run/main_scene="res://windows/window_main/window_main.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/low_processor_mode=true
 boot_splash/image="res://others/splash.png"
-boot_splash/fullsize=false
 config/icon="res://others/icon.svg"
-boot_splash/minimum_display_time=2000
 
 [audio]
 
-buses/default_bus_layout="res://others/default_bus_layout.tres"
+buses/default_bus_layout="res://others/audio_bus.tres"
 driver/enable_input=true
 
 [autoload]
 
 BackgroundColor="*res://singletons/background_color/background_color.tscn"
+PluginsDir="*res://singletons/plugins_dir/plugins_dir.tscn"
+TmpDir="*res://singletons/tmp_dir/tmp_dir.tscn"
+ErrorPopup="*res://singletons/error_popup/ErrorPopup.tscn"
+OSShortcut="*res://addons/os_shortcut/os_shortcut.gd"
 
 [display]
 
 window/size/transparent=true
 window/per_pixel_transparency/allowed=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/os_shortcut/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://components/": "green",
+"res://data/": "red",
+"res://export/": "orange",
+"res://others/": "yellow",
+"res://singletons/": "pink",
+"res://styles/": "purple",
+"res://windows/": "blue"
+}
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://others/translation/translations.en.translation", "res://others/translation/translations.pt.translation")
 
 [rendering]
 

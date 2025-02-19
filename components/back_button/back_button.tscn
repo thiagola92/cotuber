@@ -1,18 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c387vtsh6tcn6"]
+[gd_scene load_steps=5 format=3 uid="uid://c8ljwidbqix6f"]
 
-[ext_resource type="StyleBox" uid="uid://7mciquijlexx" path="res://components/back_button/back_button.tres" id="1_7af5w"]
-[ext_resource type="Texture2D" uid="uid://b15qeijruf5vk" path="res://components/back_button/arrow.svg" id="1_30u1p"]
-[ext_resource type="Script" path="res://components/back_button/back_button.gd" id="1_k3d1w"]
-[ext_resource type="StyleBox" uid="uid://dpx82vb8yc28m" path="res://components/back_button/back_button_pressed.tres" id="2_8e4qd"]
+[ext_resource type="Script" path="res://components/back_button/back_button.gd" id="1_2lhly"]
+[ext_resource type="Texture2D" uid="uid://dekrity055ssc" path="res://components/back_button/arrow.svg" id="1_4gxyi"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_4qrj4"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_2qvn3"]
 
 [node name="BackButton" type="Button"]
-theme_override_styles/focus = ExtResource("1_7af5w")
-theme_override_styles/disabled = ExtResource("1_7af5w")
-theme_override_styles/hover_pressed = ExtResource("1_7af5w")
-theme_override_styles/hover = ExtResource("1_7af5w")
-theme_override_styles/pressed = ExtResource("2_8e4qd")
-theme_override_styles/normal = ExtResource("1_7af5w")
-icon = ExtResource("1_30u1p")
-script = ExtResource("1_k3d1w")
+theme_override_styles/focus = ExtResource("1_4qrj4")
+theme_override_styles/disabled = ExtResource("1_4qrj4")
+theme_override_styles/hover_pressed = ExtResource("1_4qrj4")
+theme_override_styles/hover = ExtResource("1_4qrj4")
+theme_override_styles/pressed = ExtResource("2_2qvn3")
+theme_override_styles/normal = ExtResource("1_4qrj4")
+icon = ExtResource("1_4gxyi")
+script = ExtResource("1_2lhly")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

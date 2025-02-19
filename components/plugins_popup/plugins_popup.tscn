@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwta7e6m21q1p"]
+
+[ext_resource type="Script" path="res://components/plugins_popup/plugins_popup.gd" id="1_g1qvh"]
+[ext_resource type="Texture2D" uid="uid://dqnanq4dtikkp" path="res://components/plugins_popup/add.svg" id="2_u44md"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrutf"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.223529, 0.223529, 0.223529, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xv5wu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ketu3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1ch1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g44pj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2f0s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ln4s3"]
+
+[node name="PluginsPopup" type="Window"]
+title = "PLUGINS_POPUP_TITLE"
+initial_position = 2
+size = Vector2i(300, 500)
+wrap_controls = true
+transient = true
+unresizable = true
+script = ExtResource("1_g1qvh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AddLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "PLUGINS_POPUP_ADD_LABEL"
+
+[node name="PluginOptions" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_mrutf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mrutf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_mrutf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mrutf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mrutf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mrutf")
+item_count = 1
+popup/item_0/text = "plugin.gd"
+popup/item_0/id = 0
+
+[node name="AddButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xv5wu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ketu3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_v1ch1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g44pj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m2f0s")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ln4s3")
+icon = ExtResource("2_u44md")
+flat = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="PluginsList" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/AddButton" to="." method="_on_add_button_pressed"]

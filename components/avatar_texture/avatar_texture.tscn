@@ -1,62 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://lecnx1bkrqis"]
+[gd_scene load_steps=3 format=3 uid="uid://cd8j5vner6ta7"]
 
-[ext_resource type="Script" path="res://components/avatar_texture/avatar_texture.gd" id="1_ehfso"]
-[ext_resource type="Texture2D" uid="uid://daynkjv7odcce" path="res://components/avatar_texture/template_idle.svg" id="2_2xas5"]
-[ext_resource type="PackedScene" uid="uid://f0uinl60du1f" path="res://components/avatar_resizer/avatar_resizer.tscn" id="3_j5fyp"]
-[ext_resource type="Texture2D" uid="uid://vu5ye4jr3bj4" path="res://components/avatar_texture/template_speaking.svg" id="3_vn85g"]
+[ext_resource type="Script" uid="uid://c31vlkapyskrg" path="res://components/avatar_texture/avatar_texture.gd" id="1_npx06"]
+[ext_resource type="Texture2D" uid="uid://w0bemst87d6f" path="res://components/avatar_texture/template_idle.svg" id="2_1xr4k"]
 
 [node name="AvatarTexture" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_ehfso")
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_npx06")
 
-[node name="AvatarIdle" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_2xas5")
-expand_mode = 3
-stretch_mode = 5
+[node name="OriginalTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+mouse_filter = 2
+texture = ExtResource("2_1xr4k")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="IdleResizer" parent="AvatarIdle" node_paths=PackedStringArray("avatar_texture") instance=ExtResource("3_j5fyp")]
-unique_name_in_owner = true
-layout_mode = 1
-avatar_texture = NodePath("..")
-
-[node name="AvatarSpeaking" type="TextureRect" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_vn85g")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="SpeakingResizer" parent="AvatarSpeaking" node_paths=PackedStringArray("avatar_texture") instance=ExtResource("3_j5fyp")]
-unique_name_in_owner = true
-layout_mode = 1
-avatar_texture = NodePath("..")
+[node name="CloneArea" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

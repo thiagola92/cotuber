@@ -1,43 +1,80 @@
 extends Button
 
 
-@export var avatar_texture: AvatarTexture
+signal save_requested(path: String)
 
 @onready var _file_dialog := $FileDialog
 
-@onready var _accept_dialog := $AcceptDialog
+
+func save(character: CharacterData, path: String) -> void:
+	var zip := ZIPPacker.new()
+	var error := zip.open(path)
+	
+	if error:
+		return push_error("Failed to create zip file")
+	
+	var states = []
+	
+	for state in character.states:
+		var idle_path := "%s/idle.png" % states.size()
+		var speaking_path := "%s/speaking.png" % states.size()
+		var plugins = []
+		var shortcut_text := ""
+	
+		zip.start_file(idle_path)
+		zip.write_file(state.idle_image.save_png_to_buffer())
+		zip.close_file()
+	
+		zip.start_file(speaking_path)
+		zip.write_file(state.speaking_image.save_png_to_buffer())
+		zip.close_file()
+		
+		if state.shortcut:
+			shortcut_text = state.shortcut.as_text()
+		
+		for plugin in state.plugins:
+			var script := (plugin.get_script() as Script)
+			var plugin_path := "%s/%s" % [states.size(), plugins.size()]
+			var source_code_path := "%s/%s" % [plugin_path, plugin.filename()]
+			
+			plugins.append({
+				"source_code": source_code_path,
+				"data": plugin.save_plugin(zip, plugin_path),
+			})
+			
+			zip.start_file(source_code_path)
+			zip.write_file(script.source_code.to_utf8_buffer())
+			zip.close_file()
+		
+		states.append({
+			"idle_image": idle_path,
+			"speaking_image": speaking_path,
+			"shortcut": shortcut_text,
+			"plugins": plugins,
+		})
+	
+	var json = JSON.stringify({
+		"minimum_volume": character.minimum_volume,
+		"image_position": character.image_position,
+		"image_size": character.image_size,
+		"background_color": character.background_color.to_html(),
+		"states": states
+	}, "  ", false)
+	
+	zip.start_file("character.json")
+	zip.write_file(json.to_utf8_buffer())
+	zip.close_file()
+	
+	zip.close()
 
 
 func _on_pressed() -> void:
 	_file_dialog.popup_centered()
 
 
+# Don't save here because all information necessary is in the main Window.
 func _on_file_dialog_file_selected(path: String) -> void:
-	var zip_packer := ZIPPacker.new()
-	var error := zip_packer.open(path)
+	if not path.ends_with(".zip"):
+		path = "%s.zip" % path
 	
-	if error:
-		_accept_dialog.dialog_text = "Error %s when creating zip file" % error
-		_accept_dialog.popup_centered()
-		return
-	
-	var config := JSON.stringify({
-		"microphone": AudioServer.input_device,
-	})
-	
-	var img0 := avatar_texture.get_idle_avatar().get_image()
-	var img1 := avatar_texture.get_speaking_avatar().get_image()
-	
-	zip_packer.start_file("config.json")
-	zip_packer.write_file(config.to_utf8_buffer())
-	zip_packer.close_file()
-	
-	zip_packer.start_file("img0.png")
-	zip_packer.write_file(img0.save_png_to_buffer())
-	zip_packer.close_file()
-	
-	zip_packer.start_file("img1.png")
-	zip_packer.write_file(img1.save_png_to_buffer())
-	zip_packer.close_file()
-	
-	zip_packer.close()
+	save_requested.emit(path)

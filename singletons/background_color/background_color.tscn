@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bavo0qur4k4ak"]
+[gd_scene load_steps=2 format=3 uid="uid://b0dnfgv3aly6x"]
 
-[ext_resource type="Script" path="res://singletons/background_color/background_color.gd" id="1_lluq0"]
+[ext_resource type="Script" path="res://singletons/background_color/background_color.gd" id="1_ybebd"]
 
 [node name="BackgroundColor" type="ColorRect"]
 anchors_preset = 15
@@ -9,4 +9,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.301961, 0.301961, 0.301961, 1)
-script = ExtResource("1_lluq0")
+script = ExtResource("1_ybebd")

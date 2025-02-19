@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://x3s5tq2aem5b"]
+
+[ext_resource type="Script" uid="uid://c2io6tff64olv" path="res://windows/window_main/window_main.gd" id="1_y4gk1"]
+[ext_resource type="Texture2D" uid="uid://bt6ofa5y7gk7c" path="res://windows/window_main/solo.svg" id="2_uaafa"]
+[ext_resource type="PackedScene" uid="uid://bqxkctxy7xdpu" path="res://components/language_button/language_button.tscn" id="2_xhvv3"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="2_yw847"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="3_drfkr"]
+[ext_resource type="PackedScene" uid="uid://2pwe7e6f1gw8" path="res://components/credits_button/credits_button.tscn" id="3_q55fp"]
+[ext_resource type="Texture2D" uid="uid://cm37thuib8rc8" path="res://windows/window_main/coop.svg" id="3_wwum1"]
+
+[node name="WindowMain" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_y4gk1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LanguageButton" parent="VBoxContainer" instance=ExtResource("2_xhvv3")]
+layout_mode = 2
+
+[node name="Options" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Solo" type="VBoxContainer" parent="VBoxContainer/Options"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SoloButton" type="Button" parent="VBoxContainer/Options/Solo"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("2_yw847")
+theme_override_styles/disabled = ExtResource("2_yw847")
+theme_override_styles/hover_pressed = ExtResource("2_yw847")
+theme_override_styles/hover = ExtResource("2_yw847")
+theme_override_styles/pressed = ExtResource("3_drfkr")
+theme_override_styles/normal = ExtResource("2_yw847")
+icon = ExtResource("2_uaafa")
+
+[node name="SoloLabel" type="Label" parent="VBoxContainer/Options/Solo"]
+layout_mode = 2
+text = "WINDOW_MAIN_SOLO"
+horizontal_alignment = 1
+
+[node name="Coop" type="VBoxContainer" parent="VBoxContainer/Options"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="CoopButton" type="Button" parent="VBoxContainer/Options/Coop"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("2_yw847")
+theme_override_styles/disabled = ExtResource("2_yw847")
+theme_override_styles/hover_pressed = ExtResource("2_yw847")
+theme_override_styles/hover = ExtResource("2_yw847")
+theme_override_styles/pressed = ExtResource("3_drfkr")
+theme_override_styles/normal = ExtResource("2_yw847")
+icon = ExtResource("3_wwum1")
+
+[node name="CoopLabel" type="Label" parent="VBoxContainer/Options/Coop"]
+layout_mode = 2
+text = "WINDOW_MAIN_COOP"
+horizontal_alignment = 1
+
+[node name="CreditsButton" parent="VBoxContainer" instance=ExtResource("3_q55fp")]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "WINDOW_MAIN_CREDITS"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/Options/Solo/SoloButton" to="." method="_on_solo_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options/Coop/CoopButton" to="." method="_on_coop_button_pressed"]

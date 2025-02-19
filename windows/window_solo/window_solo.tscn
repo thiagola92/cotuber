@@ -1,55 +1,159 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2dxfpxd5k6it"]
+[gd_scene load_steps=16 format=3 uid="uid://w8eoeo3f2xmi"]
 
-[ext_resource type="Script" path="res://windows/window_solo/window_solo.gd" id="1_bbyts"]
-[ext_resource type="PackedScene" uid="uid://c387vtsh6tcn6" path="res://components/back_button/back_button.tscn" id="1_skjj3"]
-[ext_resource type="PackedScene" uid="uid://lecnx1bkrqis" path="res://components/avatar_texture/avatar_texture.tscn" id="2_g4ieq"]
-[ext_resource type="PackedScene" uid="uid://cdvhv3vd80und" path="res://components/load_button/load_button.tscn" id="3_cs611"]
-[ext_resource type="PackedScene" uid="uid://bw2823cmjh4ba" path="res://components/voice_bar/voice_bar.tscn" id="4_ct1so"]
-[ext_resource type="PackedScene" uid="uid://cnulygw660opu" path="res://components/voice_server/voice_server_local/voice_server_local.tscn" id="4_jllu3"]
+[ext_resource type="Script" uid="uid://4gmlik6s41q7" path="res://windows/window_solo/window_solo.gd" id="1_282ns"]
+[ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_fof6j"]
+[ext_resource type="PackedScene" uid="uid://dygfhgna7fi5y" path="res://components/microphone_button/microphone_button.tscn" id="2_2yb3a"]
+[ext_resource type="PackedScene" uid="uid://710g6pia33tv" path="res://components/background_button/background_button.tscn" id="2_55pck"]
+[ext_resource type="PackedScene" uid="uid://chy5v4fhy45eu" path="res://components/avatar_button/avatar_button.tscn" id="2_r3gfq"]
+[ext_resource type="PackedScene" uid="uid://ds54xww1imh3w" path="res://components/save_button/save_button.tscn" id="3_uvs53"]
+[ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="3_xa06c"]
+[ext_resource type="PackedScene" uid="uid://rhxby3p23oe8" path="res://components/voice_servers/offline/voice_server_offline.tscn" id="4_l64jp"]
+[ext_resource type="PackedScene" uid="uid://c4ouhejmbnyic" path="res://components/states_menu/states_menu.tscn" id="7_7asab"]
+[ext_resource type="PackedScene" uid="uid://c8vdfynnn3bik" path="res://components/voice_bar/voice_bar.tscn" id="8_r5clk"]
+[ext_resource type="PackedScene" uid="uid://fp87vcua68fa" path="res://components/shortcut_button/shortcut_button.tscn" id="9_hhk4y"]
+[ext_resource type="PackedScene" uid="uid://b10r1y8l0c8sv" path="res://components/plugin_button/plugin_button.tscn" id="9_sc0he"]
+[ext_resource type="PackedScene" uid="uid://dwta7e6m21q1p" path="res://components/plugins_popup/plugins_popup.tscn" id="10_3qrkn"]
+[ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="10_8d43v"]
+[ext_resource type="PackedScene" uid="uid://cjr3nnoguw3x2" path="res://components/visiblity_button/visibility_button.tscn" id="11_t3vow"]
 
-[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_hhi0b"]
-
-[node name="WindowSolo" type="MarginContainer"]
+[node name="WindowSolo" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bbyts")
+script = ExtResource("1_282ns")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Margin" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Container" type="VBoxContainer" parent="UI/Margin"]
 layout_mode = 2
 
-[node name="TopContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="TopContainer" type="HBoxContainer" parent="UI/Margin/Container"]
+layout_mode = 2
+
+[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" parent="UI/Margin/Container/TopContainer/LeftContainer" instance=ExtResource("1_fof6j")]
+layout_mode = 2
+
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="LoadButton" parent="UI/Margin/Container/TopContainer/MiddleContainer" instance=ExtResource("3_xa06c")]
+layout_mode = 2
+
+[node name="SaveButton" parent="UI/Margin/Container/TopContainer/MiddleContainer" instance=ExtResource("3_uvs53")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BackButton" parent="VBoxContainer/TopContainer" instance=ExtResource("1_skjj3")]
-layout_mode = 2
-
-[node name="LoadButton" parent="VBoxContainer/TopContainer" node_paths=PackedStringArray("avatar_texture") instance=ExtResource("3_cs611")]
+[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/Container/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-avatar_texture = NodePath("../../AvatarTexture")
 
-[node name="AvatarTexture" parent="VBoxContainer" node_paths=PackedStringArray("voice_server") instance=ExtResource("2_g4ieq")]
-unique_name_in_owner = true
+[node name="BackgroundButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("2_55pck")]
+layout_mode = 2
+
+[node name="MicrophoneButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("2_2yb3a")]
+layout_mode = 2
+
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container"]
 layout_mode = 2
 size_flags_vertical = 3
-voice_server = NodePath("../../VoiceServerLocal")
 
-[node name="VoiceBar" parent="VBoxContainer" instance=ExtResource("4_ct1so")]
-visible = false
+[node name="ShortcutButton" parent="UI/Margin/Container/MiddleContainer" instance=ExtResource("9_hhk4y")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 8
 
-[node name="VoiceServerLocal" parent="." node_paths=PackedStringArray("voice_bar") instance=ExtResource("4_jllu3")]
-voice_bar = NodePath("../VBoxContainer/VoiceBar")
+[node name="StatesMenu" parent="UI/Margin/Container/MiddleContainer" instance=ExtResource("7_7asab")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamMicrophone_hhi0b")
-autoplay = true
-bus = &"Microphone"
+[node name="BottomContainer" type="HBoxContainer" parent="UI/Margin/Container"]
+layout_mode = 2
+size_flags_vertical = 8
 
-[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[node name="LeftContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VisibilityButton" parent="UI/Margin/Container/BottomContainer/LeftContainer" instance=ExtResource("11_t3vow")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IdleAvatarButton" parent="UI/Margin/Container/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VoiceBar" parent="UI/Margin/Container/BottomContainer/MiddleContainer" instance=ExtResource("8_r5clk")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SpeakingAvatarButton" parent="UI/Margin/Container/BottomContainer/MiddleContainer" instance=ExtResource("2_r3gfq")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RightContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PluginButton" parent="UI/Margin/Container/BottomContainer/RightContainer" instance=ExtResource("9_sc0he")]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="PluginsPopup" parent="." instance=ExtResource("10_3qrkn")]
+visible = false
+
+[node name="VoiceServerOffline" parent="." instance=ExtResource("4_l64jp")]
+
+[node name="Image" type="CanvasLayer" parent="."]
+
+[node name="Avatar" parent="Image" instance=ExtResource("10_8d43v")]
+unique_name_in_owner = true
+
+[connection signal="character_loaded" from="UI/Margin/Container/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
+[connection signal="save_requested" from="UI/Margin/Container/TopContainer/MiddleContainer/SaveButton" to="." method="_on_save_button_save_requested"]
+[connection signal="background_changed" from="UI/Margin/Container/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
+[connection signal="shortcut_changed" from="UI/Margin/Container/MiddleContainer/ShortcutButton" to="." method="_on_shortcut_button_shortcut_changed"]
+[connection signal="create_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_create_requested"]
+[connection signal="move_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_move_requested"]
+[connection signal="pressed" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_pressed"]
+[connection signal="canvas_double_clicked" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_canvas_double_clicked"]
+[connection signal="pressed" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_pressed"]
+[connection signal="image_received" from="UI/Margin/Container/BottomContainer/MiddleContainer/IdleAvatarButton" to="." method="_on_idle_avatar_button_image_received"]
+[connection signal="minimum_changed" from="UI/Margin/Container/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
+[connection signal="image_received" from="UI/Margin/Container/BottomContainer/MiddleContainer/SpeakingAvatarButton" to="." method="_on_speaking_avatar_button_image_received"]
+[connection signal="plugins_popup_requested" from="UI/Margin/Container/BottomContainer/RightContainer/PluginButton" to="." method="_on_plugin_button_plugins_popup_requested"]
+[connection signal="adding_plugin" from="PluginsPopup" to="." method="_on_plugins_popup_adding_plugin"]
+[connection signal="move_requested" from="PluginsPopup" to="." method="_on_plugins_popup_move_requested"]
+[connection signal="remove_requested" from="PluginsPopup" to="." method="_on_plugins_popup_remove_requested"]
+[connection signal="restart_requested" from="PluginsPopup" to="." method="_on_plugins_popup_restart_requested"]
+[connection signal="voice_started" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_started"]
+[connection signal="voice_stopped" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_stopped"]
+[connection signal="volume_changed" from="VoiceServerOffline" to="." method="_on_voice_server_offline_volume_changed"]
+[connection signal="double_clicked" from="Image/Avatar" to="." method="_on_avatar_double_clicked"]

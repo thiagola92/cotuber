@@ -1,26 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbva8lrqpb4up"]
+[gd_scene load_steps=14 format=3 uid="uid://710g6pia33tv"]
 
-[ext_resource type="Texture2D" uid="uid://d205cvql3ms4w" path="res://components/background_button/background.svg" id="1_qn14c"]
-[ext_resource type="StyleBox" uid="uid://b2hhpretuygh7" path="res://components/background_button/background_button.tres" id="1_yhsmn"]
-[ext_resource type="StyleBox" uid="uid://ecl3gbcnx72s" path="res://components/background_button/background_button_pressed.tres" id="2_iues8"]
-[ext_resource type="Script" path="res://components/background_button/background_button.gd" id="4_vrdpf"]
+[ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_sgokv"]
+[ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_j025h"]
+[ext_resource type="Texture2D" uid="uid://c4h8sjuc6jcae" path="res://components/background_button/background.svg" id="3_l2bom"]
+[ext_resource type="Script" uid="uid://du6b8fmej82vu" path="res://components/background_button/background_button.gd" id="4_ws3pq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mxnm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_24oxu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dl02"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4ioj"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_m4if5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jy8w2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d34tf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mi2h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mfajk"]
 
 [node name="BackgroundButton" type="Button"]
-theme_override_styles/focus = ExtResource("1_yhsmn")
-theme_override_styles/disabled = ExtResource("1_yhsmn")
-theme_override_styles/hover_pressed = ExtResource("1_yhsmn")
-theme_override_styles/hover = ExtResource("1_yhsmn")
-theme_override_styles/pressed = ExtResource("2_iues8")
-theme_override_styles/normal = ExtResource("1_yhsmn")
-icon = ExtResource("1_qn14c")
-script = ExtResource("4_vrdpf")
+theme_override_styles/focus = ExtResource("1_sgokv")
+theme_override_styles/disabled = ExtResource("1_sgokv")
+theme_override_styles/hover_pressed = ExtResource("1_sgokv")
+theme_override_styles/hover = ExtResource("1_sgokv")
+theme_override_styles/pressed = ExtResource("2_j025h")
+theme_override_styles/normal = ExtResource("1_sgokv")
+icon = ExtResource("3_l2bom")
+script = ExtResource("4_ws3pq")
 
 [node name="BackgroundWindow" type="Window" parent="."]
-transparent_bg = true
-title = "Background"
-initial_position = 5
-size = Vector2i(500, 250)
+title = "BACKGROUND_BUTTON_TITLE"
+initial_position = 2
+size = Vector2i(340, 230)
 visible = false
+wrap_controls = true
+transient = true
+unresizable = true
 
 [node name="MarginContainer" type="MarginContainer" parent="BackgroundWindow"]
 anchors_preset = 15
@@ -36,58 +56,100 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="BackgroundWindow/MarginContainer"]
 layout_mode = 2
 
-[node name="ColorPickerContainer" type="HBoxContainer" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
+[node name="DefaultButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8mxnm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_24oxu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3dl02")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3dl02")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_u4ioj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3dl02")
+button_group = SubResource("ButtonGroup_m4if5")
+text = "BACKGROUND_BUTTON_DEFAULT"
 
-[node name="ColorPickerLabel" type="Label" parent="BackgroundWindow/MarginContainer/VBoxContainer/ColorPickerContainer"]
+[node name="RedButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Color picker: "
+size_flags_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8mxnm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_24oxu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3dl02")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3dl02")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_u4ioj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3dl02")
+button_group = SubResource("ButtonGroup_m4if5")
+text = "BACKGROUND_BUTTON_RED"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="BackgroundWindow/MarginContainer/VBoxContainer/ColorPickerContainer"]
+[node name="GreenButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jy8w2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jy8w2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jy8w2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jy8w2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jy8w2")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jy8w2")
+button_group = SubResource("ButtonGroup_m4if5")
+text = "BACKGROUND_BUTTON_GREEN"
+
+[node name="BlueButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d34tf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_d34tf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_d34tf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d34tf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d34tf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d34tf")
+button_group = SubResource("ButtonGroup_m4if5")
+text = "BACKGROUND_BUTTON_BLUE"
+
+[node name="TransparentButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1mi2h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1mi2h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1mi2h")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1mi2h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1mi2h")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1mi2h")
+button_group = SubResource("ButtonGroup_m4if5")
+text = "BACKGROUND_BUTTON_TRANSPARENT"
+
+[node name="CustomContainer" type="HBoxContainer" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CustomButton" type="CheckBox" parent="BackgroundWindow/MarginContainer/VBoxContainer/CustomContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mfajk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mfajk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_mfajk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mfajk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mfajk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mfajk")
+button_group = SubResource("ButtonGroup_m4if5")
+text = "BACKGROUND_BUTTON_CUSTOM"
+
+[node name="ColorPicker" type="ColorPickerButton" parent="BackgroundWindow/MarginContainer/VBoxContainer/CustomContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-color = Color(0.301961, 0.301961, 0.301961, 1)
+size_flags_horizontal = 0
+text = "     "
 
-[node name="ColorsContainer" type="HFlowContainer" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
+[node name="ColorWarning" type="Label" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 2
-
-[node name="Colors" type="Label" parent="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer"]
-layout_mode = 2
-text = "Colors: "
-
-[node name="Default" type="Button" parent="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer"]
-layout_mode = 2
-text = "Default"
-
-[node name="Green" type="Button" parent="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer"]
-layout_mode = 2
-text = "Green"
-
-[node name="Red" type="Button" parent="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer"]
-layout_mode = 2
-text = "Red"
-
-[node name="Blue" type="Button" parent="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer"]
-layout_mode = 2
-text = "Blue"
-
-[node name="Transparent" type="Button" parent="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer"]
-layout_mode = 2
-text = "Transparent"
-
-[node name="Note" type="Label" parent="BackgroundWindow/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Colors will be 30% dark during edition"
+size_flags_vertical = 10
+text = "BACKGROUND_BUTTON_DARKENED"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="close_requested" from="BackgroundWindow" to="." method="_on_window_close_requested"]
-[connection signal="color_changed" from="BackgroundWindow/MarginContainer/VBoxContainer/ColorPickerContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
-[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer/Default" to="." method="_on_default_pressed"]
-[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer/Green" to="." method="_on_green_pressed"]
-[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer/Red" to="." method="_on_red_pressed"]
-[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer/Blue" to="." method="_on_blue_pressed"]
-[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/ColorsContainer/Transparent" to="." method="_on_transparent_pressed"]
+[connection signal="close_requested" from="BackgroundWindow" to="." method="_on_background_window_close_requested"]
+[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/DefaultButton" to="." method="_on_color_button_toggled" binds= [Color(0.301961, 0.301961, 0.301961, 1)]]
+[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/RedButton" to="." method="_on_color_button_toggled" binds= [Color(1, 0, 0, 1)]]
+[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/GreenButton" to="." method="_on_color_button_toggled" binds= [Color(0, 1, 0, 1)]]
+[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/BlueButton" to="." method="_on_color_button_toggled" binds= [Color(0, 0, 1, 1)]]
+[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/TransparentButton" to="." method="_on_color_button_toggled" binds= [Color(0, 0, 0, 0)]]
+[connection signal="pressed" from="BackgroundWindow/MarginContainer/VBoxContainer/CustomContainer/CustomButton" to="." method="_on_custom_button_pressed"]
+[connection signal="color_changed" from="BackgroundWindow/MarginContainer/VBoxContainer/CustomContainer/ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="popup_closed" from="BackgroundWindow/MarginContainer/VBoxContainer/CustomContainer/ColorPicker" to="." method="_on_color_picker_popup_closed"]

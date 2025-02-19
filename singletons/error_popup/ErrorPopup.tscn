@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqkh4illiunan"]
+
+[ext_resource type="Script" path="res://singletons/error_popup/error_popup.gd" id="1_k4jfq"]
+
+[node name="ErrorPopup" type="AcceptDialog"]
+title = "ERROR"
+initial_position = 1
+visible = true
+exclusive = false
+ok_button_text = "Ok"
+script = ExtResource("1_k4jfq")

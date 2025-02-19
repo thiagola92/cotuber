@@ -1,79 +1,69 @@
-class_name VoiceBar
-extends Control
+extends TextureProgressBar
 
 
-signal idle_texture_dropped(texture: ImageTexture)
+signal minimum_changed(value: float)
 
-signal speak_texture_dropped(texture: ImageTexture)
+var _minimum_volume: float
 
-var min_volume: float
+var _is_dragging := false
 
-var _is_dragging: bool = false
-
-@onready var _arrow := %Arrow
-
-@onready var _arrow_width: float = %Arrow.get_minimum_size().x
-
-@onready var _volume_bar := %VolumeBar
-
-@onready var _volume_bar_width: float = %VolumeBar.get_minimum_size().x
+@onready var _marker := $Marker
 
 
 func _ready() -> void:
-	_move_arrow(_volume_bar_width / 4)
+	set_minimum_volume(0.05)
 
 
-func update_volume(volume: float) -> void:
-	_volume_bar.value = volume
+## Used when loading characters.
+func set_minimum_volume(v: float) -> void:
+	var voice_bar_width: float = get_minimum_size().x
+	
+	# Make sure that is inside bounds
+	_minimum_volume = clampf(v, min_value, max_value)
+	
+	# Percentage relative to voice_bar_width.
+	_marker.position.x = (_minimum_volume / max_value) * voice_bar_width
+	
+	minimum_changed.emit(_minimum_volume)
 
 
-func _move_arrow(relative_x: float) -> void:
-	# Position inside volume bar.
-	relative_x = clampf(relative_x, 0, _volume_bar_width)
+## Used when user manually move the arrow.
+func _move_arrow(x: float) -> void:
+	var voice_bar_width: float = get_minimum_size().x
+	var marker_width: float = _marker.get_minimum_size().x
+	
+	# Make sure that is inside voice bar.
+	x = clampf(x, 0, voice_bar_width)
 	
 	# Arrow pointing to click position.
-	_arrow.position.x = clampf(
-		relative_x - _arrow_width / 2,
-		- _arrow_width / 2,
-		_volume_bar_width - _arrow_width / 2
+	_marker.position.x = clampf(
+		x - marker_width / 2,
+		- marker_width / 2,
+		voice_bar_width - marker_width / 2
 	)
 	
-	# Obtain percentage relative to volume bar max_value.
-	min_volume = (relative_x / _volume_bar_width) * _volume_bar.max_value
+	# Percentage relative to max_value.
+	_minimum_volume = (x / voice_bar_width) * max_value
+	
+	minimum_changed.emit(_minimum_volume)
 
 
-func _on_volume_bar_gui_input(event: InputEvent) -> void:
+func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		_on_volume_bar_mouse_button(event)
+		_on_mouse_button(event)
 	elif event is InputEventMouseMotion:
-		_on_volume_bar_mouse_motion(event)
+		_on_mouse_motion(event)
 
 
-func _on_volume_bar_mouse_button(event: InputEventMouseButton) -> void:
+func _on_mouse_button(event: InputEventMouseButton) -> void:
 	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		_on_volume_bar_left_click_pressed(event)
+		_move_arrow(event.position.x)
+		_is_dragging = true
 	elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-		_on_volume_bar_left_click_released(event)
+		_move_arrow(event.position.x)
+		_is_dragging = false
 
 
-func _on_volume_bar_left_click_pressed(event: InputEventMouseButton) -> void:
-	_move_arrow(event.position.x)
-	_is_dragging = true
-
-
-func _on_volume_bar_left_click_released(event: InputEventMouseButton) -> void:
-	_move_arrow(event.position.x)
-	_is_dragging = false
-
-
-func _on_volume_bar_mouse_motion(event: InputEventMouseMotion) -> void:
+func _on_mouse_motion(event: InputEventMouseMotion) -> void:
 	if _is_dragging:
 		_move_arrow(event.position.x)
-
-
-func _on_idle_avatar_image_dropped(texture: ImageTexture) -> void:
-	idle_texture_dropped.emit(texture)
-
-
-func _on_speak_avatar_image_dropped(texture: ImageTexture) -> void:
-	speak_texture_dropped.emit(texture)

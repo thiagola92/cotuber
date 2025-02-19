@@ -1,7 +1,9 @@
-# Cotuber
-export/**
-!export/.gitkeep
-!export/linux/.gitkeep
+# Project
+/export/**
+!/export/.gitkeep
+!/export/linux/.gitkeep
+!/export/windows/.gitkeep
+!/export/macos/.gitkeep
 
 # Godot 4+ specific ignores
 .godot/
