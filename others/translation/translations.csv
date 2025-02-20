@@ -57,3 +57,4 @@ NETWORK_CONTAINER_CLIENT_EXPLANATION,"[p]The classic [i]peer-to-peer[/i] (P2P) c
 [p]Here you will connect to a server through IP and a specific port.[/p]","[p]The classic [i]peer-to-peer[/i] (P2P) connection where everybody notify each other about status change.[/p]
 [center][img]res://components/voice_servers_containers/network_container/server_container/p2p.svg[/img][/center]
 [p]Here you will connect to a server through IP and a specific port.[/p]"
+VISIBILITY_BUTTON_WARNING,Double click to show user interface again,Clique duas vezes para exibir a interface
