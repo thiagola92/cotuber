@@ -55,9 +55,9 @@ func save(character: CharacterData, path: String) -> void:
 	
 	var json = JSON.stringify({
 		"minimum_volume": character.minimum_volume,
-		"image_position": character.image_position,
-		"image_size": character.image_size,
-		"background_color": character.background_color.to_html(),
+		"image_position": JSON.from_native(character.image_position),
+		"image_size": JSON.from_native(character.image_size),
+		"background_color": JSON.from_native(character.background_color),
 		"states": states
 	}, "  ", false)
 	

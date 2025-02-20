@@ -2,8 +2,9 @@ class_name Avatar
 extends Control
 
 
-# Double clicking the avatar should also make buttons visible.
 signal double_clicked
+
+signal dragged
 
 var _is_dragging := false
 
@@ -51,6 +52,13 @@ func set_textures(idle: Texture2D, speaking: Texture2D) -> void:
 	_speaking_avatar.set_texture(speaking)
 
 
+func set_avatar_size(s: Vector2) -> void:
+	size = s
+	
+	_idle_avatar.update_size(size - _top_left.size)
+	_speaking_avatar.update_size(size - _top_left.size)
+
+
 func hide_tools() -> void:
 	_top_left.hide()
 	_top_right.hide()
@@ -84,16 +92,15 @@ func _on_top_left_gui_input(event: InputEvent) -> void:
 			_dragging_limit = global_position + size
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			_is_dragging = false
+			dragged.emit()
 	elif event is InputEventMouseMotion:
 		if _is_dragging:
 			global_position = Vector2(
 				min(global_position.x + event.relative.x, _dragging_limit.x),
 				min(global_position.y + event.relative.y, _dragging_limit.y),
 			)
-			size -= event.relative
 			
-			_idle_avatar.update_size(_middle.size)
-			_speaking_avatar.update_size(_middle.size)
+			set_avatar_size(size - event.relative)
 
 
 func _on_top_right_gui_input(event: InputEvent) -> void:
@@ -106,17 +113,18 @@ func _on_top_right_gui_input(event: InputEvent) -> void:
 			)
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			_is_dragging = false
+			dragged.emit()
 	elif event is InputEventMouseMotion:
 		if _is_dragging:
 			global_position = Vector2(
 				_dragging_limit.x,
 				min(global_position.y + event.relative.y, _dragging_limit.y),
 			)
-			size.x += event.relative.x
-			size.y -= event.relative.y
 			
-			_idle_avatar.update_size(_middle.size)
-			_speaking_avatar.update_size(_middle.size)
+			set_avatar_size(Vector2(
+				size.x + event.relative.x,
+				size.y - event.relative.y
+			))
 
 
 func _on_middle_gui_input(event: InputEvent) -> void:
@@ -125,6 +133,7 @@ func _on_middle_gui_input(event: InputEvent) -> void:
 			_is_dragging = true
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			_is_dragging = false
+			dragged.emit()
 	elif event is InputEventMouseMotion:
 		if _is_dragging:
 			global_position += event.relative
@@ -140,17 +149,18 @@ func _on_bottom_left_gui_input(event: InputEvent) -> void:
 			)
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			_is_dragging = false
+			dragged.emit()
 	elif event is InputEventMouseMotion:
 		if _is_dragging:
 			global_position = Vector2(
 				min(global_position.x + event.relative.x, _dragging_limit.x),
 				_dragging_limit.y,
 			)
-			size.x -= event.relative.x
-			size.y += event.relative.y
 			
-			_idle_avatar.update_size(_middle.size)
-			_speaking_avatar.update_size(_middle.size)
+			set_avatar_size(Vector2(
+				size.x - event.relative.x,
+				size.y + event.relative.y
+			))
 
 
 func _on_bottom_right_gui_input(event: InputEvent) -> void:
@@ -160,9 +170,7 @@ func _on_bottom_right_gui_input(event: InputEvent) -> void:
 			_dragging_limit = global_position
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			_is_dragging = false
+			dragged.emit()
 	elif event is InputEventMouseMotion:
 		if _is_dragging:
-			size += event.relative
-			
-			_idle_avatar.update_size(_middle.size)
-			_speaking_avatar.update_size(_middle.size)
+			set_avatar_size(size + event.relative)

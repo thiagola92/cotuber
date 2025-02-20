@@ -1,6 +1,8 @@
 extends ColorRect
 
 
+var default_color := Color.hex(0x4d4d4dff)
+
 ## Variable to toggle between live color and darkened color.
 var live: bool = false:
 	set(b):

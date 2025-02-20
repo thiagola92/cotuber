@@ -29,9 +29,9 @@ func _on_file_dialog_file_selected(path: String) -> void:
 	
 	var character := CharacterData.new()
 	character.minimum_volume = c["minimum_volume"]
-	character.image_position = type_convert(c["image_position"], TYPE_VECTOR2)
-	character.image_size =  type_convert(c["image_size"], TYPE_VECTOR2)
-	character.background_color = Color.from_string(c["background_color"], Color.YELLOW)
+	character.image_position = JSON.to_native(c["image_position"])
+	character.image_size =  JSON.to_native(c["image_size"])
+	character.background_color = JSON.to_native(c["background_color"])
 	character.states.clear()
 	
 	for s in c["states"]:

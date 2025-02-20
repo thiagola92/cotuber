@@ -32,6 +32,7 @@ var _state_index := 0
 
 
 func _ready() -> void:
+	_character.image_position = _avatar.global_position
 	_voice_server.create_user(_voice_server.id, _character)
 	
 	_reload()
@@ -72,8 +73,10 @@ func _reload() -> void:
 	_idle_avatar_button.icon = idle_texture
 	_speaking_avatar_button.icon = speaking_texture
 	_avatar.set_textures(idle_texture, speaking_texture)
-	_states_menu.fill_states_list(_character.states, _state_index)
+	_avatar.set_avatar_size(_character.image_size)
 	_avatar.show_idle_avatar()
+	_states_menu.fill_states_list(_character.states, _state_index)
+	_avatar.global_position = _character.image_position
 	
 	# Initialize all plugins.
 	for plugin in state.plugins:
@@ -253,3 +256,8 @@ func _on_voice_server_offline_voice_stopped(_voice_id: String) -> void:
 
 func _on_avatar_double_clicked() -> void:
 	_on_visibility_button_canvas_double_clicked()
+
+
+func _on_avatar_dragged() -> void:
+	_character.image_position = _avatar.global_position
+	_character.image_size = _avatar.size

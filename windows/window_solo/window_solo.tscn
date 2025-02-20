@@ -157,3 +157,4 @@ unique_name_in_owner = true
 [connection signal="voice_stopped" from="VoiceServerOffline" to="." method="_on_voice_server_offline_voice_stopped"]
 [connection signal="volume_changed" from="VoiceServerOffline" to="." method="_on_voice_server_offline_volume_changed"]
 [connection signal="double_clicked" from="Image/Avatar" to="." method="_on_avatar_double_clicked"]
+[connection signal="dragged" from="Image/Avatar" to="." method="_on_avatar_dragged"]

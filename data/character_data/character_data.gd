@@ -12,7 +12,7 @@ var id: String = ""
 @export var image_position: Vector2
 
 ## Size for both images.
-@export var image_size: Vector2
+@export var image_size: Vector2 = Vector2(400, 400)
 
 ## Color to be used as background.
 @export var background_color: Color = Color.html("#4d4d4d")
