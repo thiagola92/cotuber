@@ -14,8 +14,6 @@ var _dragging_limit: Vector2
 
 @onready var _top_right := %TopRight
 
-@onready var _middle := %Middle
-
 @onready var _idle_avatar := %IdleAvatar
 
 @onready var _speaking_avatar := %SpeakingAvatar
@@ -55,8 +53,8 @@ func set_textures(idle: Texture2D, speaking: Texture2D) -> void:
 func set_avatar_size(s: Vector2) -> void:
 	size = s
 	
-	_idle_avatar.update_size(size - _top_left.size)
-	_speaking_avatar.update_size(size - _top_left.size)
+	_idle_avatar.update_size(size - _top_left.size * 2)
+	_speaking_avatar.update_size(size - _top_left.size * 2)
 
 
 func hide_tools() -> void:

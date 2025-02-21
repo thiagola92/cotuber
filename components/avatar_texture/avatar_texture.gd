@@ -15,6 +15,7 @@ var clone: TextureRect
 func set_texture(texture: Texture2D) -> void:
 	_original.texture = texture
 	_original.hide()
+	_clone_area.show()
 	create_clone()
 
 

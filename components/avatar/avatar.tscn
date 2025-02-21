@@ -48,7 +48,6 @@ mouse_default_cursor_shape = 11
 texture = ExtResource("3_n4lnr")
 
 [node name="Middle" type="MarginContainer" parent="Container"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 13

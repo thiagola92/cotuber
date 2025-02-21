@@ -10,7 +10,7 @@ mouse_filter = 2
 script = ExtResource("1_npx06")
 
 [node name="OriginalTexture" type="TextureRect" parent="."]
-layout_mode = 0
+layout_mode = 1
 offset_right = 400.0
 offset_bottom = 400.0
 mouse_filter = 2
@@ -19,6 +19,6 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="CloneArea" type="Control" parent="."]
+visible = false
+layout_mode = 1
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
