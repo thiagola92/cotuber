@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 run/low_processor_mode=true
 boot_splash/image="res://others/images/splash.png"
 config/icon="uid://74km8aar7lx6"
+config/windows_native_icon="res://others/images/icon.ico"
 
 [audio]
 
