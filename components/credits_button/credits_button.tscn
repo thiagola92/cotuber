@@ -32,7 +32,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[img]res://others/icon.svg[/img]
+text = "[img=100x100]res://others/images/splash.png[/img]
 
 Copyright © 2024-2025 [url=https://github.com/thiagola92]ThiagoLA92[/url]"
 horizontal_alignment = 1
