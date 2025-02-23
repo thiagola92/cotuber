@@ -2,9 +2,11 @@
 /export/linux/**
 /export/windows/**
 /export/macos/**
+/export/web/**
 !/export/linux/.gitkeep
 !/export/windows/.gitkeep
 !/export/macos/.gitkeep
+!/export/web/.gitkeep
 
 # Godot 4+ specific ignores
 .godot/
