@@ -24,12 +24,13 @@ var _state_index := 0
 
 # Called when scene enters the tree, so make sure that voice_server is setted.
 func _ready() -> void:
+	OSShortcut.target_focus = self
+	
 	voice_server.create_user(voice_server.id, _character)
 	voice_server.voice_connected.connect(_on_voice_server_voice_connected)
 	voice_server.voice_disconnected.connect(_on_voice_server_voice_disconnected)
 	voice_server.voice_started.connect(_on_voice_server_voice_started)
 	voice_server.voice_stopped.connect(_on_voice_server_voice_stopped)
-	
 	_reload_yourself()
 	_reload_friends()
 
@@ -57,6 +58,23 @@ func _process_friends() -> void:
 				friend.avatar.get_idle_texture(),
 				friend.avatar.get_speaking_texture()
 			)
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	event = event as InputEventKey
+	
+	if event.pressed:
+		_unhandled_key_press(event)
+
+
+func _unhandled_key_press(event: InputEventKey) -> void:
+	for index in _character.states.size():
+		var state = _character.states[index]
+		
+		if state.shortcut and state.shortcut.as_text() == event.as_text():
+			_state_index = index
+			_reload_yourself()
+			return
 
 
 func _reload_yourself() -> void:

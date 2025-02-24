@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0dnfgv3aly6x"]
 
-[ext_resource type="Script" path="res://singletons/background_color/background_color.gd" id="1_ybebd"]
+[ext_resource type="Script" uid="uid://dq6r3qmxc1ey8" path="res://singletons/background_color/background_color.gd" id="1_ybebd"]
 
 [node name="BackgroundColor" type="ColorRect"]
 anchors_preset = 15

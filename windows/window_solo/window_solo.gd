@@ -32,9 +32,10 @@ var _state_index := 0
 
 
 func _ready() -> void:
+	OSShortcut.target_focus = self
 	_character.image_position = _avatar.global_position
-	_voice_server.create_user(_voice_server.id, _character)
 	
+	_voice_server.create_user(_voice_server.id, _character)
 	_reload()
 
 
@@ -44,8 +45,10 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		_unhandled_key_press(event as InputEventKey)
+	event = event as InputEventKey
+	
+	if event.pressed:
+		_unhandled_key_press(event)
 
 
 func _unhandled_key_press(event: InputEventKey) -> void:
