@@ -19,7 +19,7 @@ var live_color: Color = Color.hex(0x4d4d4dff):
 		live_color = c
 		
 		# When the user change the live color,
-		# you may need to darkneded it if the user is not live.
+		# We may need to darkneded it if the user is not live.
 		if live:
 			color = live_color
 		else:

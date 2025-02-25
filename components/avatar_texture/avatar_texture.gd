@@ -27,7 +27,7 @@ func update_size(s: Vector2) -> void:
 
 ## Free previous clone and create a new one.[br]
 ## Used when loading a character or adding/removing plugins,
-## because this cases you need to reapply all plugins to the base texture.
+## because in this cases we need to reapply all plugins to the base texture.
 func create_clone() -> TextureRect:
 	var was_visible: bool = true
 	

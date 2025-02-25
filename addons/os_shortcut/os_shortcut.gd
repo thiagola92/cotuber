@@ -12,7 +12,7 @@ var target_focus: Control:
 	set(t):
 		if target_focus:
 			target_focus.tree_exiting.disconnect(_remove_target_focus)
-			
+		
 		target_focus = t
 		
 		if target_focus:

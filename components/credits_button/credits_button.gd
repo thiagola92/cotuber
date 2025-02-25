@@ -12,5 +12,5 @@ func _on_window_close_requested() -> void:
 	_window.hide()
 
 
-func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
+func _on_credits_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(meta)

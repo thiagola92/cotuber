@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjhbx52x4e2lc"]
 
-[ext_resource type="Script" path="res://singletons/plugins_dir/plugins_dir.gd" id="1_ugx1d"]
+[ext_resource type="Script" uid="uid://dshm80wk4nsuw" path="res://singletons/plugins_dir/plugins_dir.gd" id="1_ugx1d"]
 
 [node name="PluginsDir" type="Node"]
 script = ExtResource("1_ugx1d")
