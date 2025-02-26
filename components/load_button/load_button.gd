@@ -4,39 +4,24 @@ extends Button
 
 signal character_loaded(character: CharacterData)
 
-# On Web, we only have access to a temporary location,
-# so we can only receive files if the user interact
-# with an input and select it through browser prompt.
-var _html_input: JavaScriptObject
-
-var _on_html_input_change_callback := JavaScriptBridge.create_callback(
-	_on_html_input_change
-)
-
-var _on_array_buffer_callback := JavaScriptBridge.create_callback(
-	_on_array_buffer
-)
-
 @onready var _file_dialog := $FileDialog
+
+@onready var _load_input: LoadInput = $LoadInput
 
 
 func _ready() -> void:
 	if OS.get_name() == "Web":
-		var document = JavaScriptBridge.get_interface("document")
-		_html_input = document.createElement("input")
-		_html_input.type = "file"
-		_html_input.accept = ".zip"
-		_html_input.onchange = _on_html_input_change_callback
+		_load_input.init()
 
 
 func _on_pressed() -> void:
 	if OS.get_name() == "Web":
-		return _html_input.click()
+		return _load_input.click()
 	
 	_file_dialog.popup_centered()
 
 
-func _on_file_dialog_file_selected(path: String) -> void:
+func _load(path: String) -> void:
 	var zip := ZIPReader.new()
 	var error := zip.open(path)
 	
@@ -134,21 +119,14 @@ func _on_file_dialog_file_selected(path: String) -> void:
 	character_loaded.emit(character)
 
 
-func _on_html_input_change(args) -> void:
-	var window = JavaScriptBridge.get_interface("window")
-	var event = args[0]
-	var files = event.target.files
-	var file = files[0]
-	file.arrayBuffer().then(_on_array_buffer_callback)
+func _on_file_dialog_file_selected(path: String) -> void:
+	_load(path)
 
 
-func _on_array_buffer(args) -> void:
-	if not JavaScriptBridge.is_js_buffer(args[0]):
-		return
+func _on_load_input_file_received(file: PackedByteArray) -> void:
+	var error := TmpDir.create_tmp_file_with_bytes("character.zip", file)
 	
-	var zip := JavaScriptBridge.js_buffer_to_packed_byte_array(args[0])
-	var error := TmpDir.create_tmp_file_with_bytes(
-		"character.zip", zip
-	)
+	if error:
+		return push_error("Failed to create temporary ZIP (error: %s)", error)
 	
-	_on_file_dialog_file_selected(TmpDir.path("character.zip"))
+	_load(TmpDir.path("character.zip"))

@@ -1,11 +1,6 @@
 extends Button
 
 
-# On Web, we only have access to a temporary location,
-# so we create our zip there and later let the browser
-# prompt the user where he wants to save it.
-const TEMPORARY_ZIP = "/tmp/character.zip"
-
 signal save_requested(path: String)
 
 @onready var _file_dialog := $FileDialog
@@ -71,16 +66,20 @@ func save(character: CharacterData, path: String) -> void:
 	zip.close_file()
 	zip.close()
 	
+	# On Web, ask the user where he wants to save it.
 	if OS.get_name() == "Web":
 		JavaScriptBridge.download_buffer(
-			FileAccess.get_file_as_bytes(TEMPORARY_ZIP),
+			FileAccess.get_file_as_bytes(TmpDir.path("character.zip")),
 			"character.zip"
 		)
 
 
 func _on_pressed() -> void:
+	# On Web, we can't access files and directories directly.
+	# So we create a temporary ZIP and later ask browser
+	# to prompt the user where he wants to save it.
 	if OS.get_name() == "Web":
-		return save_requested.emit(TEMPORARY_ZIP)
+		return save_requested.emit(TmpDir.path("character.zip"))
 	
 	_file_dialog.popup_centered()
 

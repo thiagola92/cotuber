@@ -6,6 +6,7 @@ const PATH := "user://tmp"
 
 func _ready() -> void:
 	_make_dir()
+	_clear_dir()
 
 
 func _make_dir() -> void:
@@ -13,6 +14,14 @@ func _make_dir() -> void:
 	
 	if error and error != 32:
 		push_error("Fail to create temporary directory (error: %s)" % error)
+
+
+func _clear_dir() -> void:
+	for filename in DirAccess.get_files_at(PATH):
+		var error := DirAccess.remove_absolute(path(filename))
+		
+		if error:
+			push_error("Fail to remove temporary file (error: %s)", error)
 
 
 func path(filename: String) -> String:
@@ -41,8 +50,3 @@ func create_tmp_file_with_bytes(filename: String, content: PackedByteArray) -> E
 	tmp.close()
 	
 	return OK
-
-
-# TODO
-func delete_tmp_files() -> void:
-	pass

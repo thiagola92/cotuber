@@ -51,6 +51,7 @@ text = "WINDOW_MAIN_SOLO"
 horizontal_alignment = 1
 
 [node name="Coop" type="VBoxContainer" parent="VBoxContainer/Options"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 

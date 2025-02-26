@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://fo22y6l2sabw"]
+[gd_scene load_steps=6 format=3 uid="uid://fo22y6l2sabw"]
 
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_dkaol"]
 [ext_resource type="Script" uid="uid://bbv6rk67x46l8" path="res://components/load_button/load_button.gd" id="1_ksdp7"]
 [ext_resource type="Texture2D" uid="uid://cu3ngk2s1sks" path="res://components/load_button/load.svg" id="1_rpaqg"]
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_unotj"]
+[ext_resource type="PackedScene" uid="uid://dukt0n0p7booc" path="res://components/load_input/load_input.tscn" id="5_q2wi8"]
 
 [node name="LoadButton" type="Button"]
 theme_override_styles/focus = ExtResource("1_dkaol")
@@ -25,5 +26,8 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.zip")
 
+[node name="LoadInput" parent="." instance=ExtResource("5_q2wi8")]
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="file_received" from="LoadInput" to="." method="_on_load_input_file_received"]
