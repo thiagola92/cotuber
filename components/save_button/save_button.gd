@@ -1,9 +1,9 @@
 extends Button
 
 
-## On Web, we only have access to a temporary location,
-## so we create our zip there and later let the browser
-## prompt the user where he wants to save it.
+# On Web, we only have access to a temporary location,
+# so we create our zip there and later let the browser
+# prompt the user where he wants to save it.
 const TEMPORARY_ZIP = "/tmp/character.zip"
 
 signal save_requested(path: String)
