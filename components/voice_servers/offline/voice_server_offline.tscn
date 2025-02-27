@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rhxby3p23oe8"]
 
-[ext_resource type="Script" path="res://components/voice_servers/offline/voice_server_offline.gd" id="1_1xfaq"]
+[ext_resource type="Script" uid="uid://bkdcwjhh3rme7" path="res://components/voice_servers/offline/voice_server_offline.gd" id="1_1xfaq"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_u2bnq"]
 
