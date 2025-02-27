@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 	# SECURITY: Resizing window when transparent is enabled, can
 	# make the window transparent while resizing (will ignore the background color).
-	# This is dangerous because we don't know what the stream has behind the application,
-	# and would be exposed during resizing.
+	# This is dangerous because we don't know what the stream has behind the
+	# application, and would be exposed during resizing.
 	# NOTE: Why change this through code? So I can explain the reason...
-	get_window().unresizable = true
+	# get_window().unresizable = true

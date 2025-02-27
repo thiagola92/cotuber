@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://chy5v4fhy45eu"]
+[gd_scene load_steps=6 format=3 uid="uid://chy5v4fhy45eu"]
 
 [ext_resource type="Texture2D" uid="uid://dal3yvoqqda3" path="res://components/avatar_button/add.svg" id="1_b1uyy"]
-[ext_resource type="Script" path="res://components/avatar_button/avatar_button.gd" id="1_g3u5u"]
+[ext_resource type="Script" uid="uid://cacqsqmm8omkc" path="res://components/avatar_button/avatar_button.gd" id="1_g3u5u"]
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_jdlkb"]
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_xqmbm"]
+[ext_resource type="PackedScene" uid="uid://dukt0n0p7booc" path="res://components/load_input/load_input.tscn" id="5_d0kjv"]
 
 [node name="AvatarButton" type="Button"]
 custom_minimum_size = Vector2(96, 96)
@@ -24,5 +25,9 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.svg", "*.webp")
 
+[node name="LoadInput" parent="." instance=ExtResource("5_d0kjv")]
+accept = PackedStringArray(".png", ".jpg", ".jpeg", ".svg", ".webp")
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="file_received" from="LoadInput" to="." method="_on_load_input_file_received"]

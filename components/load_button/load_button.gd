@@ -123,10 +123,10 @@ func _on_file_dialog_file_selected(path: String) -> void:
 	_load(path)
 
 
-func _on_load_input_file_received(file: PackedByteArray) -> void:
-	var error := TmpDir.create_tmp_file_with_bytes("character.zip", file)
+func _on_load_input_file_received(file: PackedByteArray, filename: String) -> void:
+	var error := TmpDir.create_tmp_file_with_bytes(filename, file)
 	
 	if error:
 		return push_error("Failed to create temporary ZIP (error: %s)", error)
 	
-	_load(TmpDir.path("character.zip"))
+	_load(TmpDir.path(filename))
