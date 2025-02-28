@@ -141,6 +141,7 @@ unique_name_in_owner = true
 [connection signal="background_changed" from="UI/Margin/Container/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
 [connection signal="shortcut_changed" from="UI/Margin/Container/MiddleContainer/ShortcutButton" to="." method="_on_shortcut_button_shortcut_changed"]
 [connection signal="create_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_create_requested"]
+[connection signal="delete_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_delete_requested"]
 [connection signal="move_requested" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_move_requested"]
 [connection signal="pressed" from="UI/Margin/Container/MiddleContainer/StatesMenu" to="." method="_on_states_menu_pressed"]
 [connection signal="canvas_double_clicked" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_canvas_double_clicked"]

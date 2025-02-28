@@ -155,6 +155,28 @@ func _on_states_menu_create_requested() -> void:
 	_plugins_popup.reload_plugins_list(_character.states[_state_index].plugins)
 
 
+func _on_states_menu_delete_requested(index: int) -> void:
+	var last_index = _character.states.size() - 1
+	
+	# Force the user to have at least one state.
+	if last_index <= 0:
+		return
+	
+	if index < _state_index:
+		# When removing from behind, "_state_index" needs to update.
+		_state_index -= 1
+	elif index == _state_index and index == last_index:
+		# When removing the "_state_index", the default behavior is poiting
+		# to the next one, unless the there is no next one...
+		_state_index -= 1
+	
+	_character.states.remove_at(index)
+	_reload()
+	
+	# Reaload windows/popups in case they are visible.
+	_plugins_popup.reload_plugins_list(_character.states[_state_index].plugins)
+
+
 func _on_states_menu_pressed(index: int) -> void:
 	_state_index = index
 	

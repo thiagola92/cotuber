@@ -4,6 +4,8 @@ extends Button
 
 signal move_requested(from: int, to: int)
 
+signal options_requested(index: int)
+
 const button_shiny := preload("res://components/states_menu/state_button/button_shiny.tres")
 
 const button_shiny_pressed := preload("res://components/states_menu/state_button/button_shiny_pressed.tres")
@@ -65,6 +67,16 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		move_requested.emit(data.index, index)
 	else:
 		move_requested.emit(data.index, index + 1)
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		_on_mouse_button(event)
+
+
+func _on_mouse_button(event: InputEventMouseButton) -> void:
+	if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		options_requested.emit(index)
 
 
 func _on_mouse_entered() -> void:

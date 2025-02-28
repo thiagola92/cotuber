@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c264d30ssk5ew"]
 
-[ext_resource type="Script" path="res://components/states_menu/state_button/state_button.gd" id="1_3xgkx"]
+[ext_resource type="Script" uid="uid://d3v0ewc2y7k8x" path="res://components/states_menu/state_button/state_button.gd" id="1_3xgkx"]
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_k1g3v"]
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_ure01"]
 [ext_resource type="Texture2D" uid="uid://btdl8brvwokcb" path="res://components/states_menu/state_button/line.svg" id="4_yulib"]
@@ -34,6 +34,7 @@ grow_horizontal = 2
 texture = ExtResource("4_yulib")
 stretch_mode = 4
 
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
