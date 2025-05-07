@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxl4crdpgpu5w"]
+
+[ext_resource type="Script" uid="uid://dcgcm2j1norfv" path="res://windows/window_servers/servers_containers/network_container/server_container/server_container.gd" id="1_x6472"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxip1"]
+
+[node name="ServerContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_x6472")
+metadata/_tab_index = 0
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Explanation" type="RichTextLabel" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "NETWORK_CONTAINER_SERVER_EXPLANATION"
+
+[node name="GridContainer" type="GridContainer" parent="Container"]
+layout_mode = 2
+columns = 3
+
+[node name="PortLabel" type="Label" parent="Container/GridContainer"]
+layout_mode = 2
+text = "NETWORK_CONTAINER_PORT"
+
+[node name="PortEdit" type="LineEdit" parent="Container/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "9921"
+
+[node name="PortError" type="Label" parent="Container/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dxip1")
+text = "NETWORK_CONTAINER_START"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+title = "ALERT"
+ok_button_text = "Ok"
+
+[connection signal="meta_clicked" from="Container/Explanation" to="." method="_on_explanation_meta_clicked"]
+[connection signal="text_changed" from="Container/GridContainer/PortEdit" to="." method="_on_port_edit_text_changed"]
+[connection signal="pressed" from="Container/StartButton" to="." method="_on_start_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cudtyln6kq7o0"]
+[gd_scene load_steps=11 format=3 uid="uid://cudtyln6kq7o0"]
 
 [ext_resource type="StyleBox" uid="uid://bthiule6t6e64" path="res://styles/button.tres" id="1_onhom"]
 [ext_resource type="Script" uid="uid://0gwelj1gqcjw" path="res://windows/window_servers/window_servers.gd" id="1_q726x"]
@@ -6,8 +6,9 @@
 [ext_resource type="StyleBox" uid="uid://hfxl0d1v6t3w" path="res://styles/button_pressed.tres" id="2_fcleu"]
 [ext_resource type="Texture2D" uid="uid://qyw40fa2wfni" path="res://windows/window_servers/discord.svg" id="4_iwwqb"]
 [ext_resource type="Texture2D" uid="uid://d0ttchgepayp6" path="res://windows/window_servers/steam.svg" id="5_36s7u"]
-[ext_resource type="PackedScene" uid="uid://c2wfdnw0ljktv" path="res://components/voice_servers_containers/network_container/network_container.tscn" id="6_jl7l5"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="7_odhsx"]
+[ext_resource type="PackedScene" uid="uid://dxhurq5gsukhi" path="res://windows/window_servers/discord/discord.tscn" id="9_hvyb8"]
+[ext_resource type="PackedScene" uid="uid://6mppc2e7jyi6" path="res://windows/window_servers/network/network.tscn" id="9_vqoif"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wukd1"]
 
@@ -52,7 +53,6 @@ theme_override_styles/normal = ExtResource("1_onhom")
 icon = ExtResource("1_ywjwy")
 
 [node name="Discord" type="Button" parent="HBoxContainer/ScrollContainer/Options"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/focus = ExtResource("1_onhom")
@@ -83,9 +83,16 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_wukd1")
 current_tab = 0
 tabs_visible = false
 
-[node name="NetworkContainer" parent="HBoxContainer/TabContainer" instance=ExtResource("6_jl7l5")]
+[node name="Network" parent="HBoxContainer/TabContainer" instance=ExtResource("9_vqoif")]
 layout_mode = 2
 metadata/_tab_index = 0
 
+[node name="Discord" parent="HBoxContainer/TabContainer" instance=ExtResource("9_hvyb8")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
 [connection signal="pressed" from="HBoxContainer/ScrollContainer/Options/Network" to="." method="_on_network_pressed"]
-[connection signal="voice_server_created" from="HBoxContainer/TabContainer/NetworkContainer" to="." method="_on_voice_server_created"]
+[connection signal="pressed" from="HBoxContainer/ScrollContainer/Options/Discord" to="." method="_on_discord_pressed"]
+[connection signal="voice_server_created" from="HBoxContainer/TabContainer/Network" to="." method="_on_network_voice_server_created"]
+[connection signal="voice_server_created" from="HBoxContainer/TabContainer/Discord" to="." method="_on_discord_voice_server_created"]

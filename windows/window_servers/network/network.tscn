@@ -1,0 +1,131 @@
+[gd_scene load_steps=3 format=3 uid="uid://6mppc2e7jyi6"]
+
+[ext_resource type="Script" uid="uid://cdnflldirqdd6" path="res://windows/window_servers/network/network.gd" id="1_aswll"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aswll"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.25098, 0.25098, 0.25098, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="Network" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aswll")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Select" type="Button" parent="."]
+layout_mode = 2
+text = "NETWORK_SELECT"
+
+[node name="WindowForm" type="Window" parent="."]
+initial_position = 1
+size = Vector2i(650, 300)
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowForm"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowForm/MarginContainer"]
+layout_mode = 2
+
+[node name="ServerContainer" type="VBoxContainer" parent="WindowForm/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="WindowForm/MarginContainer/HBoxContainer/ServerContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="ServerPortLabel" type="Label" parent="WindowForm/MarginContainer/HBoxContainer/ServerContainer/GridContainer"]
+layout_mode = 2
+text = "NETWORK_PORT"
+
+[node name="ServerPortEdit" type="LineEdit" parent="WindowForm/MarginContainer/HBoxContainer/ServerContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9921"
+
+[node name="ServerError" type="Label" parent="WindowForm/MarginContainer/HBoxContainer/ServerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+horizontal_alignment = 1
+
+[node name="HostButton" type="Button" parent="WindowForm/MarginContainer/HBoxContainer/ServerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "NETWORK_HOST"
+
+[node name="VSeparator" type="VSeparator" parent="WindowForm/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_aswll")
+
+[node name="ClientContainer" type="VBoxContainer" parent="WindowForm/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="WindowForm/MarginContainer/HBoxContainer/ClientContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="ClientIPLabel" type="Label" parent="WindowForm/MarginContainer/HBoxContainer/ClientContainer/GridContainer"]
+layout_mode = 2
+text = "NETWORK_IP"
+
+[node name="ClientIPEdit" type="LineEdit" parent="WindowForm/MarginContainer/HBoxContainer/ClientContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "127.0.0.1"
+
+[node name="ClientPortLabel" type="Label" parent="WindowForm/MarginContainer/HBoxContainer/ClientContainer/GridContainer"]
+layout_mode = 2
+text = "NETWORK_PORT"
+
+[node name="ClientPortEdit" type="LineEdit" parent="WindowForm/MarginContainer/HBoxContainer/ClientContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9921"
+
+[node name="ClientError" type="Label" parent="WindowForm/MarginContainer/HBoxContainer/ClientContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+horizontal_alignment = 1
+
+[node name="ConnectButton" type="Button" parent="WindowForm/MarginContainer/HBoxContainer/ClientContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "NETWORK_CONNECT"
+
+[connection signal="pressed" from="Select" to="." method="_on_select_pressed"]
+[connection signal="close_requested" from="WindowForm" to="." method="_on_window_form_close_requested"]
+[connection signal="focus_exited" from="WindowForm" to="." method="_on_window_form_focus_exited"]
+[connection signal="text_changed" from="WindowForm/MarginContainer/HBoxContainer/ServerContainer/GridContainer/ServerPortEdit" to="." method="_on_server_port_edit_text_changed"]
+[connection signal="pressed" from="WindowForm/MarginContainer/HBoxContainer/ServerContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="text_changed" from="WindowForm/MarginContainer/HBoxContainer/ClientContainer/GridContainer/ClientIPEdit" to="." method="_on_client_ip_edit_text_changed"]
+[connection signal="text_changed" from="WindowForm/MarginContainer/HBoxContainer/ClientContainer/GridContainer/ClientPortEdit" to="." method="_on_client_port_edit_text_changed"]
+[connection signal="pressed" from="WindowForm/MarginContainer/HBoxContainer/ClientContainer/ConnectButton" to="." method="_on_connect_button_pressed"]
