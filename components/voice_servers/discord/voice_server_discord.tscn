@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1eg1cj6f2mjp"]
+
+[ext_resource type="Script" uid="uid://cj0stn7daotp4" path="res://components/voice_servers/discord/voice_server_discord.gd" id="1_eem8r"]
+
+[node name="VoiceServerDiscord" type="Node"]
+script = ExtResource("1_eem8r")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

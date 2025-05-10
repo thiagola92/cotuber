@@ -79,7 +79,7 @@ func _on_host_button_pressed() -> void:
 	
 	multiplayer.multiplayer_peer = peer
 	
-	var voice_server := VoiceServerScene.instantiate() as VoiceServer
+	var voice_server := VoiceServerScene.instantiate() as VoiceServerNetwork
 	
 	_window_form.hide()
 	voice_server_created.emit(voice_server)
