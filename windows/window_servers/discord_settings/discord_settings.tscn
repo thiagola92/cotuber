@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxhurq5gsukhi"]
 
-[ext_resource type="Script" uid="uid://dmggh1j0l7okh" path="res://windows/window_servers/discord/discord.gd" id="1_nf8fk"]
+[ext_resource type="Script" uid="uid://dmggh1j0l7okh" path="res://windows/window_servers/discord_settings/discord_settings.gd" id="1_nf8fk"]
 
-[node name="Discord" type="VBoxContainer"]
+[node name="DiscordSettings" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,13 +10,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nf8fk")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "DISCORD_SETTINGS_EXPLANATION"
+
 [node name="Select" type="Button" parent="."]
 layout_mode = 2
-text = "DISCORD_SELECT"
+text = "DISCORD_SETTINGS_SELECT"
 
 [node name="WindowForm" type="Window" parent="."]
 initial_position = 1
@@ -37,30 +50,26 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="WindowForm/MarginContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="WindowForm/MarginContainer/VBoxContainer"]
+[node name="AppIdLabel" type="Label" parent="WindowForm/MarginContainer/VBoxContainer"]
 layout_mode = 2
-columns = 2
+text = "DISCORD_SETTINGS_APPLICATION_ID"
 
-[node name="AppIdLabel" type="Label" parent="WindowForm/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "DISCORD_APPLICATION_ID"
-
-[node name="AppIdEdit" type="LineEdit" parent="WindowForm/MarginContainer/VBoxContainer/GridContainer"]
+[node name="AppIdEdit" type="LineEdit" parent="WindowForm/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "000000000"
+placeholder_text = "DISCORD_SETTINGS_PLACEHOLDER_APP_ID"
 secret = true
 
-[node name="LobbyLabel" type="Label" parent="WindowForm/MarginContainer/VBoxContainer/GridContainer"]
+[node name="LobbyLabel" type="Label" parent="WindowForm/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "DISCORD_LOBBY"
+text = "DISCORD_SETTINGS_LOBBY"
 
-[node name="LobbyEdit" type="LineEdit" parent="WindowForm/MarginContainer/VBoxContainer/GridContainer"]
+[node name="LobbyEdit" type="LineEdit" parent="WindowForm/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Name"
+placeholder_text = "DISCORD_SETTINGS_PLACEHOLDER_LOBBY"
 secret = true
 
 [node name="Error" type="Label" parent="WindowForm/MarginContainer/VBoxContainer"]
@@ -72,11 +81,11 @@ horizontal_alignment = 1
 [node name="ConnectButton" type="Button" parent="WindowForm/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "DISCORD_CONNECT"
+text = "DISCORD_SETTINGS_CONNECT"
 
 [connection signal="pressed" from="Select" to="." method="_on_select_pressed"]
 [connection signal="close_requested" from="WindowForm" to="." method="_on_window_form_close_requested"]
 [connection signal="focus_exited" from="WindowForm" to="." method="_on_window_form_focus_exited"]
-[connection signal="text_changed" from="WindowForm/MarginContainer/VBoxContainer/GridContainer/AppIdEdit" to="." method="_on_app_id_edit_text_changed"]
-[connection signal="text_changed" from="WindowForm/MarginContainer/VBoxContainer/GridContainer/LobbyEdit" to="." method="_on_lobby_edit_text_changed"]
+[connection signal="text_changed" from="WindowForm/MarginContainer/VBoxContainer/AppIdEdit" to="." method="_on_app_id_edit_text_changed"]
+[connection signal="text_changed" from="WindowForm/MarginContainer/VBoxContainer/LobbyEdit" to="." method="_on_lobby_edit_text_changed"]
 [connection signal="pressed" from="WindowForm/MarginContainer/VBoxContainer/ConnectButton" to="." method="_on_connect_button_pressed"]

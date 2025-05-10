@@ -26,11 +26,11 @@ func _can_connect(app_id: String, lobby: String) -> bool:
 	_connect_error.text = ""
 	
 	if not app_id.is_valid_int():
-		_connect_error.text = "DISCORD_INVALID_APP_ID"
+		_connect_error.text = "DISCORD_SETTINGS_INVALID_APP_ID"
 		return false
 	
 	if lobby.is_empty():
-		_connect_error.text = "DISCORD_INVALID_LOBBY"
+		_connect_error.text = "DISCORD_SETTINGS_INVALID_LOBBY"
 		return false
 	
 	return true

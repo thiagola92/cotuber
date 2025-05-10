@@ -71,10 +71,10 @@ func _on_host_button_pressed() -> void:
 	
 	match error:
 		ERR_CANT_CREATE:
-			_server_error.text = "NETWORK_CONTAINER_UNKNOWN_ERROR"
+			_server_error.text = "NETWORK_SETTINGS_UNKNOWN_ERROR"
 			return
 		ERR_ALREADY_IN_USE:
-			_server_error.text = "NETWORK_CONTAINER_CONNECTION_IN_USE"
+			_server_error.text = "NETWORK_SETTINGS_CONNECTION_IN_USE"
 			return
 	
 	multiplayer.multiplayer_peer = peer
@@ -101,10 +101,10 @@ func _on_connect_button_pressed() -> void:
 	
 	match error:
 		ERR_CANT_CREATE:
-			_client_error.text = "NETWORK_CONTAINER_UNKNOWN_ERROR"
+			_client_error.text = "NETWORK_SETTINGS_UNKNOWN_ERROR"
 			return
 		ERR_ALREADY_IN_USE:
-			_client_error.text = "NETWORK_CONTAINER_CONNECTION_IN_USE"
+			_client_error.text = "NETWORK_SETTINGS_CONNECTION_IN_USE"
 			return
 	
 	multiplayer.multiplayer_peer = peer

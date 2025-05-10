@@ -17,11 +17,11 @@ func change_to_window_coop(voice_server: VoiceServer) -> void:
 
 
 func _on_network_pressed() -> void:
-	_tab_container.current_tab = 0
+	_tab_container.current_tab = 1
 
 
 func _on_discord_pressed() -> void:
-	_tab_container.current_tab = 1
+	_tab_container.current_tab = 2
 
 
 func _on_network_voice_server_created(voice_server: VoiceServer) -> void:

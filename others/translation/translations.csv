@@ -28,16 +28,14 @@ SHORTCUT_BUTTON_SAVE,Save,Salvar
 SHORTCUT_BUTTON_CLEAR,Clear,Limpar
 SHORTCUT_BUTTON_TITLE,Shortcut,Atalho
 SHORTCUT_BUTTON_CANCEL,Cancel,Cancelar
-NETWORK_CONTAINER_SERVER,Server,Servidor
-NETWORK_CONTAINER_CLIENT,Client,Cliente
-NETWORK_CONTAINER_PORT,Port: ,Porta
-NETWORK_CONTAINER_START,Start,Iniciar
-NETWORK_CONTAINER_IP,IP: ,IP
-NETWORK_CONTAINER_UNKNOWN_ERROR,Unknow error,Erro desconhecido
-NETWORK_CONTAINER_CONNECTION_IN_USE,Connection in use,Conexão em uso
-NETWORK_CONTAINER_INVALID_PORT,Invalid port,Porta inválida
-NETWORK_CONTAINER_INVALID_IP,Invalid IP,IP inválido
-NETWORK_CONTAINER_SERVER_EXPLANATION,"[p]The classic [i]peer-to-peer[/i] (P2P) connection where everybody notify each other about status change.[/p]
+NETWORK_SETTINGS_PORT,Port,Porta
+NETWORK_SETTINGS_START,Start,Iniciar: 
+NETWORK_SETTINGS_IP,IP,IP
+NETWORK_SETTINGS_UNKNOWN_ERROR,Unknow error,Erro desconhecido
+NETWORK_SETTINGS_CONNECTION_IN_USE,Connection in use,Conexão em uso
+NETWORK_SETTINGS_INVALID_PORT,Invalid port,Porta inválida
+NETWORK_SETTINGS_INVALID_IP,Invalid IP,IP inválido
+NETWORK_SETTINGS_EXPLANATION,"[p]The classic [i]peer-to-peer[/i] (P2P) connection where everybody notify each other about status change.[/p]
 [center][img]res://windows/window_servers/servers_containers/network_container/server_container/p2p.svg[/img][/center]
 [p]Somebody still needs to be the server because it’s through this person that everybody will find each other.[/p]
 [p]Here you will initialize a server in your computer so others can connect to it through your IP and a specific port.[/p]
@@ -58,3 +56,15 @@ NETWORK_CONTAINER_CLIENT_EXPLANATION,"[p]The classic [i]peer-to-peer[/i] (P2P) c
 [center][img]res://windows/window_servers/servers_containers/network_container/server_container/p2p.svg[/img][/center]
 [p]Here you will connect to a server through IP and a specific port.[/p]"
 VISIBILITY_BUTTON_WARNING,Double click to show user interface again,Clique duas vezes para exibir a interface
+NETWORK_SETTINGS_HOST,Host a server,Criar um server
+NETWORK_SETTINGS_CONNECT,Connect to a server,Conectar a um server
+NETWORK_SETTINGS_SELECT,Initialize network setup,Inicializar a configuração da rede
+DISCORD_SETTINGS_SELECT,Initialize Discord setup,Inicializar a configuração do Discord
+DISCORD_SETTINGS_CONNECT,Connect to Discord,Conectar ao Discord
+DISCORD_SETTINGS_APPLICATION_ID,Application ID,ID da Aplicação
+DISCORD_SETTINGS_LOBBY,Lobby,Lobby
+DISCORD_SETTINGS_EXPLANATION,Use Discord as infrastructure,Usa Discord como infraestrutura
+DISCORD_SETTINGS_PLACEHOLDER_LOBBY,Ex: my-lobby-name,Ex: nome-do-meu-lobby
+DISCORD_SETTINGS_PLACEHOLDER_APP_ID,Ex: 123456789012345678,Ex: 123456789012345678
+WINDOW_SERVERS_EXPLANATION,"[p align=center]On the left you can find options which you can connect to your friends[/p]
+[p align=center]Selecting one will explain how it works[/p]",""

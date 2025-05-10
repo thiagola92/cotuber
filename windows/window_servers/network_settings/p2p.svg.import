@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnpecnqsc1v5v"
-path="res://.godot/imported/modem2.svg-a3394cd4c912a6ae29962ec7dee84302.ctex"
+uid="uid://b42m6fx6jh7cg"
+path="res://.godot/imported/p2p.svg-2e4e3fa3e55ca6e440a7f5982d59dd64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://windows/window_servers/network/modem2.svg"
-dest_files=["res://.godot/imported/modem2.svg-a3394cd4c912a6ae29962ec7dee84302.ctex"]
+source_file="res://windows/window_servers/network_settings/p2p.svg"
+dest_files=["res://.godot/imported/p2p.svg-2e4e3fa3e55ca6e440a7f5982d59dd64.ctex"]
 
 [params]
 

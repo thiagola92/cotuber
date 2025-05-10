@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://qyw40fa2wfni" path="res://windows/window_servers/discord.svg" id="4_iwwqb"]
 [ext_resource type="Texture2D" uid="uid://d0ttchgepayp6" path="res://windows/window_servers/steam.svg" id="5_36s7u"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="7_odhsx"]
-[ext_resource type="PackedScene" uid="uid://dxhurq5gsukhi" path="res://windows/window_servers/discord/discord.tscn" id="9_hvyb8"]
-[ext_resource type="PackedScene" uid="uid://6mppc2e7jyi6" path="res://windows/window_servers/network/network.tscn" id="9_vqoif"]
+[ext_resource type="PackedScene" uid="uid://dxhurq5gsukhi" path="res://windows/window_servers/discord_settings/discord_settings.tscn" id="9_hvyb8"]
+[ext_resource type="PackedScene" uid="uid://6mppc2e7jyi6" path="res://windows/window_servers/network_settings/network_settings.tscn" id="9_vqoif"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wukd1"]
 
@@ -83,16 +83,29 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_wukd1")
 current_tab = 0
 tabs_visible = false
 
-[node name="Network" parent="HBoxContainer/TabContainer" instance=ExtResource("9_vqoif")]
+[node name="ServersExplanation" type="VBoxContainer" parent="HBoxContainer/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Discord" parent="HBoxContainer/TabContainer" instance=ExtResource("9_hvyb8")]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/TabContainer/ServersExplanation"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "WINDOW_SERVERS_EXPLANATION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NetworkSettings" parent="HBoxContainer/TabContainer" instance=ExtResource("9_vqoif")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="DiscordSettings" parent="HBoxContainer/TabContainer" instance=ExtResource("9_hvyb8")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
 [connection signal="pressed" from="HBoxContainer/ScrollContainer/Options/Network" to="." method="_on_network_pressed"]
 [connection signal="pressed" from="HBoxContainer/ScrollContainer/Options/Discord" to="." method="_on_discord_pressed"]
-[connection signal="voice_server_created" from="HBoxContainer/TabContainer/Network" to="." method="_on_network_voice_server_created"]
-[connection signal="voice_server_created" from="HBoxContainer/TabContainer/Discord" to="." method="_on_discord_voice_server_created"]
+[connection signal="voice_server_created" from="HBoxContainer/TabContainer/NetworkSettings" to="." method="_on_network_voice_server_created"]
+[connection signal="voice_server_created" from="HBoxContainer/TabContainer/DiscordSettings" to="." method="_on_discord_voice_server_created"]
