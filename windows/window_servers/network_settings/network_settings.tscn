@@ -35,52 +35,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=32][center]Network[/center][/font_size]
-The classic (and good) [i][url=https://en.wikipedia.org/wiki/Internet_protocol_suite]TCP/IP[/url][/i] Connection.
-Where one person it's the server and everybody can connect using the server IP & port.
-[center][img]res://windows/window_servers/network_settings/p2p.svg[/img][/center]
-After a client connect to the server, they can notify the server and others clients about status changes.
-
-[font_size=32][center]Clients[/center][/font_size]
-Just put the server IP & port... Internet will take you to the server.
-
-[font_size=32][center]Server[/center][/font_size]
-You have work to do... Make sure that your modem will not ignore your friends requests.
-[center][img]res://windows/window_servers/network_settings/modem.svg[/img][/center]
-
-[i]> How do I know my public IP?[/i]
-You can search on google \"my IP\" and many websites will tell you two IPs (IPv4 and IPv6), my recommendation is using IPv6.
-This IP let your friends find your modem.
-
-[i]> How do I know my private IP?[/i]
-if you are on Windows, you can... I don't remember now.
-If you are on Linux, you can put on terminal [code]ip address[/code].
-This IP let your modem find your computer.
-
-[i]> How do I know my port?[/i]
-Choose any number between 1023 and 65.535
-It will give an error the port it's already in use, but if it's not.... them you can use it.
-
-[i]> How do I setup my modem?[/i]
-Errr... Each modem is different and I can't give you a guide for each modem but here is my:
-- Access [url=http://192.168.0.1/]http://192.168.0.1/[/url]
-- My login and password was under the modem
-- Go to advanced configurations
-- Go to advanced
-- Go to port forwarding
-- Add a new port forwarding
-	- Protocol: TCP/UDP
-	- Server IP Address: Your private IP
-	- External/Internal Port Start/End: Your port
- 
-Tell your friends your public IP and the port that you chose.
-Now the modem should redirect their request to your computer.
-[center][img]res://windows/window_servers/network_settings/modem2.svg[/img][/center]
-
-[font_size=32][center]Warning[/center][/font_size]
-Nowadays, there is cases where your IP it’s not open to the world because your internet provider may be putting you behind [i][url=https://en.wikipedia.org/wiki/Network_address_translation]NAT[/url][/i], in this cases there is not much to do other than using services like [url=https://www.zerotier.com/]ZeroTier[/url].
-
-NETWORK_SETTINGS_EXPLANATION"
+text = "NETWORK_SETTINGS_EXPLANATION"
 
 [node name="Select" type="Button" parent="."]
 layout_mode = 2

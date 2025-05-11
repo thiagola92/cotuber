@@ -25,7 +25,10 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "DISCORD_SETTINGS_EXPLANATION"
+text = "[font_size=32][center]Discord[/center][/font_size]
+We can use [url=https://en.wikipedia.org/wiki/Discord]Discord[/url] infrastructure to connect you to your friends.
+
+DISCORD_SETTINGS_EXPLANATION"
 
 [node name="Select" type="Button" parent="."]
 layout_mode = 2
