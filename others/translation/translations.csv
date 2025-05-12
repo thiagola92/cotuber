@@ -87,8 +87,24 @@ DISCORD_SETTINGS_SELECT,Initialize Discord setup,Inicializar a configuração do
 DISCORD_SETTINGS_CONNECT,Connect to Discord,Conectar ao Discord
 DISCORD_SETTINGS_APPLICATION_ID,Application ID,ID da Aplicação
 DISCORD_SETTINGS_LOBBY,Lobby,Lobby
-DISCORD_SETTINGS_EXPLANATION,Use Discord as infrastructure,Usa Discord como infraestrutura
+DISCORD_SETTINGS_EXPLANATION,"[font_size=32][center]Discord[/center][/font_size]
+Using [url=https://discord.com/developers/docs/discord-social-sdk/overview]Discord Social SDK[/url].
+Where Discord is the server that receive and send audio to everyone.
+[center][img]res://windows/window_servers/discord_settings/server.svg[/img][/center]
+I do not recommend this method because would involves you telling Discord that you are developing a game (when you are not...).
+
+[font_size=32][center]Setup[/center][/font_size]
+
+[i]> What is Appication ID?[/i]
+An identifier that Discord give to people developing a game/application so they can user their infrastructure on it.
+[center][img]res://windows/window_servers/discord_settings/access.svg[/img][/center]
+This is not something that I can share with you because would allow you to impersonate this application (and spend all my quote).
+
+[i]> What is Lobby?[/i]
+Just the name of your lobby.
+If you and your friend put the same application ID and lobby name, you will be talking to each other.",TODO
 DISCORD_SETTINGS_PLACEHOLDER_LOBBY,Ex: my-lobby-name,Ex: nome-do-meu-lobby
 DISCORD_SETTINGS_PLACEHOLDER_APP_ID,Ex: 123456789012345678,Ex: 123456789012345678
 WINDOW_SERVERS_EXPLANATION,"[p align=center]On the left you can find options which you can connect to your friends[/p]
-[p align=center]Selecting one will explain how it works[/p]",
+[p align=center]Selecting one will explain how it works[/p]","[p align=center]Na esquerda você encontra as opções pela qual você pode conectar aos seus amigos[/p]
+[p align=center]Selecione uma delas para a explicação aparecer[/p]"

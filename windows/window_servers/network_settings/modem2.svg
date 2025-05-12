@@ -7,7 +7,7 @@
    viewBox="0 0 400 200"
    version="1.1"
    id="svg1"
-   inkscape:version="1.4 (1:1.4+202410161351+e7c3feb100)"
+   inkscape:version="1.4.1 (1:1.4.1+202503302257+93de688d07)"
    sodipodi:docname="modem2.svg"
    inkscape:export-filename="maker.png"
    inkscape:export-xdpi="96"
@@ -52,37 +52,26 @@
        visible="true" />
   </sodipodi:namedview>
   <defs
-     id="defs1">
-    <marker
-       style="overflow:visible"
-       id="ArrowWideRounded-2"
-       refX="0"
-       refY="0"
-       orient="auto-start-reverse"
-       inkscape:stockid="Wide, rounded arrow"
-       markerWidth="1"
-       markerHeight="1"
-       viewBox="0 0 1 1"
-       inkscape:isstock="true"
-       inkscape:collect="always"
-       preserveAspectRatio="xMidYMid">
-      <path
-         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:round"
-         d="M 3,-3 0,0 3,3"
-         transform="rotate(180,0.125,0)"
-         sodipodi:nodetypes="ccc"
-         id="path2-3" />
-    </marker>
-  </defs>
+     id="defs1" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="fill:none;fill-opacity:1;stroke:#008000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#ArrowWideRounded-2)"
-       d="m 108.19222,102.5 h 92.22062"
+    <g
        id="path3-92"
-       sodipodi:nodetypes="cc" />
+       style="opacity:1">
+      <path
+         style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#008000;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+         d="m 108.19141,100 a 2.5,2.5 0 0 0 -2.5,2.5 2.5,2.5 0 0 0 2.5,2.5 h 92.2207 a 2.5,2.5 0 0 0 2.5,-2.5 2.5,2.5 0 0 0 -2.5,-2.5 z"
+         id="path16" />
+      <g
+         id="g3">
+        <path
+           style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#008000;stroke-linecap:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1;opacity:1"
+           d="M 120.17383,85.732422 103.40625,102.5 l 16.76758,16.76758 a 2.5,2.5 0 0 0 3.53711,0 2.5,2.5 0 0 0 0,-3.53516 L 110.47852,102.5 123.71094,89.267578 a 2.5,2.5 0 0 0 0,-3.535156 2.5,2.5 0 0 0 -3.53711,0 z"
+           id="path15" />
+      </g>
+    </g>
     <g
        id="g1"
        transform="translate(-141.80778,40.221264)">

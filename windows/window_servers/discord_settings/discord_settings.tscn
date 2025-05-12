@@ -24,11 +24,10 @@ theme_override_constants/margin_bottom = 8
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 2
 bbcode_enabled = true
-text = "[font_size=32][center]Discord[/center][/font_size]
-We can use [url=https://en.wikipedia.org/wiki/Discord]Discord[/url] infrastructure to connect you to your friends.
-
-DISCORD_SETTINGS_EXPLANATION"
+text = "DISCORD_SETTINGS_EXPLANATION"
+selection_enabled = true
 
 [node name="Select" type="Button" parent="."]
 layout_mode = 2
