@@ -67,10 +67,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="BackgroundButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("2_55pck")]
+[node name="MicrophoneButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("2_2yb3a")]
 layout_mode = 2
 
-[node name="MicrophoneButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("2_2yb3a")]
+[node name="BackgroundButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("2_55pck")]
 layout_mode = 2
 
 [node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container"]

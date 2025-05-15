@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://csqh4vd5sq2hp"]
+[gd_scene load_steps=9 format=3 uid="uid://csqh4vd5sq2hp"]
 
 [ext_resource type="Script" uid="uid://cbscbq36fpmqn" path="res://windows/window_coop/window_coop.gd" id="1_0tbb6"]
 [ext_resource type="PackedScene" uid="uid://c8ljwidbqix6f" path="res://components/back_button/back_button.tscn" id="1_jbfnp"]
 [ext_resource type="PackedScene" uid="uid://fo22y6l2sabw" path="res://components/load_button/load_button.tscn" id="2_oj564"]
 [ext_resource type="PackedScene" uid="uid://dygfhgna7fi5y" path="res://components/microphone_button/microphone_button.tscn" id="3_b5sqd"]
+[ext_resource type="PackedScene" uid="uid://710g6pia33tv" path="res://components/background_button/background_button.tscn" id="4_heoqo"]
 [ext_resource type="PackedScene" uid="uid://penr57pwy6l3" path="res://components/avatar/avatar.tscn" id="5_cm14j"]
 [ext_resource type="PackedScene" uid="uid://cjr3nnoguw3x2" path="res://components/visiblity_button/visibility_button.tscn" id="5_v1uh1"]
+[ext_resource type="PackedScene" uid="uid://c8vdfynnn3bik" path="res://components/voice_bar/voice_bar.tscn" id="6_pxu2x"]
 
 [node name="WindowCoop" type="Control"]
 layout_mode = 3
@@ -51,6 +53,10 @@ layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="MicrophoneButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("3_b5sqd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BackgroundButton" parent="UI/Margin/Container/TopContainer/RightContainer" instance=ExtResource("4_heoqo")]
 layout_mode = 2
 
 [node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container"]
@@ -72,6 +78,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="VoiceBar" parent="UI/Margin/Container/BottomContainer/MiddleContainer" instance=ExtResource("6_pxu2x")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
 [node name="RightContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -89,6 +100,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [connection signal="character_loaded" from="UI/Margin/Container/TopContainer/MiddleContainer/LoadButton" to="." method="_on_load_button_character_loaded"]
+[connection signal="background_changed" from="UI/Margin/Container/TopContainer/RightContainer/BackgroundButton" to="." method="_on_background_button_background_changed"]
 [connection signal="canvas_double_clicked" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_canvas_double_clicked"]
 [connection signal="pressed" from="UI/Margin/Container/BottomContainer/LeftContainer/VisibilityButton" to="." method="_on_visibility_button_pressed"]
+[connection signal="minimum_changed" from="UI/Margin/Container/BottomContainer/MiddleContainer/VoiceBar" to="." method="_on_voice_bar_minimum_changed"]
 [connection signal="double_clicked" from="Images/Avatar" to="." method="_on_avatar_double_clicked"]

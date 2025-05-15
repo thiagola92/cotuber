@@ -13,9 +13,13 @@ var _character := CharacterData.new()
 ## Current state index.
 var _state_index := 0
 
-@onready var _visibility_button := $%VisibilityButton
-
 @onready var _ui := $UI
+
+@onready var _microphone_button := %MicrophoneButton
+
+@onready var _visibility_button := %VisibilityButton
+
+@onready var _voice_bar := %VoiceBar
 
 @onready var _avatar := %Avatar
 
@@ -29,10 +33,16 @@ func _ready() -> void:
 	voice_server.create_user(voice_server.id, _character)
 	voice_server.voice_connected.connect(_on_voice_server_voice_connected)
 	voice_server.voice_disconnected.connect(_on_voice_server_voice_disconnected)
+	voice_server.volume_changed.connect(_on_voice_server_volume_changed)
 	voice_server.voice_started.connect(_on_voice_server_voice_started)
 	voice_server.voice_stopped.connect(_on_voice_server_voice_stopped)
 	_reload_yourself()
 	_reload_friends()
+	
+	# Only accessible if Godot is responsible for controlling it.
+	if voice_server is not VoiceServerNetwork:
+		_microphone_button.visible = false
+		_voice_bar.visible = false
 
 
 func _process(_delta: float) -> void:
@@ -132,6 +142,10 @@ func _on_load_button_character_loaded(character: CharacterData) -> void:
 	_reload_yourself()
 
 
+func _on_background_button_background_changed(color: Color) -> void:
+	_character.background_color = color
+
+
 func _on_visibility_button_pressed() -> void:
 	_ui.hide()
 	_avatar.hide_tools()
@@ -141,6 +155,10 @@ func _on_visibility_button_pressed() -> void:
 		friend.hide_tools()
 	
 	BackgroundColor.live = true
+
+
+func _on_voice_bar_minimum_changed(value: float) -> void:
+	_character.minimum_volume = value
 
 
 func _on_visibility_button_canvas_double_clicked() -> void:
@@ -184,6 +202,10 @@ func _on_voice_server_voice_disconnected(voice_id: String) -> void:
 		if friend.name == voice_id:
 			friend.queue_free()
 			return
+
+
+func _on_voice_server_volume_changed(_voice_id: String, peak: float) -> void:
+	_voice_bar.value = peak
 
 
 func _on_voice_server_voice_started(voice_id: String) -> void:
