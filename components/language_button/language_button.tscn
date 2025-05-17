@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqxkctxy7xdpu"]
 
-[ext_resource type="Script" path="res://components/language_button/language_button.gd" id="1_an53q"]
+[ext_resource type="Script" uid="uid://bnjlv4of1y42a" path="res://components/language_button/language_button.gd" id="1_an53q"]
 
 [node name="LanguageButton" type="OptionButton"]
 size_flags_horizontal = 8

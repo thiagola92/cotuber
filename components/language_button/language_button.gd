@@ -1,24 +1,23 @@
 extends OptionButton
 
 
-static var _current_langauge: String = "English"
-
-
-# Don't translate languages, let it as native language so the user can read
+# Don't translate dictionary keys, let it as native language so the user can read
 # even when is not his language.
-var _options: Dictionary[String, Callable] = {
-	"English": TranslationServer.set_locale.bind("en"),
-	"Português (Brasil)": TranslationServer.set_locale.bind("pt"),
+var _options: Dictionary[String, String] = {
+	"English": "en",
+	"Português (Brasil)": "pt",
 }
 
 
 func _ready() -> void:
+	TranslationServer.set_locale("en") # Default to english.
+	
 	var index: int = 0
 	
 	for lang in _options:
 		add_item(lang)
 		
-		if lang == _current_langauge:
+		if _options[lang] == OS.get_locale_language():
 			select(index)
 		
 		index += 1
@@ -27,5 +26,4 @@ func _ready() -> void:
 func _on_item_selected(index: int) -> void:
 	var lang := get_item_text(index)
 	
-	_current_langauge = lang
-	_options[lang].call()
+	TranslationServer.set_locale(_options[lang])
