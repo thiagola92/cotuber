@@ -26,6 +26,7 @@ access = 2
 filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.svg", "*.webp")
 
 [node name="LoadInput" parent="." instance=ExtResource("5_d0kjv")]
+accept = PackedStringArray(".jpeg", ".jpg", ".png", ".svg")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

@@ -97,7 +97,7 @@ func _load(path: String) -> void:
 			
 			# Create temporary script file so we can load with ResourceLoader.
 			var source_code := zip.read_file(plugin_path).get_string_from_utf8()
-			error = TmpDir.create_tmp_file(plugin_filename, source_code)
+			error = TmpDir.create_file(plugin_filename, source_code)
 			
 			if error:
 				return push_error("Failed to create temporary plugin file: ", plugin_path)
@@ -137,9 +137,9 @@ func _on_file_dialog_file_selected(path: String) -> void:
 
 
 func _on_load_input_file_received(file: PackedByteArray, filename: String) -> void:
-	var error := TmpDir.create_tmp_file_with_bytes(filename, file)
+	var error := TmpDir.create_file_with_bytes(filename, file)
 	
 	if error:
-		return push_error("Failed to create temporary ZIP (error: %s)", error)
+		return push_error("Failed to create temporary file (error: %s)", error)
 	
 	_load(TmpDir.path(filename))

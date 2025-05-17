@@ -1,6 +1,7 @@
 extends Node
 
 
+# On web, this will be cleaned frequently.
 const PATH := "user://tmp"
 
 
@@ -18,17 +19,14 @@ func _make_dir() -> void:
 
 func _clear_dir() -> void:
 	for filename in DirAccess.get_files_at(PATH):
-		var error := DirAccess.remove_absolute(path(filename))
-		
-		if error:
-			push_error("Fail to remove temporary file (error: %s)", error)
+		remove_file(filename)
 
 
 func path(filename: String) -> String:
 	return "%s/%s" % [PATH, filename]
 
 
-func create_tmp_file(filename: String, content: String) -> Error:
+func create_file(filename: String, content: String) -> Error:
 	var tmp := FileAccess.open(path(filename), FileAccess.WRITE)
 	
 	if not tmp:
@@ -40,7 +38,7 @@ func create_tmp_file(filename: String, content: String) -> Error:
 	return OK
 
 
-func create_tmp_file_with_bytes(filename: String, content: PackedByteArray) -> Error:
+func create_file_with_bytes(filename: String, content: PackedByteArray) -> Error:
 	var tmp := FileAccess.open(path(filename), FileAccess.WRITE)
 	
 	if not tmp:
@@ -50,3 +48,10 @@ func create_tmp_file_with_bytes(filename: String, content: PackedByteArray) -> E
 	tmp.close()
 	
 	return OK
+
+
+func remove_file(filename: String) -> void:
+	var error := DirAccess.remove_absolute(path(filename))
+	
+	if error:
+		push_error("Fail to remove temporary file (error: %s)" % error)

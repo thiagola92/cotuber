@@ -77,11 +77,12 @@ layout_mode = 2
 [node name="MiddleContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="VoiceBar" parent="UI/Margin/Container/BottomContainer/MiddleContainer" instance=ExtResource("6_pxu2x")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 6
 
 [node name="RightContainer" type="HBoxContainer" parent="UI/Margin/Container/BottomContainer"]
 layout_mode = 2

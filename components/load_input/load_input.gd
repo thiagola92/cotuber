@@ -1,13 +1,17 @@
-## Used, when application is running on browser, to load file from user.
+## Used when application is running on web, to load file from user.
+##
+## On web, the request to input a file into a website has to come from
+## an interaction. To solve this, we create an <input> and force a click,
+## which will prompt the user for a file upload.
 class_name LoadInput
 extends Node
 
 
 signal file_received(file: PackedByteArray, filename: String)
 
-## The valid file types, separated by commas. [br]
+## The valid file types, separated by commas.[br]
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept
-@export var accept: PackedStringArray = [".zip"]
+@export var accept: PackedStringArray
 
 var _input: JavaScriptObject
 
