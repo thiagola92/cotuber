@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwta7e6m21q1p"]
 
-[ext_resource type="Script" path="res://components/plugins_popup/plugins_popup.gd" id="1_g1qvh"]
+[ext_resource type="Script" uid="uid://6nt2c45uvdld" path="res://components/plugins_popup/plugins_popup.gd" id="1_g1qvh"]
 [ext_resource type="Texture2D" uid="uid://dqnanq4dtikkp" path="res://components/plugins_popup/add.svg" id="2_u44md"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrutf"]

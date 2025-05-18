@@ -25,10 +25,18 @@ func _create_defaults() -> void:
 	for plugin in _defaults:
 		var filename := plugin.filename()
 		var filepath := "%s/%s" % [PATH, filename]
-		var error := ResourceSaver.save(plugin.get_script(), filepath)
+		var error: Error
 		
-		if error and error != 32:
-			push_error("Fail to create a default plugin: %s" % filename)
+		if FileAccess.file_exists(filepath):
+			error = DirAccess.remove_absolute(filepath)
+		
+		if error:
+			push_error("Fail to delete the default plugin %s (error: %s)" % [filename, error])
+		
+		error = ResourceSaver.save(plugin.get_script(), filepath)
+		
+		if error:
+			push_error("Fail to create the default plugin %s (error: %s)" % [filename, error])
 
 
 func get_plugins() -> Array[PluginData]:
