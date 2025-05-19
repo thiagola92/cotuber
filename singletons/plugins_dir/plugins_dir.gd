@@ -22,6 +22,9 @@ func _make_dir() -> void:
 
 
 func _create_defaults() -> void:
+	# HACK: This only works because "GDScript Export Mode" is "Text".
+	# As mentioned in Script.has_source_code(), you lose access to the
+	# source code when exporting as binary tokens.
 	for plugin in _defaults:
 		var filename := plugin.filename()
 		var filepath := "%s/%s" % [PATH, filename]
