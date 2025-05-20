@@ -3,6 +3,8 @@ extends Button
 
 signal image_received(image: Image)
 
+signal mouse_moved
+
 @onready var _file_dialog := $FileDialog
 
 @onready var _load_input: LoadInput = $LoadInput
@@ -14,8 +16,8 @@ func _ready() -> void:
 	
 	_file_dialog.hide()
 	
-	
 	if OS.get_name() == "Web":
+		get_tree().root.window_input.connect(_on_window_input)
 		get_window().files_dropped.connect(_on_web_window_files_dropped)
 	else:
 		get_window().files_dropped.connect(_on_os_window_files_dropped)
@@ -29,6 +31,11 @@ func _set_image(file: String) -> void:
 		return ErrorPopup.show_message("AVATAR_BUTTON_ERROR_FORMAT")
 	
 	image_received.emit(image)
+
+
+func _on_window_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		mouse_moved.emit()
 
 
 func _on_os_window_files_dropped(files: PackedStringArray) -> void:
@@ -58,7 +65,7 @@ func _on_web_window_files_dropped(files: PackedStringArray) -> void:
 	if filebytes.is_empty():
 		return push_error("Failed to get file bytes (error: %s)", FileAccess.get_open_error())
 	
-	await get_tree().root.window_input
+	await mouse_moved
 	
 	var error := TmpDir.create_file_with_bytes(filename, filebytes)
 	
