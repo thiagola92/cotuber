@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="Cotuber"
-config/version="1.2.1"
 run/main_scene="res://windows/window_main/window_main.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/low_processor_mode=true
