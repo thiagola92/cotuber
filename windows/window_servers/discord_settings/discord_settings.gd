@@ -83,7 +83,7 @@ func _on_connect_button_pressed() -> void:
 	_set_lock(true)
 	
 	args.SetClientId(int(_app_id_edit.text))
-	args.SetScopes(DiscordppClient.GetDefaultPresenceScopes())
+	args.SetScopes(DiscordppClient.GetDefaultCommunicationScopes())
 	args.SetCodeChallenge(code_verifier.Challenge())
 	
 	client.SetStatusChangedCallback(_on_status_changed)
